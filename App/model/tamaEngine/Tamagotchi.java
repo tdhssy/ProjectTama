@@ -2,6 +2,6 @@ package model.tamaEngine;
 
 public interface Tamagotchi {
 
-	//test
+	//retest
 	
 }
