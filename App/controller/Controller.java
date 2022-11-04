@@ -1,5 +1,29 @@
 package controller;
 
+/*
+ * La classe du controller, permet de gérer
+ * l'application.
+ * 
+ * Singleton
+ */
 public class Controller {
-	//fquyfzgfqf
+	
+	static private Controller controller = null;
+
+	private Controller(){
+		//TODO
+	}
+
+	/*
+	 * Getter du controller.
+	 * Permet d'instancier un controller
+	 * unique lors du premier appel de
+	 * la méthode.
+	 */
+	static public Controller getController(){
+		if(controller == null)
+			controller = new Controller();
+		
+		return controller;
+	}
 }
