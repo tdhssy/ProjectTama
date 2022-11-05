@@ -10,6 +10,9 @@ public class Test
     /*
      * Couleur de font des messages sur la console.
      * --> Peux ne pas marcher sur Windows
+     * 
+     * Toutes les couleurs disponible :
+     * https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
      */
     private static final String RESET = "\033[0m";      // Text Reset
     private static final String RED = "\033[0;91m";     // RED

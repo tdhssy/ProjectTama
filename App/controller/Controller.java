@@ -1,5 +1,7 @@
 package controller;
 
+import view.View;
+
 /*
  * La classe du controller, permet de gérer
  * l'application.
@@ -9,6 +11,7 @@ package controller;
 public class Controller 
 {	
 	static private Controller controller = null;
+	private View view;
 
 	private Controller(){
 		//TODO : Constructeur
@@ -29,10 +32,23 @@ public class Controller
 
 	/*
 	 * Permet le lancement de l'interface 
-	 * graphique.
+	 * graphique du Menu.
 	 */
 	public void startEvent()
 	{
-		//TODO : startEvent
+		view = View.getMenuView();
+		view.setup("TamaToxic");
+	}
+
+	/*
+	 * Permet de passer de l'interface Menu
+	 * à l'interface Game.
+	 */
+	public void launchGame(String title)
+	{
+		view.hide(); //Cache la vue du Menu
+
+		view = View.getGameView(); //Accède à la vue du jeu
+		view.setup(title);
 	}
 }
