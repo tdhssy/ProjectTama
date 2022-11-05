@@ -6,12 +6,12 @@ package controller;
  * 
  * Singleton
  */
-public class Controller {
-	
+public class Controller 
+{	
 	static private Controller controller = null;
 
 	private Controller(){
-		//TODO
+		//TODO : Constructeur
 	}
 
 	/*
@@ -25,5 +25,14 @@ public class Controller {
 			controller = new Controller();
 		
 		return controller;
+	}
+
+	/*
+	 * Permet le lancement de l'interface 
+	 * graphique.
+	 */
+	public void startEvent()
+	{
+		//TODO : startEvent
 	}
 }

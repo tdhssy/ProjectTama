@@ -2,13 +2,12 @@ package controller;
 
 import java.awt.event.*;
 
-
 /*
  * Classe permettant d'écouter les actions effectuer par
  * l'utilisateur et d'agir en fonction.
  */
-public class ActionController implements ActionListener {
-    
+public class ActionController implements ActionListener
+{    
     /*
      * Méthode appeler à chaque action de l'utilisateur.
      * 
@@ -27,10 +26,9 @@ public class ActionController implements ActionListener {
         //Un nouveau case sera ajouté pour chaque 
         //nouveau bouton
         switch (e.getActionCommand()) {
-        
+            //TODO : Ajout de 'case' pour chaque bouton
             default:
                 break;
         }
     }
-
 }
