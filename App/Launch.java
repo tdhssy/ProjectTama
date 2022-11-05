@@ -9,7 +9,7 @@ public class Launch {
 		{
 			Controller controller = Controller.getController();
 			//controller.startEvent();
-		}else if (args.length == 1 || args[1].equals("-t"))
+		}else if (args.length == 1 && args[1].equals("-t"))
 		{
 			Test test = new Test();
 			test.startTest();
