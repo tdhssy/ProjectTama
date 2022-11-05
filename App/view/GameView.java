@@ -9,22 +9,22 @@ import javax.swing.JFrame;
  */
 public class GameView extends JFrame implements View
 {
-    private static GameView gameView = null;
+    private static GameView game_View = null;
 
     private GameView()
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
 		setSize(900, 600);
 		setLocationRelativeTo(null);
     }
 
     public static View getGameView()
     {
-        if(gameView == null)
-        gameView = new GameView();
+        if(game_View == null)
+        game_View = new GameView();
         
-        return gameView;
+        return game_View;
     }
 
     @Override

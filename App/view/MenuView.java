@@ -1,6 +1,12 @@
 package view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+import view.Menu.MainMenu;
 
 /*
  * Fenetre principale de l'écran de menu.
@@ -9,28 +15,32 @@ import javax.swing.JFrame;
  */
 public class MenuView extends JFrame implements View
 {
-    private static MenuView menuView = null;
+    private static MenuView menu_View = null;
 
     private MenuView()
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
 		setSize(900, 600);
 		setLocationRelativeTo(null);
     }
 
     public static View getMenuView()
     {
-        if(menuView == null)
-        menuView = new MenuView();
+        if(menu_View == null)
+        menu_View = new MenuView();
         
-        return menuView;
+        return menu_View;
     }
 
     @Override
     public void setup(String title)
     {
         setTitle(title);
+
+        JPanel main_menu = new MainMenu();
+        add(main_menu/*, BorderLayout.CENTER*/);
+
         setVisible(true);
     }
 

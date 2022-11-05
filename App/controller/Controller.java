@@ -41,6 +41,14 @@ public class Controller
 	}
 
 	/*
+	 * Ferme l'application.
+	 */
+	public void closeEvent()
+	{
+		System.exit(0);
+	}
+
+	/*
 	 * Permet de passer de l'interface Menu
 	 * à l'interface Game.
 	 */

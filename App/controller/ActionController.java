@@ -27,6 +27,14 @@ public class ActionController implements ActionListener
         //nouveau bouton
         switch (e.getActionCommand()) {
             //TODO : Ajout de 'case' pour chaque bouton
+            
+            case "Menu charger partie": break;
+
+            case "Menu nouvelle partie": break;
+
+            case "Menu quitter": control.closeEvent();
+                                 break;
+
             default:
                 break;
         }
