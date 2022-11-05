@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Launch",
+            "args": "-t",
+            "projectName": "ProjectTama"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,20 +23,6 @@
             "name": "Launch Launch",
             "request": "launch",
             "mainClass": "Launch",
-            "projectName": "ProjectTama"
-        },
-        {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "mainClass": "model.test",
-            "projectName": "ProjectTama"
-        },
-        {
-            "type": "java",
-            "name": "Launch test2",
-            "request": "launch",
-            "mainClass": "model.test2",
             "projectName": "ProjectTama"
         }
     ]
