@@ -2,12 +2,12 @@ package view;
 
 public interface View
 {
-    public static View getGameView()
+    public static GameView getGameView()
     {
         return GameView.getGameView();
     }
 
-    public static View getMenuView()
+    public static MenuView getMenuView()
     {
         return MenuView.getMenuView();
     }

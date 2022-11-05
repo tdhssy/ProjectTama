@@ -1,6 +1,7 @@
 package controller;
 
-import view.View;
+import view.GameView;
+import view.MenuView;
 
 /*
  * La classe du controller, permet de gérer
@@ -11,7 +12,8 @@ import view.View;
 public class Controller 
 {	
 	static private Controller controller = null;
-	private View view;
+	private MenuView menu_view;
+	private GameView game_view;
 
 	private Controller(){
 		//TODO : Constructeur
@@ -36,8 +38,8 @@ public class Controller
 	 */
 	public void startEvent()
 	{
-		view = View.getMenuView();
-		view.setup("TamaToxic");
+		menu_view = MenuView.getMenuView();
+		menu_view.setup("TamaToxic");
 	}
 
 	/*
@@ -48,15 +50,20 @@ public class Controller
 		System.exit(0);
 	}
 
+	public void loadEvent(String view)
+	{
+		menu_view.update(view);
+	}
+
 	/*
 	 * Permet de passer de l'interface Menu
 	 * à l'interface Game.
 	 */
 	public void launchGame(String title)
 	{
-		view.hide(); //Cache la vue du Menu
+		menu_view.hide(); //Cache la vue du Menu
 
-		view = View.getGameView(); //Accède à la vue du jeu
-		view.setup(title);
+		game_view = GameView.getGameView(); //Accède à la vue du jeu
+		game_view.setup(title);
 	}
 }

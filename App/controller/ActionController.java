@@ -28,14 +28,13 @@ public class ActionController implements ActionListener
         switch (e.getActionCommand()) {
             //TODO : Ajout de 'case' pour chaque bouton
             
-            case "Menu charger partie": break;
-
-            case "Menu nouvelle partie": break;
-
+            case "Menu charger partie": control.loadEvent("Load");
+                break;
+            case "Menu nouvelle partie": control.loadEvent("New Game");
+                break;
             case "Menu quitter": control.closeEvent();
-                                 break;
-
-            default:
+                break;
+            case "Load retour": control.loadEvent("Main");
                 break;
         }
     }

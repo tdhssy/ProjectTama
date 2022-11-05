@@ -19,7 +19,7 @@ public class GameView extends JFrame implements View
 		setLocationRelativeTo(null);
     }
 
-    public static View getGameView()
+    public static GameView getGameView()
     {
         if(game_View == null)
         game_View = new GameView();

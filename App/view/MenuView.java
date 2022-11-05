@@ -1,12 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
+import view.Menu.LoadSaveMenu;
 import view.Menu.MainMenu;
+import view.Menu.NewGameMenu;
 
 /*
  * Fenetre principale de l'écran de menu.
@@ -17,6 +18,11 @@ public class MenuView extends JFrame implements View
 {
     private static MenuView menu_View = null;
 
+    /*
+     * Éléments de l'interface graphique.
+     */
+    JPanel panel = new MainMenu();
+
     private MenuView()
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +31,7 @@ public class MenuView extends JFrame implements View
 		setLocationRelativeTo(null);
     }
 
-    public static View getMenuView()
+    public static MenuView getMenuView()
     {
         if(menu_View == null)
         menu_View = new MenuView();
@@ -38,8 +44,7 @@ public class MenuView extends JFrame implements View
     {
         setTitle(title);
 
-        JPanel main_menu = new MainMenu();
-        add(main_menu/*, BorderLayout.CENTER*/);
+        add(panel/*, BorderLayout.CENTER*/);
 
         setVisible(true);
     }
@@ -48,5 +53,21 @@ public class MenuView extends JFrame implements View
     public void hide()
     {
         setVisible(false);
+    }
+
+    public void update(String view)
+    {
+        remove(panel);
+        
+        switch (view) {
+            case "Main": panel = new MainMenu();                
+                break;
+            case "Load": panel = new LoadSaveMenu();
+                break;
+            case "New Game": panel = new NewGameMenu();
+        }
+
+        add(panel/*, BorderLayout.CENTER*/);
+        setVisible(true);
     }
 }
