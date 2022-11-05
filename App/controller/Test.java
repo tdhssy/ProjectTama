@@ -11,7 +11,7 @@ public class Test
      * Couleur de font des messages sur la console.
      * --> Peux ne pas marcher sur Windows
      */
-    private static final String RESET = "\033[0m";  // Text Reset
+    private static final String RESET = "\033[0m";      // Text Reset
     private static final String RED = "\033[0;91m";     // RED
     private static final String GREEN = "\033[0;32m";   // GREEN
 
@@ -26,7 +26,7 @@ public class Test
         System.out.println("-------------------------");
         
         testCouleur();
-        testGetController();
+        testUniciteController();
         //.
         //.
         //.
@@ -45,11 +45,17 @@ public class Test
                          + RESET + "Normal");
     }
 
-    private void testGetController()
+    /*
+     * Test de l'unicité du controller
+     */
+    private void testUniciteController()
     {
-        System.out.print(RESET + "Test getController : ");
+        System.out.print(RESET + "Test unicité du controller : ");
         try {
             control = Controller.getController();
+            Controller test_singleton = Controller.getController();
+            if(control != test_singleton) throw new Exception();
+
             System.out.println(GREEN + "OK");
         } catch (Exception e) {
             System.out.println(RED + "FAILED");
