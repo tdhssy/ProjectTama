@@ -13,6 +13,10 @@ public class Launch {
 		{
 			Test test = new Test();
 			test.startTest();
+		}else
+		{
+			System.err.println("Usage : java -jar Tama.jar OPTIONNEL");
+			System.err.println("OPTIONNEL : [-t] (Lance la série de test)");
 		}
 
 	}
