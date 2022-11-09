@@ -25,6 +25,7 @@ public class Controller
 	 * unique lors du premier appel de
 	 * la méthode.
 	 */
+	//bffhurfsbnhjxsbnufdy
 	static public Controller getController(){
 		if(controller == null)
 			controller = new Controller();
