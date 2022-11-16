@@ -6,6 +6,7 @@ import model.tamaEngine.TamaChat;
 import model.tamaEngine.TamaChien;
 import model.tamaEngine.TamaRobot;
 import model.tamaEngine.Tamagotchi;
+import model.tamagotchiFactory.TamagotchiFactory;
 /*
  * Classe de test de Engine
  */
@@ -19,121 +20,110 @@ public class TestEngine {
         /*
          * Test des classes Tamagotchi
          */
+        {
+            System.out.println("Test class Tamagotchi : ");
+            System.out.println("------------");
+            System.out.println();
 
-        System.out.println("Test Tamagotchi : ");
-        System.out.println("------------");
-        System.out.println();
+            Tamagotchi chat =  new TamaChat();
+            System.out.println("TamaChat : ");
+            System.out.println("------------");
 
-        Tamagotchi chat =  new TamaChat();
-        System.out.println("TamaChat : ");
-        System.out.println("------------");
+            System.out.println("Initial status :");
+            System.out.println(chat.toString());
+            System.out.println("------------");
 
-        System.out.println("Initial status :");
-        System.out.println("Health = "+chat.getHealth());
-        System.out.println("MentalHealth = "+chat.getMentalHealth());
-        System.out.println("PhysicalCondition = "+chat.getPhysicalCondition());
-        System.out.println("Needs = "+chat.getNeeds());
-        System.out.println("Satiety = "+chat.getSatiety());
-        System.out.println("Sleep = "+chat.getSleep());
-        System.out.println("------------");
+            int newStatus = 20;
+            System.out.println("Set value to "+newStatus+" :");
 
-        int newStatus = 20;
-        System.out.println("Set value to "+newStatus+" :");
+            chat.setHealth(newStatus);
+            chat.setMentalHealth(newStatus);
+            chat.setPhysicalCondition(newStatus);
+            chat.setNeeds(newStatus);
+            chat.setSatiety(newStatus);
+            chat.setSleep(newStatus);
 
-        chat.setHealth(newStatus);
-        System.out.println("Health = "+chat.getHealth());
+            System.out.println("Modified status :");
+            System.out.println(chat.toString());
+            System.out.println("------------");
+            System.out.println();
 
-        chat.setMentalHealth(newStatus);
-        System.out.println("MentalHealth = "+chat.getMentalHealth());
+            //=========================================================
 
-        chat.setPhysicalCondition(newStatus);
-        System.out.println("PhysicalCondition = "+chat.getPhysicalCondition());
+            Tamagotchi chien =  new TamaChien();
+            System.out.println("Tamachien : ");
+            System.out.println("------------");
 
-        chat.setNeeds(newStatus);
-        System.out.println("Needs = "+chat.getNeeds());
+            System.out.println("Initial status :");
+            System.out.println(chien.toString());
+            System.out.println("------------");
 
-        chat.setSatiety(newStatus);
-        System.out.println("Satiety = "+chat.getSatiety());
+            int newStatus2 = 25;
+            System.out.println("Set value to "+newStatus2+" :");
+            
+            chien.setHealth(newStatus2);
+            chien.setMentalHealth(newStatus2);
+            chien.setPhysicalCondition(newStatus2);
+            chien.setNeeds(newStatus2);
+            chien.setSatiety(newStatus2);
+            chien.setSleep(newStatus2);
 
-        chat.setSleep(newStatus);
-        System.out.println("Sleep = "+chat.getSleep());
-        System.out.println("------------");
-        System.out.println();
+            System.out.println("Modified status :");
+            System.out.println(chien.toString());
+            System.out.println("------------");
+            System.out.println();
 
-        //=========================================================
+            //=========================================================
 
-        Tamagotchi chien =  new TamaChien();
-        System.out.println("Tamachien : ");
-        System.out.println("------------");
+            Tamagotchi robot =  new TamaRobot();
+            System.out.println("Tamarobot : ");
+            System.out.println("------------");
 
-        System.out.println("Initial status :");
-        System.out.println("Health = "+chien.getHealth());
-        System.out.println("MentalHealth = "+chien.getMentalHealth());
-        System.out.println("PhysicalCondition = "+chien.getPhysicalCondition());
-        System.out.println("Needs = "+chien.getNeeds());
-        System.out.println("Satiety = "+chien.getSatiety());
-        System.out.println("Sleep = "+chien.getSleep());
-        System.out.println("------------");
+            System.out.println("Initial status :");
+            System.out.println(robot.toString());
+            System.out.println("------------");
 
-        int newStatus2 = 25;
-        System.out.println("Set value to "+newStatus2+" :");
+            int newStatus3 = 30;
+            System.out.println("Set value to "+newStatus3+" :");
+
+            robot.setHealth(newStatus3);
+            robot.setMentalHealth(newStatus3);
+            robot.setPhysicalCondition(newStatus3);
+            robot.setNeeds(newStatus3);
+            robot.setSatiety(newStatus3);
+            robot.setSleep(newStatus3);
+
+            System.out.println("Modified status :");
+            System.out.println(robot.toString());
+            System.out.println("------------");
+            System.out.println();
+            System.out.println();
+            System.out.println();
+        }
         
-        chien.setHealth(newStatus2);
-        System.out.println("Health = "+chien.getHealth());
 
-        chien.setMentalHealth(newStatus2);
-        System.out.println("MentalHealth = "+chien.getMentalHealth());
+        /*
+         * Test de la classe TamagotchiFactory
+         */
+        {
 
-        chien.setPhysicalCondition(newStatus2);
-        System.out.println("PhysicalCondition = "+chien.getPhysicalCondition());
+            System.out.println("Test class TamagotchiFactory : ");
+            System.out.println("------------");
+            System.out.println();
 
-        chien.setNeeds(newStatus2);
-        System.out.println("Needs = "+chien.getNeeds());
-
-        chien.setSatiety(newStatus2);
-        System.out.println("Satiety = "+chien.getSatiety());
-
-        chien.setSleep(newStatus2);
-        System.out.println("Sleep = "+chien.getSleep());
-        System.out.println("------------");
-        System.out.println();
-
-        //=========================================================
-
-        Tamagotchi robot =  new TamaRobot();
-        System.out.println("Tamarobot : ");
-        System.out.println("------------");
-
-        System.out.println("Initial status :");
-        System.out.println("Health = "+robot.getHealth());
-        System.out.println("MentalHealth = "+robot.getMentalHealth());
-        System.out.println("PhysicalCondition = "+robot.getPhysicalCondition());
-        System.out.println("Needs = "+robot.getNeeds());
-        System.out.println("Satiety = "+robot.getSatiety());
-        System.out.println("Sleep = "+robot.getSleep());
-        System.out.println("------------");
-
-        int newStatus3 = 30;
-        System.out.println("Set value to "+newStatus3+" :");
+            System.out.print("TamagotchiFactory.createTamagotchi(\"cat\") = ");
+            System.out.println(TamagotchiFactory.createTamagotchi("cat").getClass().getSimpleName());
         
-        robot.setHealth(newStatus3);
-        System.out.println("Health = "+robot.getHealth());
+            System.out.print("TamagotchiFactory.createTamagotchi(\"dog\") = ");
+            System.out.println(TamagotchiFactory.createTamagotchi("dog").getClass().getSimpleName());
 
-        robot.setMentalHealth(newStatus3);
-        System.out.println("MentalHealth = "+robot.getMentalHealth());
+            System.out.println("TamagotchiFactory.UnloadTamagotchi()");
+            TamagotchiFactory.UnloadTamagotchi();
 
-        robot.setPhysicalCondition(newStatus3);
-        System.out.println("PhysicalCondition = "+robot.getPhysicalCondition());
+            System.out.print("TamagotchiFactory.createTamagotchi(\"robot\") = ");
+            System.out.println(TamagotchiFactory.createTamagotchi("robot").getClass().getSimpleName());
+        }
 
-        robot.setNeeds(newStatus3);
-        System.out.println("Needs = "+robot.getNeeds());
-
-        robot.setSatiety(newStatus3);
-        System.out.println("Satiety = "+robot.getSatiety());
-
-        robot.setSleep(newStatus3);
-        System.out.println("Sleep = "+robot.getSleep());
-        System.out.println("------------");
     }
 
 }

@@ -2,7 +2,7 @@ package model.tamaEngine;
 
 public abstract class Tamagotchi {
 
-	static int health = 100; //Vie général des tamagotchi
+	private int health = 100; //Vie général des tamagotchi
 
 	public Tamagotchi(){
 		
@@ -14,12 +14,16 @@ public abstract class Tamagotchi {
 	public int getHealth(){ return health;}
 	public void setHealth(int h){ health = h; }
 
-	/*
-	 * Factory de Tamagotchi
-	 */
-	public TamaChien createTamaChien(){ return null; }
-	public TamaChat createTamaChat(){ return new TamaChat(); }
-	public TamaRobot createTamaRobot(){ return null; }
+	public String toString(){
+		String textFormat = this.getClass().getSimpleName()+" : "+System.lineSeparator()
+							+"Health = "+getHealth()+System.lineSeparator()
+							+"Satiety = "+getSatiety()+System.lineSeparator()
+							+"PhysicalCondition = "+getPhysicalCondition()+System.lineSeparator()
+							+"MentalHealth = "+getMentalHealth()+System.lineSeparator()
+							+"Needs = "+getNeeds()+System.lineSeparator()
+							+"Sleep = "+getSleep()+System.lineSeparator();
+		return textFormat;
+	}
 
 	/*
 	 * Getter et Setter des différents variables
