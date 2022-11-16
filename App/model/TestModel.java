@@ -3,7 +3,6 @@ package model;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import model.tamaEngine.TamaChat;
 import model.tamaEngine.TamaChien;
@@ -23,7 +22,7 @@ public class TestModel {
         /*
          * Test des classes Tamagotchi
          */
-        if(!true){
+        if(true){
             System.out.println("Test Tamagotchi class : ");
             System.out.println("------------");
             System.out.println();
@@ -174,7 +173,7 @@ public class TestModel {
         /*
          * Test de la classe Engine
          */
-        if(!true){
+        if(true){
             System.out.println("Test Engine class  : ");
             System.out.println("------------");
             System.out.println();
