@@ -17,15 +17,15 @@ public class TamagotchiFactory {
         if(tama_instance==null){ //check if Tama exist
             switch (typeTamagotchString) {
 
-                case "cat": //creat TamaChat
+                case "TamaChat": //creat TamaChat
                     tama_instance = createTamaChat();
                     break;
             
-                case "dog": //creat TamaChien
+                case "TamaChien": //creat TamaChien
                     tama_instance = createTamaChien();
                     break;
 
-                case "robot": //creat TamaRobot
+                case "TamaRobot": //creat TamaRobot
                     tama_instance = createTamaRobot();
                     break;
 
