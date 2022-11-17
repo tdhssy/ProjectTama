@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TestModel",
+            "request": "launch",
+            "mainClass": "model.TestModel",
+            "projectName": "ProjectTama"
+        },
+        {
+            "type": "java",
             "name": "Launch TestEngine",
             "request": "launch",
             "mainClass": "model.TestEngine",

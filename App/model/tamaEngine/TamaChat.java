@@ -2,11 +2,12 @@ package model.tamaEngine;
 
 public class TamaChat extends Tamagotchi{
 
-    private double satiety;
-    private double physicalCondition;
-    private double MentalHealth;
-    private double Needs;
-    private double Sleep;
+    private int satiety;
+    private int physicalCondition;
+    private int MentalHealth;
+    private int Needs;
+    private int Sleep;
+    private double factor=1;
 
     public TamaChat(){
         satiety = 50;
@@ -14,61 +15,67 @@ public class TamaChat extends Tamagotchi{
         MentalHealth = 50;
         Needs = 50;
         Sleep = 50;
+    
     }
 
     @Override
-    public double getSatiety() {
+    public int getSatiety() {
         return satiety;
     }
 
     @Override
-    public void setSatiety(double satiety) {
+    public void setSatiety(int satiety) {
         this.satiety=satiety;
         
     }
 
     @Override
-    public double getPhysicalCondition() {
+    public int getPhysicalCondition() {
         return physicalCondition;
     }
 
     @Override
-    public void setPhysicalCondition(double physicalCondition) {
+    public void setPhysicalCondition(int physicalCondition) {
         this.physicalCondition=physicalCondition;
         
     }
 
     @Override
-    public double getMentalHealth() {
+    public int getMentalHealth() {
         return MentalHealth;
     }
 
     @Override
-    public void setMentalHealth(double MentalHealth) {
+    public void setMentalHealth(int MentalHealth) {
         this.MentalHealth=MentalHealth;
         
     }
 
     @Override
-    public double getNeeds() {
+    public int getNeeds() {
         return Needs;
     }
 
     @Override
-    public void setNeeds(double Needs) {
+    public void setNeeds(int Needs) {
         this.Needs=Needs;
         
     }
 
     @Override
-    public double getSleep() {
+    public int getSleep() {
         return Sleep;
     }
 
     @Override
-    public void setSleep(double sleep) {
+    public void setSleep(int sleep) {
         this.Sleep=sleep;
         
+    }
+
+    @Override
+    public double getFactor() {
+        return factor;
     }
     
 }
