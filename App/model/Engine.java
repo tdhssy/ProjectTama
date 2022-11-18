@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.function.BooleanSupplier;
 
 import controller.Controller;
 import model.saveEngine.Save;
@@ -94,5 +95,9 @@ public class Engine {
 		this.currentRoom = newRoom;
 	}
 
-
+	public Boolean isDead() {
+		if (tamagotchi.getHealth() <= 0)
+			return true;
+		return false;
+	}
 }
