@@ -1,12 +1,11 @@
 package model.tamaEngine;
 
-public class TamaChat extends Tamagotchi{
+public class TamaLapin extends Tamagotchi {
 
+    final private int FACTOR = 10;
+    final private int ID=2;
 
-    final private int FACTOR=2;
-    final private int ID=0;
-
-    public TamaChat(){
+    public TamaLapin(){
         super();
     }
 
@@ -19,6 +18,5 @@ public class TamaChat extends Tamagotchi{
     public int getID() {
         return ID;
     }
-
     
 }

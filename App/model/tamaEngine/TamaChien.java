@@ -2,79 +2,21 @@ package model.tamaEngine;
 
 public class TamaChien extends Tamagotchi{
 
-    private int satiety;
-    private int physicalCondition;
-    private int MentalHealth;
-    private int Needs;
-    private int Sleep;
-    private double factor=0.5;
+    final private int FACTOR=3;
+    final private int ID=1;
 
     public TamaChien(){
-        satiety = 50;
-        physicalCondition = 50;
-        MentalHealth = 50;
-        Needs = 50;
-        Sleep = 50;
+        super();
     }
 
     @Override
-    public int getSatiety() {
-        return satiety;
+    public int getFactor() {
+        return FACTOR;
     }
 
     @Override
-    public void setSatiety(int satiety) {
-        this.satiety=satiety;
-        
-    }
-
-    @Override
-    public int getPhysicalCondition() {
-        return physicalCondition;
-    }
-
-    @Override
-    public void setPhysicalCondition(int physicalCondition) {
-        this.physicalCondition=physicalCondition;
-        
-    }
-
-    @Override
-    public int getMentalHealth() {
-        return MentalHealth;
-    }
-
-    @Override
-    public void setMentalHealth(int MentalHealth) {
-        this.MentalHealth=MentalHealth;
-        
-    }
-
-    @Override
-    public int getNeeds() {
-        return Needs;
-    }
-
-    @Override
-    public void setNeeds(int Needs) {
-        this.Needs=Needs;
-        
-    }
-
-    @Override
-    public int getSleep() {
-        return Sleep;
-    }
-
-    @Override
-    public void setSleep(int sleep) {
-        this.Sleep=sleep;
-        
-    }
-
-    @Override
-    public double getFactor() {
-        return factor;
+    public int getID() {
+        return ID;
     }
     
 }

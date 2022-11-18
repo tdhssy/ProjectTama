@@ -4,34 +4,52 @@ import java.util.ArrayList;
 
 public abstract class Tamagotchi {
 
-	private int health = 100; //Vie général des tamagotchi
+
+
+	final private int MAX_VALUE = 150; //Maximum value of stat
+	final private int MIN_VALUE = 0; //Minimum value of stat
+	final private int INITIAL_STAT = 75; //Stats at begining of the game
+
+	private int health; //Vie général des tamagotchi
+	private int satiety; //Power
+    private int physicalCondition;
+    private int mentalHealth;
+    private int needs;
+    private int sleep;
 
 	public Tamagotchi(){
-		
+
+		this.health = MAX_VALUE;
+		this.satiety = INITIAL_STAT;
+        this.physicalCondition = INITIAL_STAT;
+        this.mentalHealth = INITIAL_STAT;
+        this.needs = INITIAL_STAT;
+        this.sleep = INITIAL_STAT;
 	}
 
 	/*
 	 * Getter et Setter de health
 	 */
 	public int getHealth(){ return health;}
-	public void setHealth(int h){ health = h; }
+	public void setHealth(int health){ this.health = health; }
 
 	public String toString(){
 		String textFormat = this.getClass().getSimpleName()+" : "+System.lineSeparator()
-							+"Factor = "+getFactor()+System.lineSeparator()
-							+"Health = "+getHealth()+System.lineSeparator()
-							+"Satiety = "+getSatiety()+System.lineSeparator()
-							+"PhysicalCondition = "+getPhysicalCondition()+System.lineSeparator()
-							+"MentalHealth = "+getMentalHealth()+System.lineSeparator()
-							+"Needs = "+getNeeds()+System.lineSeparator()
-							+"Sleep = "+getSleep()+System.lineSeparator();
+							+"ID = "+this.getID()+System.lineSeparator()
+							+"FACTOR = "+this.getFactor()+System.lineSeparator()
+							+"Health = "+this.getHealth()+System.lineSeparator()
+							+"Satiety = "+this.getSatiety()+System.lineSeparator()
+							+"PhysicalCondition = "+this.getPhysicalCondition()+System.lineSeparator()
+							+"MentalHealth = "+this.getMentalHealth()+System.lineSeparator()
+							+"Needs = "+this.getNeeds()+System.lineSeparator()
+							+"Sleep = "+this.getSleep()+System.lineSeparator();
 		return textFormat;
 	}
 
 	/*
 	 * Datas Format :
-	 *  int list [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, typeTamagotchi]
-	 *	typeTamagotchi : chat = 0. | chien = 1. | robot = 2.
+	 *  int list [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, ID]
+	 *	ID : TamaChat = 0 | TamaChien = 1 | TamaLapin = 2 | TamaRobot = 3
 	 */
 
 	public void setAllData(ArrayList<Integer> datas) {
@@ -55,46 +73,87 @@ public abstract class Tamagotchi {
 		datas.add(getMentalHealth());
 		datas.add(getNeeds());
 		datas.add(getSleep());
-		switch (this.getClass().getSimpleName()) {
-			case "TamaChat":
-				datas.add(0);
-				break;
-			case "TamaChien":
-				datas.add(1);
-				break;
-			case "TamaRobot":
-				datas.add(2);
-				break;
-		}
+		datas.add(this.getID());
 
 
 		return datas;
 	}
 
 	//decrease one stat with factor
-	public void updateDownStat(String stat,double factor){
-		if(factor>1) factor = 1;
-		if(factor<0) factor = 0;
+	public void updateStat(String stat,int factor){
+
 
 		switch (stat) {
 			case "Health":
-				this.setHealth(this.getHealth()-(int)(this.getHealth()*factor));
+				if(this.getHealth()+factor>MIN_VALUE && this.getHealth()+factor<MAX_VALUE){
+					this.setHealth(this.getHealth()+factor);
+				}else if(this.getHealth()+factor<=MIN_VALUE){
+					this.setHealth(MIN_VALUE);
+				}else {
+					this.setHealth(MAX_VALUE);
+				}
 				break;
+
 			case "Satiety":
-				this.setSatiety(this.getSatiety()-(int)(this.getSatiety()*factor));
+				if(this.getSatiety()+factor>MIN_VALUE && this.getSatiety()+factor<MAX_VALUE){
+					this.setSatiety(this.getSatiety()+factor);
+				}else if(this.getSatiety()+factor<=MIN_VALUE){
+					this.setSatiety(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setSatiety(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
 				break;
+
 			case "PhysicalCondition":
-				this.setPhysicalCondition(this.getPhysicalCondition()-(int)(this.getPhysicalCondition()*factor));
+				if(this.getPhysicalCondition()+factor>MIN_VALUE && this.getPhysicalCondition()+factor<MAX_VALUE){
+					this.setPhysicalCondition(this.getPhysicalCondition()+factor);
+				}else if(this.getPhysicalCondition()+factor<=MIN_VALUE){
+					this.setPhysicalCondition(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setPhysicalCondition(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
 				break;
+
 			case "MentalHealth":
-				this.setMentalHealth(this.getMentalHealth()-(int)(this.getMentalHealth()*factor));
+				if(this.getMentalHealth()+factor>MIN_VALUE && this.getMentalHealth()+factor<MAX_VALUE){
+					this.setMentalHealth(this.getMentalHealth()+factor);
+				}else if(this.getMentalHealth()+factor<=MIN_VALUE){
+					this.setMentalHealth(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setMentalHealth(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
 				break;
+
 			case "Needs":
-				this.setNeeds(this.getNeeds()-(int)(this.getNeeds()*factor));
+				if(this.getNeeds()+factor>MIN_VALUE && this.getMentalHealth()+factor<MAX_VALUE){
+					this.setNeeds(this.getNeeds()+factor);
+				}else if(this.getMentalHealth()+factor<=MIN_VALUE){
+					this.setNeeds(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setNeeds(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
 				break;
+
 			case "Sleep":
-				this.setHealth(this.getSleep()-(int)(this.getSleep()*factor));
+				if(this.getSleep()+factor>MIN_VALUE && this.getSleep()+factor<MAX_VALUE){
+					this.setHealth(this.getSleep()+factor);
+				}else if(this.getSleep()+factor<=MIN_VALUE){
+					this.setHealth(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setHealth(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
 				break;
+
 			default:
 				//TODO Exception
 				break;
@@ -104,17 +163,30 @@ public abstract class Tamagotchi {
 
 	//decrease all stats and depend of the Personnal factor
 	public void updateDownStat(){
-		//all data change
-		ArrayList<Integer> datas = this.getAllData();//curent data
-		int typeTamagotchi = datas.get(datas.size()-1); //save typeTamagotchi
-		datas.remove(datas.size()-1); //remove datas of typeTamagotchi
+		
+		ArrayList<Integer> datas = this.getAllData();//current datas
+		ArrayList<Integer> newDatas = new ArrayList<>(); //new ArrayList of datas
+		int typeTamagotchi = datas.get(datas.size()-1); //save ID
+		int health = datas.get(0); //save Health
 
-		ArrayList<Integer> newDatas = new ArrayList<>();
+		datas.remove(datas.size()-1); //remove ID from datas
+		datas.remove(0);//remove health from datas
+
+		newDatas.add(health); //put the health in the first element of newDatas
+
+
 		for(int data : datas){
-			newDatas.add(data-(int)(data*getFactor()));
+			if(data-getFactor()<=MIN_VALUE){	//check if the value can be decrease
+				newDatas.add(MIN_VALUE);
+				health-=getFactor(); //decrease the health if the current stat check that are zero
+				
+			}else{
+				newDatas.add(data-getFactor());//decrease the current stat check
+			}
 		}
-		newDatas.add(typeTamagotchi);//insert typeTamagotchi in the end
-
+		newDatas.set(0, health); //update health value
+		newDatas.add(typeTamagotchi);//insert ID in the end
+	
 		this.setAllData(newDatas);//update all datas
 
 	}
@@ -122,22 +194,48 @@ public abstract class Tamagotchi {
 	/*
 	 * Getter et Setter des différents variables
 	 */
-	public abstract double getFactor();
+	public abstract int getFactor();
+	public abstract int getID();
 
-	public abstract int getSatiety();
-	public abstract void setSatiety(int satiety);
 
-	public abstract int getPhysicalCondition();
-	public abstract void setPhysicalCondition(int physicalCondition);
+    public int getSatiety() {
+        return satiety;
+    }
+    public void setSatiety(int satiety) {
+        this.satiety=satiety;
+    }
 
-	public abstract int getMentalHealth();
-	public abstract void setMentalHealth(int MentalHealth);
 
-	public abstract int getNeeds();
-	public abstract void setNeeds(int Needs);
+    public int getPhysicalCondition() {
+        return physicalCondition;
+    }
+    public void setPhysicalCondition(int physicalCondition) {
+        this.physicalCondition=physicalCondition;
+    }
 
-	public abstract int getSleep();
-	public abstract void setSleep(int sleep);
+
+    public int getMentalHealth() {
+        return mentalHealth;
+    }
+    public void setMentalHealth(int MentalHealth) {
+        this.mentalHealth=MentalHealth;
+    }
+
+
+    public int getNeeds() {
+        return needs;
+    }
+    public void setNeeds(int Needs) {
+        this.needs=Needs;
+    }
+
+
+    public int getSleep() {
+        return sleep;
+    }
+    public void setSleep(int sleep) {
+        this.sleep=sleep;
+    }
 
 
 }

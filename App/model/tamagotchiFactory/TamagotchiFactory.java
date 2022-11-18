@@ -2,6 +2,7 @@ package model.tamagotchiFactory;
 
 import model.tamaEngine.TamaChat;
 import model.tamaEngine.TamaChien;
+import model.tamaEngine.TamaLapin;
 import model.tamaEngine.TamaRobot;
 import model.tamaEngine.Tamagotchi;
 
@@ -29,6 +30,10 @@ public class TamagotchiFactory {
                     tama_instance = createTamaRobot();
                     break;
 
+                case "TamaLapin": //creat TamaLapin
+                    tama_instance = createTamaLapin();
+                    break;
+
                 default:
                     //TODO faire une exception custom
                     break;
@@ -52,6 +57,10 @@ public class TamagotchiFactory {
 
     private static Tamagotchi createTamaRobot(){
         return new TamaRobot();
+    }
+
+    private static Tamagotchi createTamaLapin(){
+        return new TamaLapin();
     }
     
 }

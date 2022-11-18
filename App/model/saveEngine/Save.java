@@ -8,9 +8,13 @@ public class Save {
         //TODO
     }
     
-
     public static ArrayList<Integer> loadSave(String instanceName) {
         //TODO
         return null;
+    }
+
+    public static boolean saveExist(String instanceName){
+        //TODO
+        return false;
     }
 }
