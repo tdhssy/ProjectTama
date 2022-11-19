@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.function.BooleanSupplier;
 
 import controller.Controller;
 import model.saveEngine.Save;

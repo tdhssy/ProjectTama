@@ -9,4 +9,12 @@
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry exported="true" kind="lib" path="Libraries/junit-platform-console-standalone-1.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.base.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.fxml.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.controls.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.media.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.graphics.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.web.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx-swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.swing.jar"/>
 </classpath>
