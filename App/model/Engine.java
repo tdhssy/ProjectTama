@@ -17,6 +17,7 @@ public class Engine {
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine TimeEngine;
+	//test
 	private Controller controller;
 	private static Engine engine_Instance = null;
 
