@@ -32,6 +32,8 @@ public class TestModel {
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
 
+            testEngine.makeSave();
+
             System.out.println("----------------------");
             System.out.println();
             System.out.println("Tamagotchi info :");
@@ -46,7 +48,7 @@ public class TestModel {
             System.out.println();
             System.out.println("Thread.sleep(5000);");
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -114,7 +116,7 @@ public class TestModel {
         /*
          * Test d'interaction des stats
          */
-        if(true){
+        if(!true){
             System.out.println("START INTERACTION TEST :");
             System.out.println();
             System.out.println("New instance :");
