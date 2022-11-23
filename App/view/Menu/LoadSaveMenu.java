@@ -19,7 +19,7 @@ public class LoadSaveMenu extends JPanel
      
     public LoadSaveMenu()
     {
-        b_retour.addActionListener(new ActionController());
+       // b_retour.addActionListener(new ActionController());
         b_retour.setActionCommand("Load retour");
         b_retour.setAlignmentX(Component.CENTER_ALIGNMENT);
 

@@ -1,13 +1,33 @@
 package controller;
 
-import java.awt.event.*;
+//import java.awt.event.*;
 
 /*
  * Classe permettant d'écouter les actions effectuer par
  * l'utilisateur et d'agir en fonction.
  */
-public class ActionController implements ActionListener
-{    
+public class ActionController
+{ 
+
+    //Pour JavaFx
+    /*
+     * Méthode appeler à chaque action de l'utilisateur.
+     * 
+     * --> Veillez à ajouter pour chaque nouveau bouton
+     *     les lignes suivantes :
+     *          button.setOnAction(e -> ActionController.event("message"));
+     *     "message" étant le nom du bouton, pour pouvoir
+     *     différencier les différents boutons.
+     */
+    public static void event(String buttonName){
+        switch(buttonName){
+            case "Test": System.out.println("bt1"); break;
+            case "Test1": System.out.println("bt2"); break;
+        }
+    }
+
+
+    //Pour Swing
     /*
      * Méthode appeler à chaque action de l'utilisateur.
      * 
@@ -18,7 +38,7 @@ public class ActionController implements ActionListener
      *     "message" étant le nom du bouton, pour pouvoir
      *     différencier les différents boutons.
      */
-    public void actionPerformed(ActionEvent e){
+    /*public void actionPerformed(ActionEvent e){
 
         //Permet l'accès aux méthodes du controller
         Controller control = Controller.getController();
@@ -37,5 +57,5 @@ public class ActionController implements ActionListener
             case "Load retour": control.loadEvent("Main");
                 break;
         }
-    }
+    }*/
 }

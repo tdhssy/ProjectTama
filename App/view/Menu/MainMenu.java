@@ -19,15 +19,15 @@ public class MainMenu extends JPanel
 
     public MainMenu()
     {
-        b_Charger_Partie.addActionListener(new ActionController());
+        //b_Charger_Partie.addActionListener(new ActionController());
         b_Charger_Partie.setActionCommand("Menu charger partie");
         b_Charger_Partie.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        b_Nouvelle_Partie.addActionListener(new ActionController());
+       // b_Nouvelle_Partie.addActionListener(new ActionController());
         b_Nouvelle_Partie.setActionCommand("Menu nouvelle partie");
         b_Nouvelle_Partie.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        b_Quitter.addActionListener(new ActionController());
+       // b_Quitter.addActionListener(new ActionController());
         b_Quitter.setActionCommand("Menu quitter");
         b_Quitter.setAlignmentX(Component.CENTER_ALIGNMENT);
 
