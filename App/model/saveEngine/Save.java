@@ -12,7 +12,6 @@ public class Save {
 
     final static private String SAVEPATH = "save/";
     
-    static private File newSaveFile; 
 
     public static void makeSave(ArrayList<Integer> datas, String instanceName) throws IOException {
 
