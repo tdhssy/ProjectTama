@@ -2,6 +2,7 @@ package controller;
 
 //import view.GameView;
 //import view.MenuView;
+import view.View;
 
 /*
  * La classe du controller, permet de gérer
@@ -41,6 +42,7 @@ public class Controller
 	{
 		//menu_view = MenuView.getMenuView();
 		//menu_view.setup("TamaToxic");
+		View.launch();
 	}
 
 	/*

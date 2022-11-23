@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "view.View",
             "projectName": "ProjectTama",
-            "vmArgs": "--module-path ProjectTama/Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.graphics,javafx.base,javafx.fxml,javafx.media,javafx.swing,javafx.web"
+            "vmArgs": "--module-path Libraries/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.graphics,javafx.base,javafx.fxml,javafx.media,javafx.swing,javafx.web"
         },
         {
             "type": "java",
