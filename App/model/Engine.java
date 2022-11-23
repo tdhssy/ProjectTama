@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
@@ -17,6 +18,7 @@ public class Engine {
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine TimeEngine;
+	//test
 	private Controller controller;
 	private static Engine engine_Instance = null;
 
@@ -76,7 +78,12 @@ public class Engine {
 	}
 
 	public void makeSave(){
-		Save.makeSave(tamagotchi.getAllData(),instanceName);
+		try {
+			Save.makeSave(tamagotchi.getAllData(),instanceName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Tamagotchi getTamagotchi(){
@@ -94,9 +101,48 @@ public class Engine {
 		this.currentRoom = newRoom;
 	}
 
+
 	public Boolean isDead() {
 		if (tamagotchi.getHealth() <= 0)
 			return true;
 		return false;
 	}
+
+	public ArrayList<Integer> getTamaDatas(){
+		return tamagotchi.getAllData();
+	}
+
+	public void updateNewDatas(ArrayList<Integer> newDatas){
+		tamagotchi.setAllData(newDatas);
+	}
+
+	public void manger(){
+		tamagotchi.updateStat("Satiete", 0);
+	}
+
+	public void dormir(){
+		tamagotchi.updateStat("Sleep", 0);
+		tamagotchi.updateStat("MentalHealth", 0);
+
+		tamagotchi.updateStat("Satiete", 0);		
+	}
+
+	public void seLaver(){
+		//TODO
+	}
+
+	public void jouer(){
+		tamagotchi.updateStat("MentalHealth", 0);
+
+		tamagotchi.updateStat("Satiete", 0);
+		tamagotchi.updateStat("PhysicalCondition", 0);
+		tamagotchi.updateStat("Sleep", 0);
+	}
+
+	public void move(String newRoom){
+		currentRoom = newRoom;
+	}
+
+
+
 }
