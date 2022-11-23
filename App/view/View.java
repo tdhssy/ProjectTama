@@ -1,27 +1,19 @@
 package view;
 
-public interface View
-{
-    public static GameView getGameView()
-    {
-        return GameView.getGameView();
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class View extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        // TODO Auto-generated method stub
+        stage.show();
+        
     }
 
-    public static MenuView getMenuView()
-    {
-        return MenuView.getMenuView();
+    public static void main(String[] args) {
+        launch(args);
     }
 
-    /*
-     * Permet d'afficher et de donner un nom
-     * à l'interface.
-     */
-    public void setup(String title);
-
-    /*
-     * Permet de cacher l'interface.
-     * Utile pour passer de l'interface Menu
-     * à l'interface Game.
-     */
-    public void hide();
 }
