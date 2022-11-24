@@ -6,7 +6,7 @@ package controller;
  * Classe permettant d'écouter les actions effectuer par
  * l'utilisateur et d'agir en fonction.
  */
-public class ActionController
+public class ActionController /*extends ActionListener */
 { 
 
     //Pour JavaFx
@@ -20,9 +20,14 @@ public class ActionController
      *     différencier les différents boutons.
      */
     public static void event(String buttonName){
+        Controller control = Controller.getController();
         switch(buttonName){
             case "Test": System.out.println("bt1"); break;
             case "Test1": System.out.println("bt2"); break;
+            case "Go_new_game": control.menuAction(1); break;
+            case "Go_load_game": control.menuAction(2); break;
+            case "Go_parametre": control.menuAction(3); break;
+            case "quitter": control.menuAction(5); break;
         }
     }
 

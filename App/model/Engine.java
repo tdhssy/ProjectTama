@@ -18,7 +18,6 @@ public class Engine {
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine TimeEngine;
-	//test
 	private Controller controller;
 	private static Engine engine_Instance = null;
 
@@ -27,7 +26,7 @@ public class Engine {
 		this.controller = controller;
 		this.instanceName = instanceName;
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
-		this.TimeEngine = new TimeEngine(TIME_UPDATE, tamagotchi);
+		this.TimeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
 		this.currentRoom = ROOM;
 		TimeEngine.start();
 	}
