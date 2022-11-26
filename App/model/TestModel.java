@@ -138,7 +138,7 @@ public class TestModel {
             System.out.println("----------------------");
             System.out.println();
             testEngine.unloadEngine();
-            testEngine.deleteSave();//add par clement delete fichier save
+            //testEngine.deleteSave();//add par clement delete fichier save
             System.out.println("Delete instance");
             System.out.println();
             System.out.println("----------------------");
