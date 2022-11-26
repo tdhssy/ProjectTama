@@ -12,6 +12,8 @@ public class View extends Application {
     private static Scene scene;
     private static NewGameMenu ngView;
     private static MainMenu mmView;
+    private static GameView gView;
+
     private static BorderPane root;
     private static Stage stage;
 
@@ -44,7 +46,8 @@ public class View extends Application {
      *  1 = MainMenu
      *  2 = NewGameMenu
      *  3 = LoadSaveMenu
-     *  ...
+     *  4 = Parametre
+     *  5 = GameView
      */
     public static void changeScene(int menu){
         switch (menu) {
@@ -55,6 +58,15 @@ public class View extends Application {
             case 2:
                 ngView = new NewGameMenu(root, largeur, hauteur);
                 stage.setScene(ngView);
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                gView = new GameView(root, largeur, hauteur);
+                stage.setScene(gView);
+                break;
             default:
                 break;
         }
@@ -62,5 +74,9 @@ public class View extends Application {
 
     public static NewGameMenu getNewGameMenu(){
         return ngView;
+    }
+
+    public static GameView getGameView(){
+        return gView;
     }
 }

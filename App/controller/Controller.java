@@ -2,7 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 
+import org.junit.vintage.engine.descriptor.VintageEngineDescriptor;
+
 import model.Engine;
+import view.GameView;
 //import view.GameView;
 //import view.MenuView;
 import view.View;
@@ -17,8 +20,7 @@ public class Controller
 {	
 	static private Controller controller = null;
 	private Engine engine;
-	//private MenuView menu_view;
-	//private GameView game_view;
+	private GameView game_view;
 
 	private Controller(){
 	}
@@ -69,15 +71,14 @@ public class Controller
 	public void launchGame()
 	{
 		try {
-			System.out.println(View.getNewGameMenu().getText());
+			engine = Engine.createEngineInstance(this, View.getNewGameMenu().getType(),  View.getNewGameMenu().getText());
+			View.changeScene(5); //GameView
+			game_view = View.getGameView();
+			game_view.setName(engine.getInstanceName());
+			game_view.setType(View.getNewGameMenu().getType());
 		} catch (Exception e) {
 			System.err.println("Erreur de chargement");
 		}
-		
-		//menu_view.hide(); //Cache la vue du Menu
-
-		//game_view = GameView.getGameView(); //Accède à la vue du jeu
-		//game_view.setup(title);
 	}
 
 	/*
