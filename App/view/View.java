@@ -1,5 +1,7 @@
 package view;
 
+import view.Menu.*;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -7,15 +9,52 @@ import javafx.stage.Stage;
 
 public class View extends Application {
 
-    private Scene scene;
+    private static Scene scene;
+    private static BorderPane root;
+    private static Stage stage;
+
+    private static int largeur;
+    private static int hauteur;
 
     @Override
-    public void start(Stage stage) throws Exception {   
-        BorderPane root = new BorderPane(); //Juste pour pouvoir appeler la scene
+    public void start(Stage s) throws Exception {   
+        root = new BorderPane(); //Juste pour pouvoir appeler la scene
 
-        scene = new MenuView(root, 960,540);
+        largeur = 960;
+        hauteur = 540;
+
+        scene = new MainMenu(root, largeur, hauteur);
         
+        stage = new Stage();
+
         stage.setScene(scene);
+
+        //Rend impossible le redimensionnement manuelle.
+        //Pour redimensionner il faut aller dans la fenêtre paramètre
+        stage.setResizable(false);
+
+        stage.setTitle("Tamagotchi");
         stage.show();   
+    }
+
+    /*
+     * Change la scene.
+     *  1 = MainMenu
+     *  2 = NewGameMenu
+     *  3 = LoadSaveMenu
+     *  ...
+     */
+    public static void changeScene(int menu){
+        switch (menu) {
+            case 1:
+                scene = new MainMenu(root, largeur, hauteur);
+                stage.setScene(scene);
+                break;
+            case 2:
+                scene = new NewGameMenu(root, largeur, hauteur);
+                stage.setScene(scene);
+            default:
+                break;
+        }
     }
 }

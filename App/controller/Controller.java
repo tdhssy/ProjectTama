@@ -62,11 +62,13 @@ public class Controller
 	}
 
 	/*
-	 * Permet de passer de l'interface Menu
+	 * Récupère les informations du tama sur la view et
+	 * les passes au modèle puis passe de l'interface Menu
 	 * à l'interface Game.
 	 */
-	public void launchGame(String title)
+	public void launchGame()
 	{
+		System.out.println("ok");
 		//menu_view.hide(); //Cache la vue du Menu
 
 		//game_view = GameView.getGameView(); //Accède à la vue du jeu
@@ -126,16 +128,13 @@ public class Controller
 	 * 4 = Sauvegarder
 	 * 5 = Quitter app
 	 * 6 = Lancer une partie
-	 * 7 = Selection tama Chat
-	 * 8 = Selection tama Chien
-	 * 9 = Selection tama Lapin
-	 * 10 = Selection tama Robot
+	 * 7 = go menu principal
 	 */
 	public void menuAction(int action){
 		//TODO
 		switch (action) {
 			case 1:
-				
+				View.changeScene(2);
 				break;
 			case 2:
 				
@@ -144,25 +143,16 @@ public class Controller
 				
 				break;
 			case 4:
-				
+				engine.makeSave();
 				break;
 			case 5:
 				closeEvent();
 				break;
 			case 6:
-				
+				launchGame();
 				break;
 			case 7:
-				
-				break;
-			case 8:
-				
-				break;
-			case 9:
-				
-				break;
-			case 10:
-				
+				View.changeScene(1);
 				break;
 			default:
 				System.out.println("Action menu par defaut");

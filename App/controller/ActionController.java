@@ -26,8 +26,10 @@ public class ActionController /*extends ActionListener */
             case "Test1": System.out.println("bt2"); break;
             case "Go_new_game": control.menuAction(1); break;
             case "Go_load_game": control.menuAction(2); break;
+            case "Go_main_menu": control.menuAction(7); break;
             case "Go_parametre": control.menuAction(3); break;
             case "quitter": control.menuAction(5); break;
+            case "StartGame": control.menuAction(6); break;
         }
     }
 

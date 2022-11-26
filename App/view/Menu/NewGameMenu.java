@@ -1,36 +1,54 @@
 package view.Menu;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import java.awt.Component;
-
 import controller.ActionController;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
-public class NewGameMenu extends JPanel
+public class NewGameMenu extends Scene
 {
     /*
      * Éléments de l'interface graphique.
      */
-    JLabel title = new JLabel("Nouvelle partie");
-    JButton b_retour = new JButton("Retour");
+    Button startGame;
+    Button retour;
+    Button tamaChien;
+    Button tamaChat;
+    Button tamaLapin;
+    Button tamaRobot;
+    TextField tamaName;
+
+    VBox root;
      
-    public NewGameMenu()
+    public NewGameMenu(Parent arg0, double arg1, double arg2)
     {
-       // b_retour.addActionListener(new ActionController());
-        b_retour.setActionCommand("Load retour");
-        b_retour.setAlignmentX(Component.CENTER_ALIGNMENT);
+        super(arg0, arg1, arg2);
 
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        root = new VBox();
 
-        add(title);
-        add(b_retour);
+        startGame = new Button("Commencer la partie");
+        startGame.setOnAction(e -> ActionController.event("StartGame"));
+        startGame.setPrefSize(200, 35);
 
-        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        setLayout(layout);
-        
-        setVisible(true);
+        retour = new Button("Retour");
+        retour.setOnAction(e -> ActionController.event("Go_main_menu"));
+        retour.setPrefSize(100, 35);
+
+        //Ajout des boutons au root
+        root.getChildren().add(startGame);
+        root.getChildren().add(retour);
+
+        //Réglage de l'emplacement des boutons
+        VBox.setMargin(startGame, new Insets(135, 20, -35, 435));
+        VBox.setMargin(retour, new Insets(0, 20, 20, 325));
+
+        //Change la couleur du fond d'écran
+        root.setStyle("-fx-background-color: grey;");
+
+        //Place le root sur la scene
+        setRoot(root);
     }
 }
