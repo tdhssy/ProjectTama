@@ -1,5 +1,6 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -84,6 +85,35 @@ public class Engine {
 			e.printStackTrace();
 		}
 	}
+	//Ajouter par clément
+	public boolean saveExist(){
+		boolean existOupas=false;
+		try {
+			existOupas=Save.saveExist(instanceName);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return existOupas;
+	}
+	public ArrayList<Integer> loadSave(){
+		ArrayList<Integer> datas=null;
+		try {
+			datas=Save.loadSave(instanceName);
+			return datas;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return datas;
+	}
+	public void deleteSave(){
+		try {
+			Save.deleteSave(instanceName);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+	}
+	//Fin de l'ajout de clément ici
 
 	public Tamagotchi getTamagotchi(){
 		return tamagotchi;
