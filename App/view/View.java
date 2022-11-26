@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 public class View extends Application {
 
     private static Scene scene;
+    private static NewGameMenu ngView;
+    private static MainMenu mmView;
     private static BorderPane root;
     private static Stage stage;
 
@@ -47,14 +49,18 @@ public class View extends Application {
     public static void changeScene(int menu){
         switch (menu) {
             case 1:
-                scene = new MainMenu(root, largeur, hauteur);
-                stage.setScene(scene);
+                mmView = new MainMenu(root, largeur, hauteur);
+                stage.setScene(mmView);
                 break;
             case 2:
-                scene = new NewGameMenu(root, largeur, hauteur);
-                stage.setScene(scene);
+                ngView = new NewGameMenu(root, largeur, hauteur);
+                stage.setScene(ngView);
             default:
                 break;
         }
+    }
+
+    public static NewGameMenu getNewGameMenu(){
+        return ngView;
     }
 }

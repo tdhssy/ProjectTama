@@ -37,12 +37,17 @@ public class NewGameMenu extends Scene
         retour.setOnAction(e -> ActionController.event("Go_main_menu"));
         retour.setPrefSize(100, 35);
 
+        tamaName = new TextField("Nom du Tamagotchi");
+        tamaName.setMaxWidth(220);
+
         //Ajout des boutons au root
+        root.getChildren().add(tamaName);
         root.getChildren().add(startGame);
         root.getChildren().add(retour);
 
         //Réglage de l'emplacement des boutons
-        VBox.setMargin(startGame, new Insets(135, 20, -35, 435));
+        VBox.setMargin(tamaName, new Insets(135, 20, 20, 325));
+        VBox.setMargin(startGame, new Insets(50, 20, -35, 435));
         VBox.setMargin(retour, new Insets(0, 20, 20, 325));
 
         //Change la couleur du fond d'écran
@@ -50,5 +55,9 @@ public class NewGameMenu extends Scene
 
         //Place le root sur la scene
         setRoot(root);
+    }
+
+    public String getText(){
+        return tamaName.getText();
     }
 }

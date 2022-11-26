@@ -68,7 +68,12 @@ public class Controller
 	 */
 	public void launchGame()
 	{
-		System.out.println("ok");
+		try {
+			System.out.println(View.getNewGameMenu().getText());
+		} catch (Exception e) {
+			System.err.println("Erreur de chargement");
+		}
+		
 		//menu_view.hide(); //Cache la vue du Menu
 
 		//game_view = GameView.getGameView(); //Accède à la vue du jeu

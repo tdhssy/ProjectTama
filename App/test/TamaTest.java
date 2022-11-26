@@ -68,14 +68,14 @@ public class TamaTest {
         Tamagotchi tama = engine.getTamagotchi();
         ArrayList<Integer> oracle = new ArrayList<>();
             oracle.add(150);  //Health        
-            oracle.add(73);   //Satiety        
-            oracle.add(73);   //PhysicalCondition        
-            oracle.add(73);   //MentalHealth        
-            oracle.add(73);   //Needs        
-            oracle.add(73);   //Sleep        
+            oracle.add(69);   //Satiety        
+            oracle.add(69);   //PhysicalCondition        
+            oracle.add(69);   //MentalHealth        
+            oracle.add(69);   //Needs        
+            oracle.add(69);   //Sleep        
             oracle.add(0);    //ID
         try {
-            Thread.sleep(1001);
+            Thread.sleep(3001);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
