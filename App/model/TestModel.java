@@ -122,7 +122,7 @@ public class TestModel {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //CLEMENT CREATION ICI
+            //CLEMENT CREATION ICI '-'
             System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
             testEngine.makeSave();//add par clement
             System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement

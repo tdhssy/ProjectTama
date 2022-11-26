@@ -20,7 +20,7 @@ public class Save {
      * Création du fichier de sauvegarde ou bien update d'une déjà existante
      * @return void
      * @param Arralist<Integer> datas : les informations du personnages
-     * @param String instanceName : le nom du persnnage
+     * @param String instanceName : le nom du personnage
      * 
      */
     public static void makeSave(ArrayList<Integer> datas, String instanceName) throws IOException {
