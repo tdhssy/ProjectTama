@@ -99,11 +99,11 @@ public class NewGameMenu extends Scene
         tamaType = type;
     }
 
-    public String getText(){
+    public String getTamaName(){
         return tamaName.getText();
     }
 
-    public String getType(){
+    public String getTamaType(){
         return tamaType;
     }
 }

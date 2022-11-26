@@ -3,18 +3,17 @@ package view;
 import view.Menu.*;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class View extends Application {
 
-    private static Scene scene;
-    private static NewGameMenu ngView;
-    private static MainMenu mmView;
-    private static GameView gView;
+    private static NewGameMenu new_game_v = null;
+    private static LoadSaveMenu load_save_v = null;
+    private static MainMenu main_menu_v = null;
+    private static GameView game_v = null;
 
-    private static BorderPane root;
+    private static BorderPane root; //Juste pour pouvoir appeler la scene
     private static Stage stage;
 
     private static int largeur;
@@ -22,16 +21,17 @@ public class View extends Application {
 
     @Override
     public void start(Stage s) throws Exception {   
-        root = new BorderPane(); //Juste pour pouvoir appeler la scene
+
+        root = new BorderPane();
 
         largeur = 960;
         hauteur = 540;
 
-        scene = new MainMenu(root, largeur, hauteur);
+        main_menu_v = new MainMenu(root, largeur, hauteur);
         
         stage = new Stage();
 
-        stage.setScene(scene);
+        stage.setScene(main_menu_v);
 
         //Rend impossible le redimensionnement manuelle.
         //Pour redimensionner il faut aller dans la fenêtre paramètre
@@ -52,20 +52,28 @@ public class View extends Application {
     public static void changeScene(int menu){
         switch (menu) {
             case 1:
-                mmView = new MainMenu(root, largeur, hauteur);
-                stage.setScene(mmView);
+                main_menu_v = new MainMenu(root, largeur, hauteur);
+                game_v = null;
+                new_game_v = null;
+                stage.setScene(main_menu_v);
                 break;
             case 2:
-                ngView = new NewGameMenu(root, largeur, hauteur);
-                stage.setScene(ngView);
+                new_game_v = new NewGameMenu(root, largeur, hauteur);
+                main_menu_v = null;
+                stage.setScene(new_game_v);
                 break;
             case 3:
+                load_save_v = new LoadSaveMenu(root, largeur, hauteur);
+                main_menu_v = null;
+                stage.setScene(load_save_v);
                 break;
             case 4:
                 break;
             case 5:
-                gView = new GameView(root, largeur, hauteur);
-                stage.setScene(gView);
+                game_v = new GameView(root, largeur, hauteur);
+                main_menu_v = null;
+                new_game_v = null;
+                stage.setScene(game_v);
                 break;
             default:
                 break;
@@ -73,10 +81,14 @@ public class View extends Application {
     }
 
     public static NewGameMenu getNewGameMenu(){
-        return ngView;
+        return new_game_v;
+    }
+
+    public static LoadSaveMenu getLoadSaveView(){
+        return load_save_v;
     }
 
     public static GameView getGameView(){
-        return gView;
+        return game_v;
     }
 }

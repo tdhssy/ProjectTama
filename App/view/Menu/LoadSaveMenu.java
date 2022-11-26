@@ -1,36 +1,15 @@
 package view.Menu;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import java.awt.Component;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import controller.ActionController;
 
-public class LoadSaveMenu extends JPanel
-{
-    /*
-     * Éléments de l'interface graphique.
-     */
-    JLabel title = new JLabel("Charger une partie");
-    JButton b_retour = new JButton("Retour");
-     
-    public LoadSaveMenu()
-    {
-       // b_retour.addActionListener(new ActionController());
-        b_retour.setActionCommand("Load retour");
-        b_retour.setAlignmentX(Component.CENTER_ALIGNMENT);
+public class LoadSaveMenu extends Scene{
 
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        add(title);
-        add(b_retour);
-
-        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        setLayout(layout);
-        
-        setVisible(true);
+    public LoadSaveMenu(Parent arg0, double arg1, double arg2) {
+        super(arg0, arg1, arg2);
+        //TODO Auto-generated constructor stub
     }
+    
 }

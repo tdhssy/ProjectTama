@@ -2,13 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 
-import org.junit.vintage.engine.descriptor.VintageEngineDescriptor;
+import org.junit.platform.commons.util.StringUtils;
 
 import model.Engine;
 import view.GameView;
-//import view.GameView;
-//import view.MenuView;
 import view.View;
+import view.Menu.LoadSaveMenu;
+import view.Menu.NewGameMenu;
 
 /*
  * La classe du controller, permet de gérer
@@ -20,7 +20,10 @@ public class Controller
 {	
 	static private Controller controller = null;
 	private Engine engine;
-	private GameView game_view;
+	
+	private GameView game_v;
+	private NewGameMenu new_game_v;
+	private LoadSaveMenu load_game_v;
 
 	private Controller(){
 	}
@@ -58,9 +61,12 @@ public class Controller
 		System.exit(0);
 	}
 
-	public void loadEvent(String view)
+	public void loadEvent(String save_name)
 	{
-		//menu_view.update(view);
+		engine = Engine.loadSave(this, save_name);
+		View.changeScene(5); //GameView
+		game_v = View.getGameView();
+		load_game_v = null;
 	}
 
 	/*
@@ -71,11 +77,13 @@ public class Controller
 	public void launchGame()
 	{
 		try {
-			engine = Engine.createEngineInstance(this, View.getNewGameMenu().getType(),  View.getNewGameMenu().getText());
+			if(StringUtils.isBlank(new_game_v.getTamaName())) throw new Exception(); //Evite un nom composé simplement d'espace
+			engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
 			View.changeScene(5); //GameView
-			game_view = View.getGameView();
-			game_view.setName(engine.getInstanceName());
-			game_view.setType(View.getNewGameMenu().getType());
+			game_v = View.getGameView();
+			game_v.setName(engine.getInstanceName());
+			game_v.setType(new_game_v.getTamaType());
+			new_game_v = null;
 		} catch (Exception e) {
 			System.err.println("Erreur de chargement");
 		}
@@ -141,9 +149,11 @@ public class Controller
 		switch (action) {
 			case 1:
 				View.changeScene(2);
+				new_game_v = View.getNewGameMenu();
 				break;
 			case 2:
-				
+				View.changeScene(3);
+				load_game_v = View.getLoadSaveView();
 				break;
 			case 3:
 				
@@ -159,6 +169,7 @@ public class Controller
 				break;
 			case 7:
 				View.changeScene(1);
+				new_game_v = null;
 				break;
 			default:
 				System.out.println("Action menu par defaut");
