@@ -31,8 +31,14 @@ public class TestModel {
             testTama = testEngine.getTamagotchi();
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
-
+            
+            System.out.println("Le fichier existe-t-il ? si il existe déjà faut penser à la suppr: "+testEngine.saveExist());//Add par clement
             testEngine.makeSave();
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+
+            System.out.println("Affichage des données du fichier de sauvegarde AVANT SLEEP:");//add par clement
+            testEngine.loadSave();//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
 
             System.out.println("----------------------");
             System.out.println();
@@ -46,12 +52,23 @@ public class TestModel {
             System.out.println();
             System.out.println("----------------------");
             System.out.println();
-            System.out.println("Thread.sleep(5000);");
+            System.out.println("Thread.sleep(5001);");
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5001);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //Test update clement file sauvegarde
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+            testEngine.makeSave();//add par clement
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+            System.out.println("Affichage des données du fichier de sauvegarde APRES SLEEP:");//add par clement
+            testEngine.loadSave();//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
+            //Fin
+            
+
+
             System.out.println();
             System.out.println("Tamagotchi info :");
             System.out.println(testTama.toString());
@@ -59,6 +76,7 @@ public class TestModel {
             System.out.println("----------------------");
             System.out.println();
             testEngine.unloadEngine();
+            testEngine.deleteSave();//add par clement test delete save
             System.out.println("Delete instance");
             System.out.println();
             System.out.println("----------------------");
@@ -74,6 +92,16 @@ public class TestModel {
             testTama = testEngine.getTamagotchi();
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
+
+            //création clément
+            System.out.println("Le fichier existe-t-il ? si il existe déjà faut penser à la suppr: "+testEngine.saveExist());//Add par clement
+            testEngine.makeSave();
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+
+            System.out.println("Affichage des DONNEES du fichier de sauvegarde AVANT SLEEP:");//add par clement
+            testEngine.loadSave();//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
+            //Fin 
 
             System.out.println("----------------------");
             System.out.println();
@@ -94,6 +122,14 @@ public class TestModel {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //CLEMENT CREATION ICI '-'
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+            testEngine.makeSave();//add par clement
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+            System.out.println("Affichage des données du fichier de sauvegarde APRES SLEEP:");//add par clement
+            testEngine.loadSave();//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
+            //CLEMENT CREATION ICI
             
             System.out.println();
             System.out.println("Tamagotchi info :");
@@ -102,6 +138,7 @@ public class TestModel {
             System.out.println("----------------------");
             System.out.println();
             testEngine.unloadEngine();
+            //testEngine.deleteSave();//add par clement delete fichier save
             System.out.println("Delete instance");
             System.out.println();
             System.out.println("----------------------");
