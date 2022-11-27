@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-//test du meilleur et du plus beau avec l'aide du plus intelligent c fo
+
 public class Save {
 
     final static private String SAVEPATH = "save/";
@@ -23,15 +23,21 @@ public class Save {
      * @param String instanceName : le nom du personnage
      * 
      */
-    public static void makeSave(ArrayList<Integer> datas, String instanceName) throws IOException {
+    public static boolean makeSave(ArrayList<Integer> datas, String instanceName) {
+        boolean fileCreate = false;
+        try (PrintWriter fichier = new PrintWriter(new FileOutputStream(SAVEPATH+instanceName+".txt"),true)) {
 
-        PrintWriter fichier = new PrintWriter(new FileOutputStream(SAVEPATH+instanceName+".txt"),true);
+            for (Integer value : datas) {
+                fichier.printf("%d\n",value);
+            }
+            fileCreate=true;
+        } catch (FileNotFoundException e) { //repertoir non trouver
 
-        for (Integer value : datas) {
-            fichier.printf("%d\n",value);
+            e.printStackTrace();
+            new File(SAVEPATH).mkdir();
+            makeSave(datas, instanceName);
         }
-       fichier.close();
-        
+        return fileCreate;
         
     }
     
@@ -39,42 +45,34 @@ public class Save {
      * Permet d'envoyer les données du fichier de sauvegarde au tamagotchi
      * @return les datas pour le tama
      * @param instanceName : le nom du personnage
+     * @throws IOException
      */
-    public static ArrayList<Integer> loadSave(String instanceName) {
+    public static ArrayList<Integer> loadSave(String instanceName) throws IOException {
         ArrayList<Integer> datas = new ArrayList<>();
         String fichier=SAVEPATH+instanceName+".txt";
         int valueInTheLigne;
-        try{
-            if(saveExist(instanceName)){
-                InputStream ips=new FileInputStream(fichier); 
-                InputStreamReader ipsr=new InputStreamReader(ips);
-                BufferedReader br=new BufferedReader(ipsr);
-                String ligne;
+ 
 
-                while ((ligne=br.readLine())!=null){
-                    valueInTheLigne=Integer.parseInt(ligne);
-                    datas.add(valueInTheLigne);
-                }
-                br.close();
-                if(datas.size()!=7){
-                    System.out.println("Probleme dans le dossier de sauvegarde, dosser manquant");
-                    return null;
-                }
-                
-                for(int data : datas){
-                    System.out.println(data);
-                }
-            }
-            else{
-                System.out.println("Le fichier n'existe pas,impossible de charger les données");
-                return null;
-            }
+        InputStream ips=new FileInputStream(fichier); 
+        InputStreamReader ipsr=new InputStreamReader(ips);
+        BufferedReader br=new BufferedReader(ipsr);
+        String ligne;
 
-        }catch(Exception e){
-            e.printStackTrace();
+        while ((ligne=br.readLine())!=null){
+            valueInTheLigne=Integer.parseInt(ligne);
+            datas.add(valueInTheLigne);
         }
+        br.close();
 
-        return datas;
+        if(datas.size()!=8){
+            throw new IOException("Donnée manquante dans le fichier "+instanceName+".txt");
+        }
+        
+        /*for(int data : datas){
+            System.out.println(data);
+        }*/
+            
+    return datas;
         /*Pas faire attention, version alternative du code ci-dessus
             if(!saveExist(instanceName)) throw new FileNotFoundException();
             InputStream ips=new FileInputStream(fichier); 
@@ -103,26 +101,30 @@ public class Save {
      * @return boolean
      * @param String instanceName : le nom du personnage
      */
-    public static boolean saveExist(String instanceName)throws FileNotFoundException{
+    public static boolean saveExist(String instanceName){
         File file = new File(SAVEPATH+instanceName+".txt");
-        if(file.exists()){
-            //System.out.println("Le fichier existe bien");
-            return true;
-        }
-        //System.out.println("Le fichier n'existe pas");
-        return false;
+        return file.exists();
     }
 
     /**
      * Permet de supprimer un fichier de sauvegarde
      * @return void
      * @param String instanceName : le nom du personnage (celui de l'instance)
+     * @throws FileNotFoundException
      */
-    public static void deleteSave(String instanceName)throws FileNotFoundException{
-        System.out.println("Suppresion du fichier de sauvegarde de "+instanceName);//add par clement
+    public static boolean deleteSave(String instanceName){
+        //System.out.println("Suppresion du fichier de sauvegarde de "+instanceName);//add par clement
         File file = new File(SAVEPATH+instanceName+".txt");
-        file.delete();
-        System.out.println("Le fichier "+instanceName+" a bien été supprimé ? "+!saveExist(instanceName));
+        boolean checkFile;
+
+        if(saveExist(instanceName)){
+            file.delete();
+            checkFile = true;
+        }else{
+            checkFile = false;
+        }
+        return checkFile;
+        //System.out.println("Le fichier "+instanceName+" a bien été supprimé ? "+!saveExist(instanceName));
         
     }
 

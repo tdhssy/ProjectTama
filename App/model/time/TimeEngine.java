@@ -22,7 +22,6 @@ public class TimeEngine extends Thread {
                 Thread.sleep(checkTimer);
                 linkedTamagotchi.updateDownStat();
                 controller.updateStatView();
-                //System.out.println(linkedTamagotchi.toString());
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

@@ -43,8 +43,13 @@ public class TamagotchiFactory {
         
     }
 
-    public static void UnloadTamagotchi(){
+    public static boolean UnloadTamagotchi(){
         tama_instance = null;
+        boolean isUnload=false;
+        if(tama_instance==null){
+            isUnload=true;
+        }
+        return isUnload;
     }
 
     private static Tamagotchi createTamaChat(){

@@ -29,7 +29,7 @@ public class TamaTest {
     public void changeRoom()
     {
         engine = Engine.createEngineInstance(null, "TamaChien", "testdog");
-        engine.setCurrentRoom("garden");
+        engine.move("garden");
         assertEquals("garden", engine.getCurrentRoom());
     }
 
@@ -97,8 +97,7 @@ public class TamaTest {
     {
         engine = Engine.createEngineInstance(null, "TamaChat", "testcat");
         ArrayList<Integer> before_save = engine.getTamagotchi().getAllData();
-        engine.makeSave();
-        engine.unloadEngine();
+        engine.quit();
         engine = Engine.loadSave(null, "testcat");
         ArrayList<Integer> after_save = engine.getTamagotchi().getAllData();
         assertEquals(before_save, after_save);
@@ -107,6 +106,6 @@ public class TamaTest {
     @AfterEach
     public void reset()
     {
-        engine.unloadEngine();
+        engine.quit();
     }
 }

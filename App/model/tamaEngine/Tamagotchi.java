@@ -16,6 +16,7 @@ public abstract class Tamagotchi {
     private int mentalHealth;
     private int needs;
     private int sleep;
+	private int hygiene;
 
 	public Tamagotchi(){
 
@@ -25,6 +26,7 @@ public abstract class Tamagotchi {
         this.mentalHealth = INITIAL_STAT;
         this.needs = INITIAL_STAT;
         this.sleep = INITIAL_STAT;
+		this.hygiene = INITIAL_STAT;
 	}
 
 	/*
@@ -42,24 +44,26 @@ public abstract class Tamagotchi {
 							+"PhysicalCondition = "+this.getPhysicalCondition()+System.lineSeparator()
 							+"MentalHealth = "+this.getMentalHealth()+System.lineSeparator()
 							+"Needs = "+this.getNeeds()+System.lineSeparator()
-							+"Sleep = "+this.getSleep()+System.lineSeparator();
+							+"Sleep = "+this.getSleep()+System.lineSeparator()
+							+"Hygiene = "+this.getHygiene()+System.lineSeparator();
 		return textFormat;
 	}
 
 	/*
 	 * Datas Format :
-	 *  int list [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, ID]
+	 *  int list [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, Hygiene, ID]
 	 *	ID : TamaChat = 0 | TamaChien = 1 | TamaLapin = 2 | TamaRobot = 3
 	 */
 
 	public void setAllData(ArrayList<Integer> datas) {
-		if(datas.size()==7){
+		if(datas.size()==8){
 			setHealth(datas.get(0));
 			setSatiety(datas.get(1));
 			setPhysicalCondition(datas.get(2));
 			setMentalHealth(datas.get(3));
 			setNeeds(datas.get(4));
 			setSleep(datas.get(5));
+			setHygiene(datas.get(6));
 		}else{
 			//TODO Exception size to large
 		}
@@ -73,6 +77,7 @@ public abstract class Tamagotchi {
 		datas.add(getMentalHealth());
 		datas.add(getNeeds());
 		datas.add(getSleep());
+		datas.add(getHygiene());
 		datas.add(this.getID());
 
 
@@ -95,12 +100,12 @@ public abstract class Tamagotchi {
 				break;
 
 			case "Satiety":
-				if(this.getSatiety()+factor>MIN_VALUE && this.getSatiety()+factor<MAX_VALUE){
+				if(this.getSatiety()+factor>MIN_VALUE && this.getSatiety()+factor<MAX_VALUE){ //0<satiete+fact<150
 					this.setSatiety(this.getSatiety()+factor);
-				}else if(this.getSatiety()+factor<=MIN_VALUE){
+				}else if(this.getSatiety()+factor<=MIN_VALUE){	//satiete+fact<=0
 					this.setSatiety(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
-				}else{
+				}else{											//satiete+fact>0
 					this.setSatiety(MAX_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}
@@ -109,7 +114,7 @@ public abstract class Tamagotchi {
 			case "PhysicalCondition":
 				if(this.getPhysicalCondition()+factor>MIN_VALUE && this.getPhysicalCondition()+factor<MAX_VALUE){
 					this.setPhysicalCondition(this.getPhysicalCondition()+factor);
-				}else if(this.getPhysicalCondition()+factor<=MIN_VALUE){
+				}else if(this.getPhysicalCondition()+factor<=MIN_VALUE){ 
 					this.setPhysicalCondition(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}else{
@@ -146,6 +151,18 @@ public abstract class Tamagotchi {
 				if(this.getSleep()+factor>MIN_VALUE && this.getSleep()+factor<MAX_VALUE){
 					this.setHealth(this.getSleep()+factor);
 				}else if(this.getSleep()+factor<=MIN_VALUE){
+					this.setHealth(MIN_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}else{
+					this.setHealth(MAX_VALUE);
+					this.setHealth(this.getHealth()-this.getFactor());
+				}
+				break;
+
+			case "Hygiene":
+				if(this.getHygiene()+factor>MIN_VALUE && this.getHygiene()+factor<MAX_VALUE){
+					this.setHealth(this.getHygiene()+factor);
+				}else if(this.getHygiene()+factor<=MIN_VALUE){
 					this.setHealth(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}else{
@@ -237,5 +254,11 @@ public abstract class Tamagotchi {
         this.sleep=sleep;
     }
 
+	public int getHygiene() {
+        return hygiene;
+    }
+    public void setHygiene(int hygiene) {
+        this.hygiene=hygiene;
+    }
 
 }
