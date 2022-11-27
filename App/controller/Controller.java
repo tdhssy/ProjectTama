@@ -6,8 +6,8 @@ import org.junit.platform.commons.util.StringUtils;
 
 import model.Engine;
 import view.GameView;
-import view.LoadOption;
 import view.View;
+import view.Menu.LoadOption;
 import view.Menu.LoadSaveMenu;
 import view.Menu.NewGameMenu;
 
@@ -88,6 +88,7 @@ public class Controller
 			new_game_v = null;
 		} catch (Exception e) {
 			System.err.println("Erreur de chargement");
+			e.printStackTrace();
 		}
 	}
 
@@ -98,6 +99,8 @@ public class Controller
 	public void updateStatView(){
 		//TODO
 		ArrayList<Integer> new_data = engine.getTamaDatas();
+		System.out.println((double)new_data.get(1));
+		game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
 	}
 
 	/*

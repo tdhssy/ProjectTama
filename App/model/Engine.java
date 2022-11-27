@@ -146,7 +146,7 @@ public class Engine {
 	}
 
 	public void manger(){
-		tamagotchi.updateStat("Satiete", 0);
+		tamagotchi.updateStat("Satiety", 10); //facteur à modifier
 	}
 
 	public void dormir(){

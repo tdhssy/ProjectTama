@@ -75,7 +75,6 @@ public class View extends Application {
                 break;
             case 5:
                 game_v = new GameView(root, largeur, hauteur);
-                main_menu_v = null;
                 new_game_v = null;
                 stage.setScene(game_v);
                 break;

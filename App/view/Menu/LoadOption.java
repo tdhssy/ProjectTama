@@ -1,4 +1,4 @@
-package view;
+package view.Menu;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
