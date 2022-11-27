@@ -11,7 +11,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
+=======
+//test du meilleur et du plus beau avec l'aide du plus intelligent c fo ohoh
+>>>>>>> 5eddffc (Ajout de le méthode getAllSaveName)
 public class Save {
 
     final static private String SAVEPATH = "save/";
@@ -53,10 +57,31 @@ public class Save {
         int valueInTheLigne;
  
 
+<<<<<<< HEAD
         InputStream ips=new FileInputStream(fichier); 
         InputStreamReader ipsr=new InputStreamReader(ips);
         BufferedReader br=new BufferedReader(ipsr);
         String ligne;
+=======
+                while ((ligne=br.readLine())!=null){
+                    valueInTheLigne=Integer.parseInt(ligne);
+                    datas.add(valueInTheLigne);
+                }
+                br.close();
+                if(datas.size()!=8){
+                    System.out.println("Probleme dans le dossier de sauvegarde, donnée(s) manquante(s)");
+                    return null;
+                }
+                
+                for(int data : datas){
+                    System.out.println(data);
+                }
+            }
+            else{
+                System.out.println("Le fichier n'existe pas,impossible de charger les données");
+                return null;
+            }
+>>>>>>> 5eddffc (Ajout de le méthode getAllSaveName)
 
         while ((ligne=br.readLine())!=null){
             valueInTheLigne=Integer.parseInt(ligne);
@@ -126,6 +151,30 @@ public class Save {
         return checkFile;
         //System.out.println("Le fichier "+instanceName+" a bien été supprimé ? "+!saveExist(instanceName));
         
+    }
+
+    /**
+     * Permet de connaitre le nom de chaque fichier de sauvegarde
+     * @return ArrayList<String> : le nom de chaque sauvegarde (juste leur instance)
+     *                              Si pas de sauvegarde return "Il n'y a pas de sauvegarde"
+     * 
+     */
+    public static ArrayList<String> getAllSaveName() throws IOException{
+        final File repertoire = new File(SAVEPATH);
+        ArrayList<String> Names = new ArrayList<>();
+        int cptFile=0;
+        
+        for(final File actualFile:repertoire.listFiles()){
+            cptFile++;
+            String tmpSaveName = actualFile.getName();
+            final String saveName=tmpSaveName.substring(0, tmpSaveName.length()-4);
+            Names.add(saveName);
+        }
+        if (cptFile==0 || cptFile>5 ){
+            Names= new ArrayList<>();
+            Names.add("Il n'y a pas sauvegarde");
+        }
+        return Names;
     }
 
 }

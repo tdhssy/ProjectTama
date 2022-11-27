@@ -30,6 +30,18 @@ public class TestModel {
             testEngine = Engine.createEngineInstance(null, "TamaRobot", "testInstance1");
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
+<<<<<<< HEAD
+=======
+            testEngine.getAllSaveName(); //add par clément
+            
+            System.out.println("Le fichier existe-t-il ? si il existe déjà faut penser à la suppr: "+testEngine.saveExist());//Add par clement
+            testEngine.makeSave();
+            System.out.println("Le fichier existe-t-il ? : "+testEngine.saveExist());//Add par clement
+
+            System.out.println("Affichage des données du fichier de sauvegarde AVANT SLEEP:");//add par clement
+            testEngine.loadSave();//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
+>>>>>>> 5eddffc (Ajout de le méthode getAllSaveName)
 
             System.out.println("----------------------");
             System.out.println();
