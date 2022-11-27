@@ -12,12 +12,13 @@ public class View extends Application {
     private static LoadSaveMenu load_save_v = null;
     private static MainMenu main_menu_v = null;
     private static GameView game_v = null;
+    private static LoadOption load_option_v;
 
     private static BorderPane root; //Juste pour pouvoir appeler la scene
     private static Stage stage;
 
-    private static int largeur;
-    private static int hauteur;
+    public static int largeur;
+    public static int hauteur;
 
     @Override
     public void start(Stage s) throws Exception {   
@@ -68,6 +69,9 @@ public class View extends Application {
                 stage.setScene(load_save_v);
                 break;
             case 4:
+                load_option_v = new LoadOption(root, largeur, hauteur);
+                main_menu_v = null;
+                stage.setScene(load_option_v);
                 break;
             case 5:
                 game_v = new GameView(root, largeur, hauteur);
@@ -90,5 +94,9 @@ public class View extends Application {
 
     public static GameView getGameView(){
         return game_v;
+    }
+
+    public static LoadOption getLoadOption() {
+        return load_option_v;
     }
 }

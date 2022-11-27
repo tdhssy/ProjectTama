@@ -6,6 +6,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 import model.Engine;
 import view.GameView;
+import view.LoadOption;
 import view.View;
 import view.Menu.LoadSaveMenu;
 import view.Menu.NewGameMenu;
@@ -24,6 +25,7 @@ public class Controller
 	private GameView game_v;
 	private NewGameMenu new_game_v;
 	private LoadSaveMenu load_game_v;
+	private LoadOption load_option_v;
 
 	private Controller(){
 	}
@@ -156,7 +158,8 @@ public class Controller
 				load_game_v = View.getLoadSaveView();
 				break;
 			case 3:
-				
+				View.changeScene(4);
+				load_option_v = View.getLoadOption();
 				break;
 			case 4:
 				engine.makeSave();
