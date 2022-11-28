@@ -49,6 +49,21 @@ public class ActionController /*extends ActionListener */
             case "Manger":
                 control.gameAction(1);
                 break;
+            case "Dormir":
+                control.gameAction(2);
+                break;
+            
+            case "Laver":
+                control.gameAction(3);
+                break;
+            
+            case "Jouer":
+                control.gameAction(4);
+                break;
+            
+            case "Besoin":
+                control.gameAction();
+                break;
         }
     }
 
