@@ -114,6 +114,9 @@ public class Controller
 	 */
 	public void gameAction(int action){
 		switch (action) {
+			case 0:
+				engine.besoin();
+				break;
 			case 1:
 				engine.manger();
 				break;
