@@ -62,7 +62,7 @@ public class ActionController /*extends ActionListener */
                 break;
             
             case "Besoin":
-                control.gameAction();
+                //control.gameAction();
                 break;
         }
     }
