@@ -99,14 +99,22 @@ public class Controller
 	public void updateStatView(){
 		//TODO
 		ArrayList<Integer> new_data = engine.getTamaDatas();
-		System.out.println((double)new_data.get(1));
-		game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
-		game_v.setHealth( ( (double) (new_data.get(0) ) /1.5) /100 );
-		game_v.setMental( ( (double) (new_data.get(3) ) /1.5) /100 );
-		game_v.setSleep( ( (double) (new_data.get(5) ) /1.5) /100 );
-		game_v.setNeed( ( (double) (new_data.get(4) ) /1.5) /100 );
-		game_v.setPhysical( ( (double) (new_data.get(2) ) /1.5) /100 );
-		game_v.setHygiene( ( (double) (new_data.get(6) ) /1.5) /100 );
+		if(engine.isDead()){
+			engine.quit();
+			System.out.println("Tu es mort.");
+			View.changeScene(0);
+			//TODO afficher le personnage sans tête + message de mort
+		}
+		else{
+			System.out.println((double)new_data.get(1));
+			game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
+			game_v.setHealth( ( (double) (new_data.get(0) ) /1.5) /100 );
+			game_v.setMental( ( (double) (new_data.get(3) ) /1.5) /100 );
+			game_v.setSleep( ( (double) (new_data.get(5) ) /1.5) /100 );
+			game_v.setNeed( ( (double) (new_data.get(4) ) /1.5) /100 );
+			game_v.setPhysical( ( (double) (new_data.get(2) ) /1.5) /100 );
+			game_v.setHygiene( ( (double) (new_data.get(6) ) /1.5) /100 );
+		}
 	}
 
 	/*

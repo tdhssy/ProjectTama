@@ -56,42 +56,32 @@ public class Save {
         InputStream ips=new FileInputStream(fichier); 
         InputStreamReader ipsr=new InputStreamReader(ips);
         BufferedReader br=new BufferedReader(ipsr);
-        String ligne;
-        
-        while ((ligne=br.readLine())!=null){
-            valueInTheLigne=Integer.parseInt(ligne);
-            datas.add(valueInTheLigne);
-        }
-        br.close();
-        if(datas.size()!=8){
-            System.out.println("Probleme dans le dossier de sauvegarde, donnée(s) manquante(s)");
-            return null;
-        }
-        
-        for(int data : datas){
-            System.out.println(data);
-        }
-            
-            /*else{
-                System.out.println("Le fichier n'existe pas,impossible de charger les données");
+        if(saveExist(instanceName)){
+            String ligne;
+            while ((ligne=br.readLine())!=null){
+                valueInTheLigne=Integer.parseInt(ligne);
+                datas.add(valueInTheLigne);
+            }
+            br.close();
+            if(datas.size()!=8){
+                System.out.println("Probleme dans le dossier de sauvegarde, donnée(s) manquante(s)");
                 return null;
-            }*/
-
-        while ((ligne=br.readLine())!=null){
-            valueInTheLigne=Integer.parseInt(ligne);
-            datas.add(valueInTheLigne);
+            }
+            
+            for(int data : datas){
+                System.out.println(data);
+            }
+        }   
+        else{
+            br.close();
+            throw new IOException("Le fichier de sauvegarde"+instanceName+" n'existe pas");
         }
-        br.close();
-
         if(datas.size()!=8){
             throw new IOException("Donnée manquante dans le fichier "+instanceName+".txt");
         }
-        
-        /*for(int data : datas){
-            System.out.println(data);
-        }*/
+
             
-    return datas;
+        return datas;
         /*Pas faire attention, version alternative du code ci-dessus
             if(!saveExist(instanceName)) throw new FileNotFoundException();
             InputStream ips=new FileInputStream(fichier); 
