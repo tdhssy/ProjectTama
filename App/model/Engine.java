@@ -17,7 +17,7 @@ public class Engine {
 	private String currentRoom;
 	private String instanceName;
 	private Tamagotchi tamagotchi;
-	private TimeEngine TimeEngine;
+	private TimeEngine timeEngine;
 	private Controller controller;
 	private static Engine engine_Instance = null;
 
@@ -26,9 +26,9 @@ public class Engine {
 		this.controller = controller;
 		this.instanceName = instanceName;
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
-		this.TimeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
+		this.timeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
 		this.currentRoom = ROOM;
-		TimeEngine.start();
+		timeEngine.start();
 	}
 
     /**
@@ -52,9 +52,9 @@ public class Engine {
      */
 	private boolean unloadEngine(){
 		boolean isUnload=false;
-		this.TimeEngine.interrupt();
+		this.timeEngine.interrupt();
 		engine_Instance=null;
-		if(this.TimeEngine.isInterrupted() && TamagotchiFactory.UnloadTamagotchi() && engine_Instance==null){
+		if(this.timeEngine.isInterrupted() && TamagotchiFactory.UnloadTamagotchi() && engine_Instance==null){
 			isUnload=true;
 		}
 		return isUnload;
@@ -242,9 +242,9 @@ public class Engine {
 	public void jouer(){
 		tamagotchi.updateStat("MentalHealth", 10);
 
-		tamagotchi.updateStat("Satiete", -10);
-		tamagotchi.updateStat("PhysicalCondition", -10);
-		tamagotchi.updateStat("Sleep", -10);
+		tamagotchi.updateStat("Satiety", -50);
+		tamagotchi.updateStat("PhysicalCondition", -50);
+		tamagotchi.updateStat("Sleep", -50);
 	}
 
 	/**
@@ -266,6 +266,10 @@ public class Engine {
 			isSaved=true;
 		}
 		return isSaved;
+	}
+
+	public void stopTime(){
+		timeEngine.interrupt();
 	}
 
 
