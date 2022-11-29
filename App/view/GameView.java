@@ -57,7 +57,7 @@ public class GameView extends Scene
 
         b_jouer = new Button("Besoin");
         b_jouer.setPrefSize(300, 35);
-        b_jouer.setOnAction(e -> ActionController.event(""));
+        b_jouer.setOnAction(e -> ActionController.event("Besoin"));
 
         t_name = new Text();
         t_type = new Text();
@@ -68,13 +68,13 @@ public class GameView extends Scene
         pb_hungerBar = new ProgressBar(0.5);
         pb_hungerBar.setPrefWidth(150);
 
-        pb_mentalBar = new ProgressBar(3);
+        pb_mentalBar = new ProgressBar(0.5);
         pb_mentalBar.setPrefWidth(150);
 
-        pb_needBar = new ProgressBar(3);
+        pb_needBar = new ProgressBar(0.5);
         pb_needBar.setPrefWidth(150);
 
-        pb_sleepBar = new ProgressBar(3);
+        pb_sleepBar = new ProgressBar(0.5);
         pb_sleepBar.setPrefWidth(150);
         
         root.getChildren().add(t_name);
@@ -83,6 +83,7 @@ public class GameView extends Scene
         root.getChildren().add(pb_hungerBar);
         root.getChildren().add(pb_mentalBar);
         root.getChildren().add(pb_sleepBar);
+        root.getChildren().add(pb_needBar);
         root.getChildren().add(b_manger);
         root.getChildren().add(b_jouer);
         root.getChildren().add(b_laver);
