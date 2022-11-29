@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-//test du meilleur et du plus beau avec l'aide du plus intelligent c fo ohoh
-
 public class Save {
 
     final static private String SAVEPATH = "save/";
@@ -55,29 +53,43 @@ public class Save {
         int valueInTheLigne;
  
 
-
         InputStream ips=new FileInputStream(fichier); 
         InputStreamReader ipsr=new InputStreamReader(ips);
         BufferedReader br=new BufferedReader(ipsr);
         String ligne;
-        if(saveExist(instanceName)){
-            while ((ligne=br.readLine())!=null){
-                valueInTheLigne=Integer.parseInt(ligne);
-                datas.add(valueInTheLigne);
-            }
-            br.close();
+        
+        while ((ligne=br.readLine())!=null){
+            valueInTheLigne=Integer.parseInt(ligne);
+            datas.add(valueInTheLigne);
+        }
+        br.close();
+        if(datas.size()!=8){
+            System.out.println("Probleme dans le dossier de sauvegarde, donnée(s) manquante(s)");
+            return null;
+        }
+        
+        for(int data : datas){
+            System.out.println(data);
+        }
             
-            /*for(int data : datas){
-                System.out.println(data);
-            }*/ 
-            if(datas.size()!=8){
-                throw new IOException("Donnée manquante dans le fichier "+instanceName+".txt");
-            }
+            /*else{
+                System.out.println("Le fichier n'existe pas,impossible de charger les données");
+                return null;
+            }*/
+
+        while ((ligne=br.readLine())!=null){
+            valueInTheLigne=Integer.parseInt(ligne);
+            datas.add(valueInTheLigne);
         }
-        else{
-            br.close();
-            throw new IOException("Le fichier de sauvegarde"+instanceName+".txt n'existe pas");
+        br.close();
+
+        if(datas.size()!=8){
+            throw new IOException("Donnée manquante dans le fichier "+instanceName+".txt");
         }
+        
+        /*for(int data : datas){
+            System.out.println(data);
+        }*/
             
     return datas;
         /*Pas faire attention, version alternative du code ci-dessus

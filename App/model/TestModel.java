@@ -1,6 +1,6 @@
 package model;
 
-
+import model.saveEngine.Save;
 
 /*
  * Classe de test du model
@@ -30,6 +30,16 @@ public class TestModel {
             testEngine = Engine.createEngineInstance(null, "TamaRobot", "testInstance1");
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
+
+            testEngine.getAllSaveName(); //add par clément
+            
+            System.out.println("Le fichier existe-t-il ? si il existe déjà faut penser à la suppr: "+Save.saveExist(instanceName));//Add par clement
+            testEngine.makeSave();
+            System.out.println("Le fichier existe-t-il ? : "+Save.saveExist(instanceName));//Add par clement
+
+            System.out.println("Affichage des données du fichier de sauvegarde AVANT SLEEP:");//add par clement
+            Engine.loadSave(null, instanceName);//add par clement
+            System.out.println("-----------FIN DES DONNEES------------");//add par clement
 
             System.out.println("----------------------");
             System.out.println();

@@ -17,6 +17,7 @@ public class GameView extends Scene
     Button b_dormir;
     Button b_laver;
     Button b_jouer;
+    Button b_besoin;
 
     Text t_type;
     Text t_name;
@@ -55,9 +56,9 @@ public class GameView extends Scene
         b_jouer.setPrefSize(300, 35);
         b_jouer.setOnAction(e -> ActionController.event("Jouer"));
 
-        b_jouer = new Button("Besoin");
-        b_jouer.setPrefSize(300, 35);
-        b_jouer.setOnAction(e -> ActionController.event("Besoin"));
+        b_besoin = new Button("Besoin");
+        b_besoin.setPrefSize(300, 35);
+        b_besoin.setOnAction(e -> ActionController.event("Besoin"));
 
         t_name = new Text();
         t_type = new Text();
@@ -88,8 +89,10 @@ public class GameView extends Scene
         root.getChildren().add(b_jouer);
         root.getChildren().add(b_laver);
         root.getChildren().add(b_dormir);
+        root.getChildren().add(b_besoin);
         root.getChildren().add(b_quitter);
 
+        /*
         VBox.setMargin(t_name, new Insets(30, 20, 20, 330));
         VBox.setMargin(t_type, new Insets(30, 20, 20, 330));
         VBox.setMargin(pb_healthBar, new Insets(30, 20, 20, 330));
@@ -97,13 +100,33 @@ public class GameView extends Scene
         VBox.setMargin(pb_mentalBar, new Insets(30, 20, 20, 330));
         VBox.setMargin(pb_sleepBar, new Insets(30, 20, 20, 330));
         VBox.setMargin(b_manger, new Insets(30, 20, 20, 330));
+        VBox.setMargin(b_jouer, new Insets(30, 20, 20, 330));
+        VBox.setMargin(b_laver, new Insets(30, 20, 20, 330));
+        VBox.setMargin(b_dormir, new Insets(30, 20, 20, 330));
+        VBox.setMargin(b_besoin, new Insets(30, 20, 20, 330));
         VBox.setMargin(b_quitter, new Insets(30, 20, 20, 330));
-        
+        */
         setRoot(root);
     }
 
     public void setHunger(double x){
         pb_hungerBar.setProgress(x);
+    }
+
+    public void setHealth(double x){
+        pb_healthBar.setProgress(x);
+    }
+
+    public void setMental(double x){
+        pb_mentalBar.setProgress(x);
+    }
+
+    public void setNeed(double x){
+        pb_needBar.setProgress(x);
+    }
+
+    public void setSleep(double x){
+        pb_sleepBar.setProgress(x);
     }
 
     public void setName(String s){

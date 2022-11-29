@@ -125,6 +125,22 @@ public class Engine {
 		return Save.deleteSave(instanceName);
 	}
 
+	public void getAllSaveName(){
+		try {
+			ArrayList<String> names=Save.getAllSaveName();
+			int cpt=0;
+			System.out.println("Affichage des différents fichiers de sauvegarde");
+			for (String name:names){
+				cpt+=1;
+				System.out.println("Nom de la sauvegarde "+cpt+ "est "+name);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	//Fin de l'ajout de clément ici
+
 
 	/**
      * Get Tamagotchi's intance 
