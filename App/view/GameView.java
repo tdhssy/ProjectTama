@@ -27,6 +27,8 @@ public class GameView extends Scene
     ProgressBar pb_mentalBar;
     ProgressBar pb_needBar;
     ProgressBar pb_sleepBar;
+    ProgressBar pb_hygieneBar;
+    ProgressBar pb_physicalBar;
 
 
     VBox root;
@@ -72,11 +74,17 @@ public class GameView extends Scene
         pb_mentalBar = new ProgressBar(0.5);
         pb_mentalBar.setPrefWidth(150);
 
-        pb_needBar = new ProgressBar(0.5);
+        pb_needBar = new ProgressBar(0);
         pb_needBar.setPrefWidth(150);
 
         pb_sleepBar = new ProgressBar(0.5);
         pb_sleepBar.setPrefWidth(150);
+
+        pb_hygieneBar = new ProgressBar(0.5);
+        pb_hygieneBar.setPrefWidth(150);
+
+        pb_physicalBar = new ProgressBar(0.5);
+        pb_physicalBar.setPrefWidth(150);
         
         root.getChildren().add(t_name);
         root.getChildren().add(t_type);
@@ -85,6 +93,8 @@ public class GameView extends Scene
         root.getChildren().add(pb_mentalBar);
         root.getChildren().add(pb_sleepBar);
         root.getChildren().add(pb_needBar);
+        root.getChildren().add(pb_physicalBar);
+        root.getChildren().add(pb_hygieneBar);
         root.getChildren().add(b_manger);
         root.getChildren().add(b_jouer);
         root.getChildren().add(b_laver);
@@ -129,6 +139,14 @@ public class GameView extends Scene
         pb_sleepBar.setProgress(x);
     }
 
+    public void setPhysical(double x) {
+        pb_physicalBar.setProgress(x);
+    }
+
+    public void setHygiene(double x) {
+        pb_hygieneBar.setProgress(x);
+    }
+
     public void setName(String s){
         t_name.setText(s);
     }
@@ -136,4 +154,5 @@ public class GameView extends Scene
     public void setType(String s){
         t_type.setText(s);
     }
+
 }

@@ -52,15 +52,12 @@ public class ActionController /*extends ActionListener */
             case "Dormir":
                 control.gameAction(2);
                 break;
-            
             case "Laver":
                 control.gameAction(3);
-                break;
-            
+                break;            
             case "Jouer":
                 control.gameAction(4);
                 break;
-            
             case "Besoin":
                 control.gameAction(0);
                 break;
