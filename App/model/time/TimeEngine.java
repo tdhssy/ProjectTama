@@ -22,7 +22,7 @@ public class TimeEngine extends Thread {
                 Thread.sleep(checkTimer);
                 linkedTamagotchi.updateDownStat();
                 controller.updateStatView();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
                 
                 System.out.println("On est bien arivé auparadis");
                 Thread.currentThread().interrupt();

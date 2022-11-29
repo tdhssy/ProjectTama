@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
 
+import javafx.application.Platform;
 import model.Engine;
 import model.saveEngine.Save;
 import view.GameView;
@@ -103,14 +104,15 @@ public class Controller
 	 */
 	public void updateStatView(){
 		//TODO
+		
 		ArrayList<Integer> new_data = engine.getTamaDatas();
 		if(engine.isDead()){
 			game_v.setHealth( ( (double) 0 ));
-			menuAction(7);
-			engine.stopTime();
+			//menuAction(7);
+			engine.destroy();
 
 			System.out.println("Tu es mort.");
-			View.changeScene(1);
+			Platform.runLater(() -> {	menuAction(7); }); //Pour que Javafx puisse gérer ses timings
 			//TODO afficher le personnage sans tête + message de mort
 		}
 		else{
@@ -201,6 +203,7 @@ public class Controller
 				break;
 			case 7:
 				View.changeScene(1);
+				if (engine != null) engine.destroy(); //à supp plus tard
 				new_game_v = null;
 				break;
 			default:

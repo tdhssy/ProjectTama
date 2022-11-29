@@ -27,8 +27,9 @@ public class Engine {
 		this.instanceName = instanceName;
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
 		this.timeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
-		this.currentRoom = ROOM;
+		//Platform.runLater(() -> timeEngine.start());
 		timeEngine.start();
+		this.currentRoom = ROOM;
 	}
 
     /**
@@ -269,8 +270,8 @@ public class Engine {
 		return isSaved;
 	}
 
-	public void stopTime(){
-		timeEngine.interrupt();
+	public void destroy(){
+		unloadEngine();
 	}
 
 
