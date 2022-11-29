@@ -54,28 +54,28 @@ public class View extends Application {
         switch (menu) {
             case 1:
                 main_menu_v = new MainMenu(root, largeur, hauteur);
-                game_v = null;
-                new_game_v = null;
+                //game_v = null;
+                //new_game_v = null;
                 stage.setScene(main_menu_v);
                 break;
             case 2:
                 new_game_v = new NewGameMenu(root, largeur, hauteur);
-                main_menu_v = null;
+                //main_menu_v = null;
                 stage.setScene(new_game_v);
                 break;
             case 3:
                 load_save_v = new LoadSaveMenu(root, largeur, hauteur);
-                main_menu_v = null;
+                //main_menu_v = null;
                 stage.setScene(load_save_v);
                 break;
             case 4:
                 load_option_v = new LoadOption(root, largeur, hauteur);
-                main_menu_v = null;
+                //main_menu_v = null;
                 stage.setScene(load_option_v);
                 break;
             case 5:
                 game_v = new GameView(root, largeur, hauteur);
-                new_game_v = null;
+                //new_game_v = null;
                 stage.setScene(game_v);
                 break;
             default:

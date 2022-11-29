@@ -40,7 +40,7 @@ public class GameView extends Scene
 
         b_quitter = new Button("Quitter");
         b_quitter.setPrefSize(300, 35);
-        b_quitter.setOnAction(e -> ActionController.event("quitter"));
+        b_quitter.setOnAction(e -> ActionController.event("Go_main_menu"));
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);

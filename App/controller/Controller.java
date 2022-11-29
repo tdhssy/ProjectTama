@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.junit.platform.commons.util.StringUtils;
 
 import model.Engine;
+import model.saveEngine.Save;
 import view.GameView;
 import view.View;
 import view.Menu.LoadOption;
@@ -79,13 +80,17 @@ public class Controller
 	public void launchGame()
 	{
 		try {
-			if(StringUtils.isBlank(new_game_v.getTamaName())) throw new Exception(); //Evite un nom composé simplement d'espace
-			engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
-			View.changeScene(5); //GameView
-			game_v = View.getGameView();
-			game_v.setName(engine.getInstanceName());
-			game_v.setType(new_game_v.getTamaType());
-			new_game_v = null;
+			if(StringUtils.isBlank(new_game_v.getTamaName()) || Save.saveExist(new_game_v.getTamaName())){
+				System.out.println("Nom incorrecte ou déjà existant dans les sauvegardes");
+			} //Evite un nom composé simplement d'espace
+			else{
+				engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
+				View.changeScene(5); //GameView
+				game_v = View.getGameView();
+				game_v.setName(engine.getInstanceName());
+				game_v.setType(new_game_v.getTamaType());
+				new_game_v = null;
+			}
 		} catch (Exception e) {
 			System.err.println("Erreur de chargement");
 			e.printStackTrace();
@@ -100,7 +105,10 @@ public class Controller
 		//TODO
 		ArrayList<Integer> new_data = engine.getTamaDatas();
 		if(engine.isDead()){
-			engine.quit();
+			game_v.setHealth( ( (double) 0 ));
+			menuAction(7);
+			engine.stopTime();
+
 			System.out.println("Tu es mort.");
 			View.changeScene(1);
 			//TODO afficher le personnage sans tête + message de mort
