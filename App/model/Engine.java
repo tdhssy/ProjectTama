@@ -212,6 +212,7 @@ public class Engine {
 	public void dormir(){
 		tamagotchi.updateStat("Sleep", 10);
 		tamagotchi.updateStat("MentalHealth", 10);
+		tamagotchi.updateStat("PhysicalCondition", 10);
 
 		tamagotchi.updateStat("Satiete", -20);		
 	}
@@ -229,7 +230,7 @@ public class Engine {
 	 * Diminue la jauge de besoin
      */
 	public void besoin(){
-		tamagotchi.updateStat("Needs", -10);
+		tamagotchi.updateStat("Needs", 10);
 	}
 
 	/**
@@ -242,7 +243,7 @@ public class Engine {
 	public void jouer(){
 		tamagotchi.updateStat("MentalHealth", 10);
 
-		tamagotchi.updateStat("Satiete", -10);
+		tamagotchi.updateStat("Satiety", -10);
 		tamagotchi.updateStat("PhysicalCondition", -10);
 		tamagotchi.updateStat("Sleep", -10);
 	}

@@ -102,7 +102,7 @@ public class Controller
 		if(engine.isDead()){
 			engine.quit();
 			System.out.println("Tu es mort.");
-			View.changeScene(0);
+			View.changeScene(1);
 			//TODO afficher le personnage sans tête + message de mort
 		}
 		else{
@@ -119,6 +119,7 @@ public class Controller
 
 	/*
 	 * Permet de gérer les actions de jeu attrapées par l'actionController.
+	 * 0 = besoin
 	 * 1 = Manger
 	 * 2 = Jouer
 	 * 3 = Dormir

@@ -74,7 +74,7 @@ public class GameView extends Scene
         pb_mentalBar = new ProgressBar(0.5);
         pb_mentalBar.setPrefWidth(150);
 
-        pb_needBar = new ProgressBar(0);
+        pb_needBar = new ProgressBar(0.5);
         pb_needBar.setPrefWidth(150);
 
         pb_sleepBar = new ProgressBar(0.5);
