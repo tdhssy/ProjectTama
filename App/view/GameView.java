@@ -5,7 +5,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -18,10 +20,10 @@ public class GameView extends Scene
     Button b_laver;
     Button b_jouer;
     Button b_besoin;
-
-    Text t_type;
-    Text t_name;
-
+    Text room;
+    Label tamagotchi;
+    String t_name;
+    String t_type;
     ProgressBar pb_healthBar;
     ProgressBar pb_hungerBar;
     ProgressBar pb_mentalBar;
@@ -62,8 +64,11 @@ public class GameView extends Scene
         b_besoin.setPrefSize(300, 35);
         b_besoin.setOnAction(e -> ActionController.event("Besoin"));
 
-        t_name = new Text();
-        t_type = new Text();
+        room = new Text();
+
+        tamagotchi = new Label(t_name+"\n"+t_type);
+        tamagotchi.setMaxWidth(220);
+        tamagotchi.setMaxHeight(30);
 
         pb_healthBar = new ProgressBar(1);
         pb_healthBar.setPrefWidth(150);
@@ -86,8 +91,7 @@ public class GameView extends Scene
         pb_physicalBar = new ProgressBar(0.5);
         pb_physicalBar.setPrefWidth(150);
         
-        root.getChildren().add(t_name);
-        root.getChildren().add(t_type);
+        root.getChildren().add(room);
         root.getChildren().add(new Text("Barre de vie"));
         root.getChildren().add(pb_healthBar);
         root.getChildren().add(new Text("Barre de faim"));
@@ -102,6 +106,7 @@ public class GameView extends Scene
         root.getChildren().add(pb_physicalBar);
         root.getChildren().add(new Text("Barre d'hygiene"));
         root.getChildren().add(pb_hygieneBar);
+        root.getChildren().add(tamagotchi);
         root.getChildren().add(b_manger);
         root.getChildren().add(b_jouer);
         root.getChildren().add(b_laver);
@@ -126,6 +131,10 @@ public class GameView extends Scene
         setRoot(root);
     }
 
+    public void setRoom(String s){
+        room.setText(s);
+    }
+    
     public void setHunger(double x){
         pb_hungerBar.setProgress(x);
     }
@@ -155,11 +164,11 @@ public class GameView extends Scene
     }
 
     public void setName(String s){
-        t_name.setText(s);
+        t_name = s;
     }
 
     public void setType(String s){
-        t_type.setText(s);
+        t_type = s;
     }
 
 }
