@@ -40,7 +40,7 @@ public class GameView extends Scene
 
         b_quitter = new Button("Quitter");
         b_quitter.setPrefSize(300, 35);
-        b_quitter.setOnAction(e -> ActionController.event("quitter"));
+        b_quitter.setOnAction(e -> ActionController.event("Go_main_menu"));
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);
@@ -74,7 +74,7 @@ public class GameView extends Scene
         pb_mentalBar = new ProgressBar(0.5);
         pb_mentalBar.setPrefWidth(150);
 
-        pb_needBar = new ProgressBar(0);
+        pb_needBar = new ProgressBar(0.5);
         pb_needBar.setPrefWidth(150);
 
         pb_sleepBar = new ProgressBar(0.5);

@@ -23,9 +23,14 @@ public class TimeEngine extends Thread {
                 linkedTamagotchi.updateDownStat();
                 controller.updateStatView();
             } catch (InterruptedException e) {
+                
+                System.out.println("On est bien arivé auparadis");
                 Thread.currentThread().interrupt();
+
             }
         }
     }
+
+
 
 }

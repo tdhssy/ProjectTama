@@ -149,24 +149,24 @@ public abstract class Tamagotchi {
 
 			case "Sleep":
 				if(this.getSleep()+factor>MIN_VALUE && this.getSleep()+factor<MAX_VALUE){
-					this.setHealth(this.getSleep()+factor);
+					this.setSleep(this.getSleep()+factor);
 				}else if(this.getSleep()+factor<=MIN_VALUE){
-					this.setHealth(MIN_VALUE);
+					this.setSleep(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}else{
-					this.setHealth(MAX_VALUE);
+					this.setSleep(MAX_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}
 				break;
 
 			case "Hygiene":
 				if(this.getHygiene()+factor>MIN_VALUE && this.getHygiene()+factor<MAX_VALUE){
-					this.setHealth(this.getHygiene()+factor);
+					this.setHygiene(this.getHygiene()+factor);
 				}else if(this.getHygiene()+factor<=MIN_VALUE){
-					this.setHealth(MIN_VALUE);
+					this.setHygiene(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}else{
-					this.setHealth(MAX_VALUE);
+					this.setHygiene(MAX_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}
 				break;

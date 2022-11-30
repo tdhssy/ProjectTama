@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
 
+import javafx.application.Platform;
 import model.Engine;
+import model.saveEngine.Save;
 import view.GameView;
 import view.View;
 import view.Menu.LoadOption;
@@ -79,13 +81,17 @@ public class Controller
 	public void launchGame()
 	{
 		try {
-			if(StringUtils.isBlank(new_game_v.getTamaName())) throw new Exception(); //Evite un nom composé simplement d'espace
-			engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
-			View.changeScene(5); //GameView
-			game_v = View.getGameView();
-			game_v.setName(engine.getInstanceName());
-			game_v.setType(new_game_v.getTamaType());
-			new_game_v = null;
+			if(StringUtils.isBlank(new_game_v.getTamaName()) || Save.saveExist(new_game_v.getTamaName())){
+				System.out.println("Nom incorrecte ou déjà existant dans les sauvegardes");
+			} //Evite un nom composé simplement d'espace
+			else{
+				engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
+				View.changeScene(5); //GameView
+				game_v = View.getGameView();
+				game_v.setName(engine.getInstanceName());
+				game_v.setType(new_game_v.getTamaType());
+				new_game_v = null;
+			}
 		} catch (Exception e) {
 			System.err.println("Erreur de chargement");
 			e.printStackTrace();
@@ -98,19 +104,32 @@ public class Controller
 	 */
 	public void updateStatView(){
 		//TODO
+		
 		ArrayList<Integer> new_data = engine.getTamaDatas();
-		System.out.println((double)new_data.get(1));
-		game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
-		game_v.setHealth( ( (double) (new_data.get(0) ) /1.5) /100 );
-		game_v.setMental( ( (double) (new_data.get(3) ) /1.5) /100 );
-		game_v.setSleep( ( (double) (new_data.get(5) ) /1.5) /100 );
-		game_v.setNeed( ( (double) (new_data.get(4) ) /1.5) /100 );
-		game_v.setPhysical( ( (double) (new_data.get(2) ) /1.5) /100 );
-		game_v.setHygiene( ( (double) (new_data.get(6) ) /1.5) /100 );
+		if(engine.isDead()){
+			game_v.setHealth( ( (double) 0 ));
+			//menuAction(7);
+			engine.destroy();
+
+			System.out.println("Tu es mort.");
+			Platform.runLater(() -> {	menuAction(7); }); //Pour que Javafx puisse gérer ses timings
+			//TODO afficher le personnage sans tête + message de mort
+		}
+		else{
+			System.out.println((double)new_data.get(1));
+			game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
+			game_v.setHealth( ( (double) (new_data.get(0) ) /1.5) /100 );
+			game_v.setMental( ( (double) (new_data.get(3) ) /1.5) /100 );
+			game_v.setSleep( ( (double) (new_data.get(5) ) /1.5) /100 );
+			game_v.setNeed( ( (double) (new_data.get(4) ) /1.5) /100 );
+			game_v.setPhysical( ( (double) (new_data.get(2) ) /1.5) /100 );
+			game_v.setHygiene( ( (double) (new_data.get(6) ) /1.5) /100 );
+		}
 	}
 
 	/*
 	 * Permet de gérer les actions de jeu attrapées par l'actionController.
+	 * 0 = besoin
 	 * 1 = Manger
 	 * 2 = Jouer
 	 * 3 = Dormir
@@ -184,6 +203,7 @@ public class Controller
 				break;
 			case 7:
 				View.changeScene(1);
+				if (engine != null) engine.destroy(); //à supp plus tard
 				new_game_v = null;
 				break;
 			default:
