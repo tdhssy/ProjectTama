@@ -88,12 +88,19 @@ public class GameView extends Scene
         
         root.getChildren().add(t_name);
         root.getChildren().add(t_type);
+        root.getChildren().add(new Text("Barre de vie"));
         root.getChildren().add(pb_healthBar);
+        root.getChildren().add(new Text("Barre de faim"));
         root.getChildren().add(pb_hungerBar);
+        root.getChildren().add(new Text("Barre de mental"));
         root.getChildren().add(pb_mentalBar);
+        root.getChildren().add(new Text("Barre de someil"));
         root.getChildren().add(pb_sleepBar);
+        root.getChildren().add(new Text("Barre de besoin"));
         root.getChildren().add(pb_needBar);
+        root.getChildren().add(new Text("Barre d'état physique"));
         root.getChildren().add(pb_physicalBar);
+        root.getChildren().add(new Text("Barre d'hygiene"));
         root.getChildren().add(pb_hygieneBar);
         root.getChildren().add(b_manger);
         root.getChildren().add(b_jouer);
