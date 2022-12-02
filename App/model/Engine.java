@@ -187,6 +187,27 @@ public class Engine {
 	}
 
 	/**
+     * Get all Tamagotchi's datas between [0-1] except ID 
+	 * Format : [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, Hygiene, ID]
+	 * ID : TamaChat = 0 | TamaChien = 1 | TamaLapin = 2 | TamaRobot = 3
+	 * @return ArrayList<Integer> 
+     */
+	public ArrayList<Double> getDatasPourcent(){
+		ArrayList<Double> res = new ArrayList<>();
+		ArrayList<Integer> temp = getTamaDatas();
+		double ID = temp.get(temp.size()-1);
+		temp.remove(temp.size()-1);
+
+		for (int value : temp) {
+			res.add(((double)value/1.5)/100);
+		}
+
+		res.add(ID);
+		return res;
+
+	}
+
+	/**
      * Update all Tamagotchi's datas
 	 * Format : [Health, Satiety, PhysicalCondition, MentalHealth, Needs, Sleep, Hygiene, ID]
 	 * ID : TamaChat = 0 | TamaChien = 1 | TamaLapin = 2 | TamaRobot = 3
@@ -215,7 +236,7 @@ public class Engine {
 		tamagotchi.updateStat("MentalHealth", 10);
 		tamagotchi.updateStat("PhysicalCondition", 10);
 
-		tamagotchi.updateStat("Satiete", -20);		
+		tamagotchi.updateStat("Satiety", -20);		
 	}
 
 	/**

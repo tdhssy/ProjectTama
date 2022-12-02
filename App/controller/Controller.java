@@ -105,7 +105,7 @@ public class Controller
 	public void updateStatView(){
 		//TODO
 		
-		ArrayList<Integer> new_data = engine.getTamaDatas();
+		ArrayList<Double> new_data = engine.getDatasPourcent();
 		if(engine.isDead()){
 			game_v.setHealth( ( (double) 0 ));
 			//menuAction(7);
@@ -116,14 +116,14 @@ public class Controller
 			//TODO afficher le personnage sans tête + message de mort
 		}
 		else{
-			System.out.println((double)new_data.get(1));
-			game_v.setHunger( ( (double) (new_data.get(1) ) /1.5) /100 );
-			game_v.setHealth( ( (double) (new_data.get(0) ) /1.5) /100 );
-			game_v.setMental( ( (double) (new_data.get(3) ) /1.5) /100 );
-			game_v.setSleep( ( (double) (new_data.get(5) ) /1.5) /100 );
-			game_v.setNeed( ( (double) (new_data.get(4) ) /1.5) /100 );
-			game_v.setPhysical( ( (double) (new_data.get(2) ) /1.5) /100 );
-			game_v.setHygiene( ( (double) (new_data.get(6) ) /1.5) /100 );
+			//System.out.println(new_data.get(1));
+			game_v.setHunger(new_data.get(1));
+			game_v.setHealth(new_data.get(0));
+			game_v.setMental(new_data.get(3));
+			game_v.setSleep(new_data.get(5));
+			game_v.setNeed(new_data.get(4));
+			game_v.setPhysical(new_data.get(2));
+			game_v.setHygiene(new_data.get(6));
 		}
 	}
 

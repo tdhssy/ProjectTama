@@ -46,6 +46,8 @@ public class TestModel {
             System.out.println("Tamagotchi info :");
             System.out.println(testEngine.getTamagotchi().toString());
             System.out.println();
+            System.out.println("ArrayPourcent : "+testEngine.getDatasPourcent().toString());
+            System.out.println();
             System.out.println("----------------------");
             System.out.println();
             System.out.println("Instance Name : "+instanceName);
