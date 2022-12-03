@@ -1,5 +1,8 @@
 package controller;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 //import java.awt.event.*;
 
 /*
@@ -22,12 +25,6 @@ public class ActionController /*extends ActionListener */
     public static void event(String buttonName){
         Controller control = Controller.getController();
         switch(buttonName){
-            case "Test":
-                System.out.println("bt1");
-                break;
-            case "Test1":
-                System.out.println("bt2");
-                break;
             case "Go_new_game": 
                 control.menuAction(1);
                 break;
@@ -64,36 +61,27 @@ public class ActionController /*extends ActionListener */
         }
     }
 
-
-    //Pour Swing
     /*
-     * Méthode appeler à chaque action de l'utilisateur.
-     * 
-     * --> Veillez à ajouter pour chaque nouveau bouton
-     *     les lignes suivantes :
-     *          bouton.addActionListener(new ActionController());
-     *          bouton.setActionCommand("message");
-     *     "message" étant le nom du bouton, pour pouvoir
-     *     différencier les différents boutons.
+     * Gère les raccourci clavier dans une partie
      */
-    /*public void actionPerformed(ActionEvent e){
+    public static void keyEventInGame(KeyEvent ke){
 
-        //Permet l'accès aux méthodes du controller
-        Controller control = Controller.getController();
-
-        //Un nouveau case sera ajouté pour chaque 
-        //nouveau bouton
-        switch (e.getActionCommand()) {
-            //TODO : Ajout de 'case' pour chaque bouton
-            
-            case "Menu charger partie": control.loadEvent("Load");
-                break;
-            case "Menu nouvelle partie": control.loadEvent("New Game");
-                break;
-            case "Menu quitter": control.closeEvent();
-                break;
-            case "Load retour": control.loadEvent("Main");
-                break;
+        if(ke.getCode() == KeyCode.M){
+            event("Manger");
+        }else if(ke.getCode() == KeyCode.D){
+            event("Dormir");
+        }else if(ke.getCode() == KeyCode.L){
+            event("Laver");
+        }else if(ke.getCode() == KeyCode.J){
+            event("Jouer");
+        }else if(ke.getCode() == KeyCode.B){
+            event("Besoin");
         }
-    }*/
+    }
+
+    public static void keyEventNewGameMenu(KeyEvent ke){
+        if(ke.getCode() == KeyCode.ENTER){
+            event("StartGame");
+        }
+    }
 }

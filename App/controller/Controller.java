@@ -7,8 +7,8 @@ import org.junit.platform.commons.util.StringUtils;
 import javafx.application.Platform;
 import model.Engine;
 import model.saveEngine.Save;
-import view.GameView;
 import view.View;
+import view.Game.GameView;
 import view.Menu.LoadOption;
 import view.Menu.LoadSaveMenu;
 import view.Menu.NewGameMenu;
@@ -106,25 +106,18 @@ public class Controller
 		//TODO
 		
 		ArrayList<Double> new_data = engine.getDatasPourcent();
-		if(engine.isDead()){
-			game_v.setHealth( ( (double) 0 ));
-			//menuAction(7);
-			engine.destroy();
 
-			System.out.println("Tu es mort.");
-			Platform.runLater(() -> {	menuAction(7); }); //Pour que Javafx puisse gérer ses timings
-			//TODO afficher le personnage sans tête + message de mort
-		}
-		else{
-			//System.out.println(new_data.get(1));
-			game_v.setHunger(new_data.get(1));
-			game_v.setHealth(new_data.get(0));
-			game_v.setMental(new_data.get(3));
-			game_v.setSleep(new_data.get(5));
-			game_v.setNeed(new_data.get(4));
-			game_v.setPhysical(new_data.get(2));
-			game_v.setHygiene(new_data.get(6));
-		}
+		//System.out.println(new_data.get(1));
+		game_v.setHunger(new_data.get(1));
+		game_v.setHealth(new_data.get(0));
+		game_v.setMental(new_data.get(3));
+		game_v.setSleep(new_data.get(5));
+		game_v.setNeed(new_data.get(4));
+		game_v.setPhysical(new_data.get(2));
+		game_v.setHygiene(new_data.get(6));
+		
+		//Check si le tama est mort, si oui délanche l'écran de game over
+		if(engine.isDead()) Platform.runLater(() -> {	death();   });
 	}
 
 	/*
@@ -210,5 +203,11 @@ public class Controller
 				System.out.println("Action menu par defaut");
 				break;
 		}
+	}
+
+	private void death(){
+		engine.destroy();
+		game_v.displayDeath();
+		//System.out.println("Tu es mort.");
 	}
 }

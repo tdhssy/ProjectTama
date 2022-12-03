@@ -1,20 +1,19 @@
-package view;
+package view.Game;
 
 import controller.ActionController;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class GameView extends Scene
 {
 
-    Button b_quitter;//Pour les tests
     Button b_manger;
     Button b_dormir;
     Button b_laver;
@@ -39,10 +38,6 @@ public class GameView extends Scene
         super(arg0, arg1, arg2);
         
         root = new VBox();
-
-        b_quitter = new Button("Quitter");
-        b_quitter.setPrefSize(300, 35);
-        b_quitter.setOnAction(e -> ActionController.event("Go_main_menu"));
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);
@@ -63,6 +58,8 @@ public class GameView extends Scene
         b_besoin = new Button("Besoin");
         b_besoin.setPrefSize(300, 35);
         b_besoin.setOnAction(e -> ActionController.event("Besoin"));
+
+        this.setOnKeyPressed(e -> ActionController.keyEventInGame(e)); //Pour les raccourci claviver
 
         room = new Text();
 
@@ -112,7 +109,6 @@ public class GameView extends Scene
         root.getChildren().add(b_laver);
         root.getChildren().add(b_dormir);
         root.getChildren().add(b_besoin);
-        root.getChildren().add(b_quitter);
 
         /*
         VBox.setMargin(t_name, new Insets(30, 20, 20, 330));
@@ -126,7 +122,6 @@ public class GameView extends Scene
         VBox.setMargin(b_laver, new Insets(30, 20, 20, 330));
         VBox.setMargin(b_dormir, new Insets(30, 20, 20, 330));
         VBox.setMargin(b_besoin, new Insets(30, 20, 20, 330));
-        VBox.setMargin(b_quitter, new Insets(30, 20, 20, 330));
         */
         setRoot(root);
     }
@@ -171,4 +166,9 @@ public class GameView extends Scene
         t_type = s;
     }
 
+    public void displayDeath(){
+        Platform.runLater(() -> {
+            setRoot(new Death(this.getWidth(), this.getHeight()*0.60));
+        });
+    }
 }

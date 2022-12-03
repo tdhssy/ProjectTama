@@ -1,5 +1,6 @@
 package view;
 
+import view.Game.GameView;
 import view.Menu.*;
 
 import javafx.application.Application;

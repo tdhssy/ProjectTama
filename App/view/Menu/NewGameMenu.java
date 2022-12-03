@@ -59,6 +59,8 @@ public class NewGameMenu extends Scene
         tamaRobot.setOnAction(e -> changeType("TamaRobot"));
         tamaRobot.setPrefSize(100, 100);
 
+        this.setOnKeyPressed(e -> ActionController.keyEventNewGameMenu(e)); //Pour les raccourci claviver
+
         tamaName = new TextField("");
         tamaName.setMaxWidth(220);
         tamaName.setMaxHeight(30);
