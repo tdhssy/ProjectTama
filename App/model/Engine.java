@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
+import model.room.RoomEngine;
 import model.saveEngine.Save;
 import model.tamaEngine.Tamagotchi;
 import model.tamagotchiFactory.TamagotchiFactory;
@@ -18,6 +19,7 @@ public class Engine {
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine timeEngine;
+	private RoomEngine rooms;
 	private Controller controller;
 	private static Engine engine_Instance = null;
 
@@ -29,7 +31,7 @@ public class Engine {
 		this.timeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
 		//Platform.runLater(() -> timeEngine.start());
 		timeEngine.start();
-		this.currentRoom = ROOM;
+		this.rooms=new RoomEngine();
 	}
 
     /**
@@ -164,8 +166,26 @@ public class Engine {
 	 * @return String
      */
 	public String getCurrentRoom(){
-		return currentRoom;
+		return rooms.getCurrentRoom();
 	}
+
+	/**
+     * Get the next room
+	 * @return String
+     */
+	public String nextRoom(){
+		return rooms.nextRoom();
+	}
+
+	/**
+     * Get the previous room
+	 * @return String
+     */
+	public String previousRoom(){
+		return rooms.previousRoom();
+	}
+
+
 
 
 	/**
