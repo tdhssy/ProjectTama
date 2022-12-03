@@ -51,7 +51,7 @@ public class TestModel {
             System.out.println("----------------------");
             System.out.println();
             System.out.println("Instance Name : "+instanceName);
-            System.out.println("Current Room : "+currentRoom);
+            System.out.println("Current Room : "+testEngine.getCurrentRoom());
             System.out.println();
             System.out.println("----------------------");
             System.out.println();
@@ -69,11 +69,29 @@ public class TestModel {
             System.out.println("Tamagotchi info :");
             System.out.println(testEngine.getTamagotchi().toString());
             System.out.println();
+            System.out.println("Current Room : "+testEngine.getCurrentRoom());
+            System.out.println();
+            System.out.println("prev Room : "+testEngine.previousRoom());
+            System.out.println();
+            System.out.println("prev Room : "+testEngine.previousRoom());
+            System.out.println();
+            System.out.println("Next Room : "+testEngine.nextRoom());
+            System.out.println();
+            System.out.println("Next Room : "+testEngine.nextRoom());
+            System.out.println();
+            System.out.println("Next Room : "+testEngine.nextRoom());
+            System.out.println();
+            System.out.println("Next Room : "+testEngine.nextRoom());
+            System.out.println();
+            System.out.println("Current Room : "+testEngine.getCurrentRoom());
+            System.out.println();
             System.out.println("----------------------");
             System.out.println();
             System.out.println("make save : "+instanceName);
             System.out.println("safety quit ? : "+testEngine.quit());
             
+
+
 
             //add par clement test delete save
             //System.out.println("Le fichier est suprimer ? :" + Save.deleteSave(instanceName));
@@ -84,7 +102,7 @@ public class TestModel {
             System.out.println("=======================");
 
             //================================================================================
-            if(true){ //load
+            if(!true){ //load
 
                 System.out.println("----------------------");
                 System.out.println("load save : "+instanceName);
