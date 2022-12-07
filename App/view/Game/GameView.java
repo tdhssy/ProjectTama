@@ -188,7 +188,7 @@ public class GameView extends Scene
 
     public void displayDeath(){
         Platform.runLater(() -> {
-            setRoot(new Death(this.getWidth(), this.getHeight()*0.60));
+            setRoot(new Death(this.getWidth(), this.getHeight()*0.60,t_name));
         });
     }
 }
