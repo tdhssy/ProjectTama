@@ -17,14 +17,14 @@ public class Death extends VBox{
     Button mainMenu;
     Button loadingMenu;
 
-    public Death(double width, double height){
+    public Death(double width, double height, String NomTama){
         
         setWidth(width);
         setHeight(height);
 
-        deathannouncer = new Text("TU ES MORT");
+        deathannouncer = new Text("Ton animal "+NomTama+" est mort");
         //Font size 1 = 1.3 pixels
-        deathannouncer.setFont(new Font(100));
+        deathannouncer.setFont(new Font(30));
 
         mainMenu = new Button("Menu principal");
         mainMenu.setOnAction(e -> ActionController.event("Go_main_menu"));
