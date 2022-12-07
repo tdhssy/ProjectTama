@@ -64,6 +64,8 @@ public class ActionController /*extends ActionListener */
             case "QuitGame":
                 control.menuAction(9);
                 break;
+            case "Supp_save":
+                control.menuAction(10);
         }
     }
 

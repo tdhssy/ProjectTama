@@ -217,11 +217,16 @@ public class Controller
 				System.out.println("load");
 				if(load_game_v != null) {
 					String selectedSave = load_game_v.getSelectedSave(); 
-					loadGame(selectedSave); 
+					loadGame(selectedSave);
 				}
 				break;
 			case 9:
 				QuitGame();
+				break;
+			case 10:
+				String selectedSave = load_game_v.getSelectedSave();
+				Save.deleteSave(selectedSave);
+				menuAction(2); //update le menu charger la partie 
 				break;
 			default:
 				System.out.println("Action menu par defaut");
