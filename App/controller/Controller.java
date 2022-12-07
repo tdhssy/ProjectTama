@@ -7,6 +7,7 @@ import org.junit.platform.suite.api.SelectClasses;
 
 import javafx.application.Platform;
 import model.Engine;
+import model.room.RoomEngine;
 import model.saveEngine.Save;
 import view.View;
 import view.Game.GameView;
@@ -24,7 +25,6 @@ public class Controller
 {	
 	static private Controller controller = null;
 	private Engine engine;
-	
 	private GameView game_v;
 	private NewGameMenu new_game_v;
 	private LoadSaveMenu load_game_v;
@@ -130,6 +130,10 @@ public class Controller
 		if(engine.isDead()) Platform.runLater(() -> {	death();   });
 	}
 
+	public void update_room(){
+		Platform.runLater(() -> {game_v.setRoom(engine.getCurrentRoom());});
+	}
+
 	/*
 	 * Permet de gérer les actions de jeu attrapées par l'actionController.
 	 * 0 = besoin
@@ -158,10 +162,10 @@ public class Controller
 				engine.seLaver();
 				break;
 			case 5:
-				//TODO
+				game_v.setRoom(engine.nextRoom());
 				break;
 			case 6:
-				//TODO
+				game_v.setRoom(engine.previousRoom());
 				break;
 			default:
 				System.out.println("Action game par defaut");

@@ -20,6 +20,8 @@ public class GameView extends Scene
     Button b_jouer;
     Button b_besoin;
     Button b_quit;
+    Button b_droite;
+    Button b_gauche;
     Text room;
     Label tamagotchi;
     String t_name;
@@ -64,11 +66,19 @@ public class GameView extends Scene
         b_quit.setPrefSize(300, 35);
         b_quit.setOnAction(e -> ActionController.event("QuitGame"));
 
+        b_droite = new Button("Droite");
+        b_droite.setPrefSize(300, 35);
+        b_droite.setOnAction(e -> ActionController.event("RightRoom"));
+
+        b_gauche = new Button("Left");
+        b_gauche.setPrefSize(300, 35);
+        b_gauche.setOnAction(e -> ActionController.event("LeftRoom"));
+
         this.setOnKeyPressed(e -> ActionController.keyEventInGame(e)); //Pour les raccourci claviver
 
-        room = new Text();
+        room = new Text("salon");
 
-        tamagotchi = new Label(t_name+"\n"+t_type);
+        tamagotchi = new Label(t_name+"+"+t_type);
         tamagotchi.setMaxWidth(220);
         tamagotchi.setMaxHeight(30);
 
@@ -114,6 +124,8 @@ public class GameView extends Scene
         root.getChildren().add(b_laver);
         root.getChildren().add(b_dormir);
         root.getChildren().add(b_besoin);
+        root.getChildren().add(b_droite);
+        root.getChildren().add(b_gauche);
         root.getChildren().add(b_quit);
 
         /*
