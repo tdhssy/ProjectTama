@@ -178,10 +178,12 @@ public class GameView extends Scene
 
     public void setName(String s){
         t_name = s;
+        tamagotchi.setText(t_name+"+"+t_type);
     }
 
     public void setType(String s){
         t_type = s;
+        tamagotchi.setText(t_name+"+"+t_type);
     }
 
     public void displayDeath(){
