@@ -90,7 +90,7 @@ public class Controller
 				View.changeScene(5); //GameView
 				game_v = View.getGameView();
 				game_v.setName(engine.getInstanceName());
-				game_v.setType(new_game_v.getTamaType());
+				game_v.setType(engine.getTypeTama());
 				new_game_v = null;
 			}
 		} catch (Exception e) {
@@ -104,7 +104,7 @@ public class Controller
 		View.changeScene(5); //GameView
 		game_v = View.getGameView();
 		game_v.setName(engine.getInstanceName());
-		game_v.setType(new_game_v.getTamaType());
+		game_v.setType(engine.getTypeTama());
 		load_game_v = null;
 	}
 
@@ -217,7 +217,6 @@ public class Controller
 				System.out.println("load");
 				if(load_game_v != null) {
 					String selectedSave = load_game_v.getSelectedSave(); 
-					System.out.println("menuAction : "+selectedSave);
 					loadGame(selectedSave); 
 				}
 				break;
