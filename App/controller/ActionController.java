@@ -64,6 +64,14 @@ public class ActionController /*extends ActionListener */
             case "QuitGame":
                 control.menuAction(9);
                 break;
+            case "RightRoom":
+                control.gameAction(5);
+                control.update_room();
+                break;
+            case "LeftRoom":
+                control.gameAction(6);
+                control.update_room();
+                break;
         }
     }
 
