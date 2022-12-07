@@ -15,18 +15,17 @@ public class Engine {
 	final private long TIME_UPDATE = 1000; // 1 second between the stats decrease
 	final private String ROOM = "Default"; // Default room;
 
-	private String currentRoom;
+	private String typeTama;
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine timeEngine;
 	private RoomEngine rooms;
-	private Controller controller;
 	private static Engine engine_Instance = null;
 
 	//Engine constructor 
 	private Engine(Controller controller,String typeTamagotchi,String instanceName){
-		this.controller = controller;
 		this.instanceName = instanceName;
+		this.typeTama = typeTamagotchi;
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
 		this.timeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
 		//Platform.runLater(() -> timeEngine.start());
@@ -281,13 +280,6 @@ public class Engine {
 		tamagotchi.updateStat("Sleep", -10);
 	}
 
-	/**
-     * Action de changement de salle
-	 * @param String new room
-     */
-	public void move(String newRoom){
-		currentRoom = newRoom;
-	}
 
 	/**
      * safety save and unload
@@ -306,5 +298,8 @@ public class Engine {
 		unloadEngine();
 	}
 
+	public String getTypeTama(){
+		return this.typeTama;
+	}
 
 }

@@ -19,6 +19,7 @@ public class LoadSaveMenu extends Scene{
     VBox root;
     Button b_charger;
     Button b_retour;
+    Button b_suppr;
     ListView<String> listSaves;
     GridPane rootGrid;
 
@@ -30,8 +31,6 @@ public class LoadSaveMenu extends Scene{
 
 
         root = new VBox();
-  
-        System.out.println("charger partie");
         listSaves = new ListView<>();
   
         b_retour = new Button("Retour au menu");
@@ -42,9 +41,14 @@ public class LoadSaveMenu extends Scene{
         b_charger.setPrefSize(300, 35);
         b_charger.setOnAction(e -> ActionController.event("loadSave"));
 
+        b_suppr = new Button("Supprimer la partie");
+        b_suppr.setPrefSize(300,35);
+        b_suppr.setOnAction(e -> ActionController.event("Supp_save"));
+
         root.getChildren().add(listSaves);
         root.getChildren().add(b_charger);
         root.getChildren().add(b_retour);
+        root.getChildren().add(b_suppr);
 
         
 

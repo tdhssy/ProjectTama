@@ -22,7 +22,7 @@ public class Death extends VBox{
         setWidth(width);
         setHeight(height);
 
-        deathannouncer = new Text("YOU DIED");
+        deathannouncer = new Text("TU ES MORT");
         //Font size 1 = 1.3 pixels
         deathannouncer.setFont(new Font(100));
 
