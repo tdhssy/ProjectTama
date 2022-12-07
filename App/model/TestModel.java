@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 import model.saveEngine.Save;
 
 /*
@@ -31,7 +33,10 @@ public class TestModel {
             instanceName = testEngine.getInstanceName();
             currentRoom = testEngine.getCurrentRoom();
 
-            testEngine.getAllSaveName(); //add par clément
+            System.out.println("Affichage des sauvegardes : ");
+            for(String save : testEngine.getAllSaveName()){
+                System.out.println("Nom de la sauvegarde : "+save);
+            }
             
             System.out.println("Le fichier existe-t-il ? si il existe déjà faut penser à la suppr: "+Save.saveExist(instanceName));//Add par clement
             testEngine.makeSave();

@@ -143,7 +143,7 @@ public class Save {
      *                              Si pas de sauvegarde return "Il n'y a pas de sauvegarde"
      * 
      */
-    public static ArrayList<String> getAllSaveName() throws IOException{
+    public static ArrayList<String> getAllSaveName() {
         final File repertoire = new File(SAVEPATH);
         ArrayList<String> Names = new ArrayList<>();
         int cptFile=0;

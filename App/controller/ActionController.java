@@ -58,6 +58,12 @@ public class ActionController /*extends ActionListener */
             case "Besoin":
                 control.gameAction(0);
                 break;
+            case "loadSave":
+                control.menuAction(8);
+                break;
+            case "QuitGame":
+                control.menuAction(9);
+                break;
         }
     }
 

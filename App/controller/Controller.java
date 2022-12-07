@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
+import org.junit.platform.suite.api.SelectClasses;
 
 import javafx.application.Platform;
 import model.Engine;
@@ -98,6 +99,15 @@ public class Controller
 		}
 	}
 
+	public void loadGame(String save){
+		engine = Engine.loadSave(this, save);
+		View.changeScene(5); //GameView
+		game_v = View.getGameView();
+		game_v.setName(engine.getInstanceName());
+		game_v.setType(new_game_v.getTamaType());
+		load_game_v = null;
+	}
+
 	/*
 	 * Permet l'actuallisation de toutes les stats sur la view.
 	 * A appeler à chaque changement des stats.
@@ -169,6 +179,7 @@ public class Controller
 	 * 5 = Quitter app
 	 * 6 = Lancer une partie
 	 * 7 = go menu principal
+	 * 8 = charger
 	 */
 	public void menuAction(int action){
 		//TODO
@@ -180,6 +191,9 @@ public class Controller
 			case 2:
 				View.changeScene(3);
 				load_game_v = View.getLoadSaveView();
+				for(String save : Engine.getAllSaveName()){
+					load_game_v.addListSave(save);
+				};
 				break;
 			case 3:
 				View.changeScene(4);
@@ -199,10 +213,28 @@ public class Controller
 				if (engine != null) engine.destroy(); //à supp plus tard
 				new_game_v = null;
 				break;
+			case 8:
+				System.out.println("load");
+				if(load_game_v != null) {
+					String selectedSave = load_game_v.getSelectedSave(); 
+					System.out.println("menuAction : "+selectedSave);
+					loadGame(selectedSave); 
+				}
+				break;
+			case 9:
+				QuitGame();
+				break;
 			default:
 				System.out.println("Action menu par defaut");
 				break;
 		}
+	}
+
+	private void QuitGame() {
+		engine.quit();
+		View.changeScene(1);
+		game_v=null;
+
 	}
 
 	private void death(){

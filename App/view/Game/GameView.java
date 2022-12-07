@@ -19,6 +19,7 @@ public class GameView extends Scene
     Button b_laver;
     Button b_jouer;
     Button b_besoin;
+    Button b_quit;
     Text room;
     Label tamagotchi;
     String t_name;
@@ -58,6 +59,10 @@ public class GameView extends Scene
         b_besoin = new Button("Besoin");
         b_besoin.setPrefSize(300, 35);
         b_besoin.setOnAction(e -> ActionController.event("Besoin"));
+
+        b_quit = new Button("Quitter");
+        b_quit.setPrefSize(300, 35);
+        b_quit.setOnAction(e -> ActionController.event("QuitGame"));
 
         this.setOnKeyPressed(e -> ActionController.keyEventInGame(e)); //Pour les raccourci claviver
 
@@ -109,6 +114,7 @@ public class GameView extends Scene
         root.getChildren().add(b_laver);
         root.getChildren().add(b_dormir);
         root.getChildren().add(b_besoin);
+        root.getChildren().add(b_quit);
 
         /*
         VBox.setMargin(t_name, new Insets(30, 20, 20, 330));
