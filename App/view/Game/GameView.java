@@ -66,17 +66,18 @@ public class GameView extends Scene
         b_quit.setPrefSize(300, 35);
         b_quit.setOnAction(e -> ActionController.event("QuitGame"));
 
-        b_droite = new Button("Droite");
+        b_droite = new Button("Aller à droite");
         b_droite.setPrefSize(300, 35);
         b_droite.setOnAction(e -> ActionController.event("RightRoom"));
 
-        b_gauche = new Button("Left");
+        b_gauche = new Button("Aller à gauche");
         b_gauche.setPrefSize(300, 35);
         b_gauche.setOnAction(e -> ActionController.event("LeftRoom"));
 
         this.setOnKeyPressed(e -> ActionController.keyEventInGame(e)); //Pour les raccourci claviver
 
-        room = new Text("salon");
+        room = new Text();
+        
 
         tamagotchi = new Label(t_name+"+"+t_type);
         tamagotchi.setMaxWidth(220);

@@ -89,6 +89,7 @@ public class Controller
 				engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
 				View.changeScene(5); //GameView
 				game_v = View.getGameView();
+				game_v.setRoom(engine.getCurrentRoom());
 				game_v.setName(engine.getInstanceName());
 				game_v.setType(engine.getTypeTama());
 				new_game_v = null;
@@ -103,9 +104,11 @@ public class Controller
 		engine = Engine.loadSave(this, save);
 		View.changeScene(5); //GameView
 		game_v = View.getGameView();
+		game_v.setRoom(engine.getCurrentRoom());
 		game_v.setName(engine.getInstanceName());
 		game_v.setType(engine.getTypeTama());
 		load_game_v = null;
+		updateStatView();
 	}
 
 	/*

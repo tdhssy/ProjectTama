@@ -72,6 +72,9 @@ public class ActionController /*extends ActionListener */
                 control.gameAction(6);
                 control.update_room();
                 break;
+            case "Supp_save":
+                control.menuAction(10);
+                break;
         }
     }
 
