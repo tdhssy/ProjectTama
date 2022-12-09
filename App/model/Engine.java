@@ -20,6 +20,7 @@ public class Engine {
 	private Tamagotchi tamagotchi;
 	private TimeEngine timeEngine;
 	private RoomEngine rooms;
+	private String weather;
 	private static Engine engine_Instance = null;
 
 	//Engine constructor 
@@ -27,7 +28,8 @@ public class Engine {
 		this.instanceName = instanceName;
 		this.typeTama = typeTamagotchi;
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
-		this.timeEngine = new TimeEngine(TIME_UPDATE, tamagotchi, controller);
+		this.timeEngine = new TimeEngine(TIME_UPDATE, this, controller);
+		this.weather="DefaultWeather";
 		//Platform.runLater(() -> timeEngine.start());
 		timeEngine.start();
 		this.rooms=new RoomEngine();
@@ -176,7 +178,20 @@ public class Engine {
 	}
 
 
+	/**
+     * Get the previous room
+	 * @return String
+     */
+	public String getWeather(){
+		return this.weather;
+	}
 
+	/**
+     * Set new Weather
+     */
+	public void setWeather(String weather){
+		this.weather=weather;
+	}
 
 	/**
      * Check if the Tamagotchi is Dead
