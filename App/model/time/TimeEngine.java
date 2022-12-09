@@ -14,9 +14,11 @@ public class TimeEngine extends Thread {
     private Controller controller;
     private int cpt = 0;
     private int randEvent;
-    private final int NEW_EVENT = 30;
-    private final int MAX = 2;
-    private final int MIN= 1;
+    private final int NEW_EVENT = 45;
+    private final int CYCLE_JOURNEY = 60;
+    private final int MAX = 1;
+    private final int MIN= 0;
+    private boolean isDay= true;
 
     public TimeEngine(long checkTimer,Engine linkedEngine, Controller control){
         this.checkTimer=checkTimer;
@@ -34,20 +36,16 @@ public class TimeEngine extends Thread {
                 cpt++;
                 if(cpt==NEW_EVENT){
                     randEvent=(int) Math.floor(Math.random()*(MAX-MIN+1)+MIN);
-                    switch (randEvent) {
-                        case 1: //Rain
-                            System.out.println("Rain");
-                            linkedEngine.setWeather("Rain");
-                            break;
 
-                        case 2: //Without Rain
-                            System.out.println("no rain");
-                            linkedEngine.setWeather("DefaultWeather");
-                            break;
+
+                    linkedEngine.setWeather(randEvent);  
+                    controller.update_weather();; 
+                
                     
-                        default:
-                            break;
-                    }
+                }else if (cpt==CYCLE_JOURNEY) {
+                    isDay=!isDay;
+                    linkedEngine.setJourneyState(isDay);
+                    controller.update_Journey_Cycle();
                     cpt=0;
                 }
 

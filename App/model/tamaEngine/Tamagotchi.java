@@ -136,9 +136,9 @@ public abstract class Tamagotchi {
 				break;
 
 			case "Needs":
-				if(this.getNeeds()+factor>MIN_VALUE && this.getMentalHealth()+factor<MAX_VALUE){
+				if(this.getNeeds()+factor>MIN_VALUE && this.getNeeds()+factor<MAX_VALUE){
 					this.setNeeds(this.getNeeds()+factor);
-				}else if(this.getMentalHealth()+factor<=MIN_VALUE){
+				}else if(this.getNeeds()+factor<=MIN_VALUE){
 					this.setNeeds(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
 				}else{

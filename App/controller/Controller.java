@@ -7,7 +7,6 @@ import org.junit.platform.suite.api.SelectClasses;
 
 import javafx.application.Platform;
 import model.Engine;
-import model.room.RoomEngine;
 import model.saveEngine.Save;
 import view.View;
 import view.Game.GameView;
@@ -133,6 +132,14 @@ public class Controller
 		if(engine.isDead()) Platform.runLater(() -> {	death();   });
 	}
 
+	public void update_weather(){
+		System.out.println(engine.getWeather());
+	}
+
+	public void update_Journey_Cycle(){
+		System.out.println(engine.getJourneyCycle());
+	}
+
 	public void update_room(){
 		Platform.runLater(() -> {game_v.setRoom(engine.getCurrentRoom());});
 	}
@@ -221,7 +228,6 @@ public class Controller
 				new_game_v = null;
 				break;
 			case 8:
-				System.out.println("load");
 				if(load_game_v != null) {
 					String selectedSave = load_game_v.getSelectedSave(); 
 					loadGame(selectedSave);

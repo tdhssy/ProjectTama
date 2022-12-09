@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
-import model.room.RoomEngine;
+import model.room.RessourcesEngine;
 import model.saveEngine.Save;
 import model.tamaEngine.Tamagotchi;
 import model.tamagotchiFactory.TamagotchiFactory;
@@ -13,26 +13,28 @@ import model.time.TimeEngine;
 public class Engine {
 
 	final private long TIME_UPDATE = 1000; // 1 second between the stats decrease
-	final private String ROOM = "Default"; // Default room;
 
 	private String typeTama;
 	private String instanceName;
 	private Tamagotchi tamagotchi;
 	private TimeEngine timeEngine;
-	private RoomEngine rooms;
+	private RessourcesEngine ressources;
 	private String weather;
+	private String JourneyState;
 	private static Engine engine_Instance = null;
 
 	//Engine constructor 
 	private Engine(Controller controller,String typeTamagotchi,String instanceName){
 		this.instanceName = instanceName;
 		this.typeTama = typeTamagotchi;
+		this.ressources=new RessourcesEngine();
 		this.tamagotchi = TamagotchiFactory.createTamagotchi(typeTamagotchi);
 		this.timeEngine = new TimeEngine(TIME_UPDATE, this, controller);
-		this.weather="DefaultWeather";
+		this.weather=ressources.getWeather();
+		this.JourneyState=ressources.getJourneyState();
 		//Platform.runLater(() -> timeEngine.start());
 		timeEngine.start();
-		this.rooms=new RoomEngine();
+		
 	}
 
     /**
@@ -74,7 +76,7 @@ public class Engine {
 	 * @return Engine 
      */
 	public static Engine loadSave(Controller controller,String instanceName){
-		System.out.println("Chargement de l'instance : "+instanceName);
+		
 		ArrayList<Integer> datas;
 		int TamaID;
 		String typeTamagotchi;
@@ -158,7 +160,7 @@ public class Engine {
 	 * @return String
      */
 	public String getCurrentRoom(){
-		return rooms.getCurrentRoom();
+		return ressources.getCurrentRoom();
 	}
 
 	/**
@@ -166,7 +168,7 @@ public class Engine {
 	 * @return String
      */
 	public String nextRoom(){
-		return rooms.nextRoom();
+		return ressources.nextRoom();
 	}
 
 	/**
@@ -174,7 +176,7 @@ public class Engine {
 	 * @return String
      */
 	public String previousRoom(){
-		return rooms.previousRoom();
+		return ressources.previousRoom();
 	}
 
 
@@ -187,10 +189,24 @@ public class Engine {
 	}
 
 	/**
-     * Set new Weather
+     * Set new Weather with a int
      */
-	public void setWeather(String weather){
-		this.weather=weather;
+	public void setWeather(int n){
+		this.weather=ressources.getWeather(n);
+	}
+
+	/**
+     * get the journey State
+     */
+	public String getJourneyCycle(){
+		return this.JourneyState;
+	}
+
+	/**
+     * Set the journey State with boolean
+     */
+	public void setJourneyState(boolean isDay){
+		this.JourneyState=ressources.getJourneyState(isDay);
 	}
 
 	/**

@@ -68,9 +68,6 @@ public class Save {
                 return null;
             }
             
-            for(int data : datas){
-                System.out.println(data);
-            }
         }   
         else{
             br.close();
@@ -150,11 +147,12 @@ public class Save {
         
         for(final File actualFile:repertoire.listFiles()){
             cptFile++;
+            
             String tmpSaveName = actualFile.getName();
-            final String saveName=tmpSaveName.substring(0, tmpSaveName.length()-4);
+            String saveName=tmpSaveName.substring(0, tmpSaveName.length()-4);
             Names.add(saveName);
         }
-        if (cptFile==0 || cptFile>5 ){
+        if (cptFile==0){
             Names= new ArrayList<>();
             Names.add("Il n'y a pas sauvegarde");
         }
