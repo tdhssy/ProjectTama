@@ -1,5 +1,9 @@
 package view.Game;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import controller.ActionController;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -8,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -33,14 +39,30 @@ public class GameView extends Scene
     ProgressBar pb_sleepBar;
     ProgressBar pb_hygieneBar;
     ProgressBar pb_physicalBar;
+    FileInputStream inputstream;
+    Image image;
+    ImageView imageView;
 
 
     VBox root;
 
-    public GameView(Parent arg0, double arg1, double arg2) {
+    public GameView(Parent arg0, double arg1, double arg2,String resBG) {
         super(arg0, arg1, arg2);
         
         root = new VBox();
+        /*
+        try {
+            inputstream = new FileInputStream(getClass().getResource(resBG));
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            
+            e1.printStackTrace();
+            System.err.println("erreur tmtc");
+        }
+
+        image = new Image(inputstream);
+        imageView= new ImageView(image);
+         */
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);
@@ -104,6 +126,7 @@ public class GameView extends Scene
         pb_physicalBar = new ProgressBar(0.5);
         pb_physicalBar.setPrefWidth(150);
         
+        //root.getChildren().add(imageView);
         root.getChildren().add(room);
         root.getChildren().add(new Text("Barre de vie"));
         root.getChildren().add(pb_healthBar);
@@ -145,8 +168,19 @@ public class GameView extends Scene
         setRoot(root);
     }
 
-    public void setRoom(String s){
+    public void setRoom(String s) {
         room.setText(s);
+        /*
+        try {
+            inputstream = new FileInputStream(s);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.err.println("Erreur chargement de ressources dans setRoom de getView a la ligne 165");
+        }
+        image = new Image(inputstream);
+        imageView= new ImageView(image);
+         */
     }
     
     public void setHunger(double x){

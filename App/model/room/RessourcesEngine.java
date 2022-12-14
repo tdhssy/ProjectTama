@@ -10,7 +10,7 @@ public class RessourcesEngine {
 
 
     
-    final private String RESSOURCES_PATH = "Ressources/";
+    final private String RESSOURCES_PATH = "/";
     final private String EXTENSION_PNG = ".png";
     final private String EXTENSION_GIF = ".gif";
 
@@ -39,7 +39,7 @@ public class RessourcesEngine {
 
     private ArrayList<String> rooms = new ArrayList<>();
     private int numberOfRooms;
-    private int currentRoom=1; //default is LivingRoom
+    private int currentRoom=0; //default is LivingRoom
 
 
     

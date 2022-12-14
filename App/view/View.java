@@ -21,6 +21,7 @@ public class View extends Application {
     public static int largeur;
     public static int hauteur;
 
+
     @Override
     public void start(Stage s) throws Exception {   
 
@@ -51,7 +52,7 @@ public class View extends Application {
      *  4 = Parametre
      *  5 = GameView
      */
-    public static void changeScene(int menu){
+    public static void changeScene(int menu,String resBG){
         switch (menu) {
             case 1:
                 main_menu_v = new MainMenu(root, largeur, hauteur);
@@ -75,7 +76,8 @@ public class View extends Application {
                 stage.setScene(load_option_v);
                 break;
             case 5:
-                game_v = new GameView(root, largeur, hauteur);
+                
+                game_v = new GameView(root, largeur, hauteur,resBG);
                 //new_game_v = null;
                 stage.setScene(game_v);
                 break;
