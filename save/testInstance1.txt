@@ -1,8 +1,17 @@
 150
+<<<<<<< HEAD
 63
 63
 63
 63
 63
 63
+=======
+74
+74
+74
+74
+74
+74
+>>>>>>> bdbbf1d (Image mise dans NewGameMenu (Mais pas très bien))
 3
