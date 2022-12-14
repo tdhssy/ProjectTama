@@ -3,6 +3,7 @@ package model.time;
 import java.util.Random;
 
 import controller.Controller;
+import javafx.application.Platform;
 import model.Engine;
 import model.tamaEngine.Tamagotchi;
 
@@ -43,6 +44,7 @@ public class TimeEngine extends Thread {
                 
                     
                 }else if (cpt==CYCLE_JOURNEY) {
+                    linkedEngine.makeSave(); //sauvegarde automatique
                     isDay=!isDay;
                     linkedEngine.setJourneyState(isDay);
                     controller.update_Journey_Cycle();
@@ -51,7 +53,7 @@ public class TimeEngine extends Thread {
 
 
                 linkedTamagotchi.updateDownStat();
-                controller.updateStatView();
+                Platform.runLater(() ->controller.updateStatView());
             } catch (InterruptedException e) {
                 
                 //System.out.println("On est bien arivé auparadis");

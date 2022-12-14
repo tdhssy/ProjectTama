@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
+import javafx.application.Platform;
 import model.room.RessourcesEngine;
 import model.saveEngine.Save;
 import model.tamaEngine.Tamagotchi;
