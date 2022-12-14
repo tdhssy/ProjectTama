@@ -14,6 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -39,9 +44,7 @@ public class GameView extends Scene
     ProgressBar pb_sleepBar;
     ProgressBar pb_hygieneBar;
     ProgressBar pb_physicalBar;
-    FileInputStream inputstream;
-    Image image;
-    ImageView imageView;
+    BackgroundImage myBI;
 
 
     VBox root;
@@ -50,19 +53,10 @@ public class GameView extends Scene
         super(arg0, arg1, arg2);
         
         root = new VBox();
-        /*
-        try {
-            inputstream = new FileInputStream(getClass().getResource(resBG));
-        } catch (FileNotFoundException e1) {
-            // TODO Auto-generated catch block
-            
-            e1.printStackTrace();
-            System.err.println("erreur tmtc");
-        }
 
-        image = new Image(inputstream);
-        imageView= new ImageView(image);
-         */
+        myBI= new BackgroundImage(new Image(resBG), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+         
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);
@@ -126,8 +120,8 @@ public class GameView extends Scene
         pb_physicalBar = new ProgressBar(0.5);
         pb_physicalBar.setPrefWidth(150);
         
-        //root.getChildren().add(imageView);
-        root.getChildren().add(room);
+        
+        root.setBackground(new Background(myBI));
         root.getChildren().add(new Text("Barre de vie"));
         root.getChildren().add(pb_healthBar);
         root.getChildren().add(new Text("Barre de faim"));
@@ -170,17 +164,9 @@ public class GameView extends Scene
 
     public void setRoom(String s) {
         room.setText(s);
-        /*
-        try {
-            inputstream = new FileInputStream(s);
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.err.println("Erreur chargement de ressources dans setRoom de getView a la ligne 165");
-        }
-        image = new Image(inputstream);
-        imageView= new ImageView(image);
-         */
+        myBI= new BackgroundImage(new Image(s), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        root.setBackground(new Background(myBI));
     }
     
     public void setHunger(double x){

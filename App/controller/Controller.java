@@ -101,7 +101,7 @@ public class Controller
 
 	public void loadGame(String save){
 		engine = Engine.loadSave(this, save);
-		View.changeScene(5,null); //GameView
+		View.changeScene(5,engine.getCurrentRoom()); //GameView
 		game_v = View.getGameView();
 		game_v.setRoom(engine.getCurrentRoom());
 		game_v.setName(engine.getInstanceName());

@@ -35,7 +35,7 @@ public class RessourcesEngine {
     final private String BATHROOM = "bath";
     final private String LIVING_ROOM = "livRo";
     final private String KITCHEN = "kit";
-    final private String GARDEN = "gard";
+    final private String GARDEN = "garden";
 
     private ArrayList<String> rooms = new ArrayList<>();
     private int numberOfRooms;
