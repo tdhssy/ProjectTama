@@ -37,34 +37,52 @@ public class NewGameMenu extends Scene
         root = new VBox();
 
         startGame = new Button("Commencer la partie");
-        startGame.setOnAction(e -> ActionController.event("StartGame"));
+        startGame.setOnAction(e -> {
+            try {
+                ActionController.event("StartGame");
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         startGame.setPrefSize(200, 35);
 
         retour = new Button("Retour");
-        retour.setOnAction(e -> ActionController.event("Go_main_menu"));
+        retour.setOnAction(e -> {
+            try {
+                ActionController.event("Go_main_menu");
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         retour.setPrefSize(100, 35);
 
         tamaChien = new Button("Chien");//A modifier par une image
         tamaChien.setOnAction(e -> changeType("TamaChien"));
         tamaChien.setPrefSize(100, 100);
-        tamaChien.setGraphic(new ImageView("Dog/Dog_Stay.gif"));
+        tamaChien.setGraphic(new ImageView("TamaChien/Stay.gif"));
 
         tamaChat = new Button("Chat");//A modifier par une image
         tamaChat.setOnAction(e -> changeType("TamaChat"));
         tamaChat.setPrefSize(100, 100);
-        tamaChat.setGraphic(new ImageView("Cat/Cat_Stay.gif"));
+        tamaChat.setGraphic(new ImageView("TamaChat/Stay.gif"));
 
         tamaLapin = new Button("Lapin");//A modifier par une image
         tamaLapin.setOnAction(e -> changeType("TamaLapin"));
         tamaLapin.setPrefSize(100, 100);
-        tamaLapin.setGraphic(new ImageView("Bunny/Bunny_Stay.gif"));
+        tamaLapin.setGraphic(new ImageView("TamaLapin/Stay.gif"));
 
         tamaRobot = new Button("Robot");//A modifier par une image
         tamaRobot.setOnAction(e -> changeType("TamaRobot"));
         tamaRobot.setPrefSize(100, 100);
-        tamaRobot.setGraphic(new ImageView("Robot/Robot_Stay.gif"));
+        tamaRobot.setGraphic(new ImageView("TamaRobot/Stay.gif"));
 
-        this.setOnKeyPressed(e -> ActionController.keyEventNewGameMenu(e)); //Pour les raccourci claviver
+        this.setOnKeyPressed(e -> {
+            try {
+                ActionController.keyEventNewGameMenu(e);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }); //Pour les raccourci claviver
 
         tamaName = new TextField("");
         tamaName.setMaxWidth(220);

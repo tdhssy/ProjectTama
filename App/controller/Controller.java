@@ -89,7 +89,7 @@ public class Controller
 				View.changeScene(5,engine.getCurrentRoom()); //GameView
 				Thread.sleep(1000);
 				game_v = View.getGameView();
-				game_v.setName(engine.getInstanceName());
+				//game_v.setName(engine.getInstanceName());
 				game_v.setType(engine.getTypeTama());
 				new_game_v = null;
 			}
@@ -104,7 +104,7 @@ public class Controller
 		View.changeScene(5,engine.getCurrentRoom()); //GameView
 		game_v = View.getGameView();
 		game_v.setRoom(engine.getCurrentRoom());
-		game_v.setName(engine.getInstanceName());
+		//game_v.setName(engine.getInstanceName());
 		game_v.setType(engine.getTypeTama());
 		load_game_v = null;
 		updateStatView();
@@ -154,22 +154,31 @@ public class Controller
 	 * 5 = Changer salle (droite)
 	 * 6 = Changer salle (gauche)
 	 */
-	public void gameAction(int action){
+	public void gameAction(int action) throws InterruptedException{
 		switch (action) {
 			case 0:
 				engine.besoin();
+				game_v.setAnimation("default.png");
+				
 				break;
 			case 1:
 				engine.manger();
+				game_v.setAnimation("Eat.gif");
+				
 				break;
 			case 2:
 				engine.jouer();
+				game_v.setAnimation("Play.gif");
 				break;
 			case 3:
 				engine.dormir();
+				game_v.setAnimation("Sleep.gif");
+				
 				break;
 			case 4:
 				engine.seLaver();
+				game_v.setAnimation("Clean.gif");
+				
 				break;
 			case 5:
 				game_v.setRoom(engine.nextRoom());
