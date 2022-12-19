@@ -47,22 +47,22 @@ public class NewGameMenu extends Scene
         tamaChien = new Button("Chien");//A modifier par une image
         tamaChien.setOnAction(e -> changeType("TamaChien"));
         tamaChien.setPrefSize(100, 100);
-        tamaChien.setGraphic(new ImageView("Dog.png"));
+        tamaChien.setGraphic(new ImageView("Dog/Dog_Stay.gif"));
 
         tamaChat = new Button("Chat");//A modifier par une image
         tamaChat.setOnAction(e -> changeType("TamaChat"));
         tamaChat.setPrefSize(100, 100);
-        tamaChat.setGraphic(new ImageView("Cat.png"));
+        tamaChat.setGraphic(new ImageView("Cat/Cat_Stay.gif"));
 
         tamaLapin = new Button("Lapin");//A modifier par une image
         tamaLapin.setOnAction(e -> changeType("TamaLapin"));
         tamaLapin.setPrefSize(100, 100);
-        tamaLapin.setGraphic(new ImageView("Bunny.png"));
+        tamaLapin.setGraphic(new ImageView("Bunny/Bunny_Stay.gif"));
 
         tamaRobot = new Button("Robot");//A modifier par une image
         tamaRobot.setOnAction(e -> changeType("TamaRobot"));
         tamaRobot.setPrefSize(100, 100);
-        tamaRobot.setGraphic(new ImageView("Robot.png"));
+        tamaRobot.setGraphic(new ImageView("Robot/Robot_Stay.gif"));
 
         this.setOnKeyPressed(e -> ActionController.keyEventNewGameMenu(e)); //Pour les raccourci claviver
 
