@@ -60,91 +60,37 @@ public class GameView extends Scene
         
         b_manger = new Button("Manger");
         b_manger.setPrefSize(300, 35);
-        b_manger.setOnAction(e -> {
-            try {
-                ActionController.event("Manger");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_manger.setOnAction(e -> {ActionController.event("Manger");});
 
         b_dormir = new Button("Dormir");
         b_dormir.setPrefSize(300, 35);
-        b_dormir.setOnAction(e -> {
-            try {
-                ActionController.event("Dormir");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_dormir.setOnAction(e -> {ActionController.event("Dormir");});
 
         b_laver = new Button("Laver");
         b_laver.setPrefSize(300, 35);
-        b_laver.setOnAction(e -> {
-            try {
-                ActionController.event("Laver");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_laver.setOnAction(e -> {ActionController.event("Laver");});
 
         b_jouer = new Button("Jouer");
         b_jouer.setPrefSize(300, 35);
-        b_jouer.setOnAction(e -> {
-            try {
-                ActionController.event("Jouer");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_jouer.setOnAction(e -> {ActionController.event("Jouer");});
 
         b_besoin = new Button("Besoin");
         b_besoin.setPrefSize(300, 35);
-        b_besoin.setOnAction(e -> {
-            try {
-                ActionController.event("Besoin");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_besoin.setOnAction(e -> {ActionController.event("Besoin");});
 
         b_quit = new Button("Quitter");
         b_quit.setPrefSize(300, 35);
-        b_quit.setOnAction(e -> {
-            try {
-                ActionController.event("QuitGame");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_quit.setOnAction(e -> {ActionController.event("QuitGame");});
 
         b_droite = new Button("Aller à droite");
         b_droite.setPrefSize(300, 35);
-        b_droite.setOnAction(e -> {
-            try {
-                ActionController.event("RightRoom");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_droite.setOnAction(e -> {ActionController.event("RightRoom");});
 
         b_gauche = new Button("Aller à gauche");
         b_gauche.setPrefSize(300, 35);
-        b_gauche.setOnAction(e -> {
-            try {
-                ActionController.event("LeftRoom");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_gauche.setOnAction(e -> {ActionController.event("LeftRoom");});
 
-        this.setOnKeyPressed(e -> {
-            try {
-                ActionController.keyEventInGame(e);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        }); //Pour les raccourci claviver
+        this.setOnKeyPressed(e -> {ActionController.keyEventInGame(e);}); //Pour les raccourci claviver
 
         room = new Text();
 

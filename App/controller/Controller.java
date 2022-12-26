@@ -154,7 +154,7 @@ public class Controller
 	 * 5 = Changer salle (droite)
 	 * 6 = Changer salle (gauche)
 	 */
-	public void gameAction(int action) throws InterruptedException{
+	public void gameAction(int action){
 		switch (action) {
 			case 0:
 				engine.besoin();

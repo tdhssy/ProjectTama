@@ -22,7 +22,7 @@ public class ActionController /*extends ActionListener */
      *     "message" étant le nom du bouton, pour pouvoir
      *     différencier les différents boutons.
      */
-    public static void event(String buttonName) throws InterruptedException{
+    public static void event(String buttonName){
         Controller control = Controller.getController();
         switch(buttonName){
             case "Go_new_game": 
@@ -81,7 +81,7 @@ public class ActionController /*extends ActionListener */
     /*
      * Gère les raccourci clavier dans une partie
      */
-    public static void keyEventInGame(KeyEvent ke) throws InterruptedException{
+    public static void keyEventInGame(KeyEvent ke){
 
         if(ke.getCode() == KeyCode.M){
             event("Manger");
@@ -96,7 +96,7 @@ public class ActionController /*extends ActionListener */
         }
     }
 
-    public static void keyEventNewGameMenu(KeyEvent ke) throws InterruptedException{
+    public static void keyEventNewGameMenu(KeyEvent ke){
         if(ke.getCode() == KeyCode.ENTER){
             event("StartGame");
         }

@@ -34,33 +34,15 @@ public class LoadSaveMenu extends Scene{
   
         b_retour = new Button("Retour au menu");
         b_retour.setPrefSize(300, 35);
-        b_retour.setOnAction(e -> {
-            try {
-                ActionController.event("Go_main_menu");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_retour.setOnAction(e -> {ActionController.event("Go_main_menu");});
 
         b_charger = new Button("Charger la partie");
         b_charger.setPrefSize(300, 35);
-        b_charger.setOnAction(e -> {
-            try {
-                ActionController.event("loadSave");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_charger.setOnAction(e -> {ActionController.event("loadSave");});
 
         b_suppr = new Button("Supprimer la partie");
         b_suppr.setPrefSize(300,35);
-        b_suppr.setOnAction(e -> {
-            try {
-                ActionController.event("Supp_save");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        b_suppr.setOnAction(e -> {ActionController.event("Supp_save");});
 
         root.getChildren().add(listSaves);
         root.getChildren().add(b_charger);

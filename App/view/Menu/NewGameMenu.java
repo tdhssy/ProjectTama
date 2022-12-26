@@ -38,21 +38,13 @@ public class NewGameMenu extends Scene
 
         startGame = new Button("Commencer la partie");
         startGame.setOnAction(e -> {
-            try {
-                ActionController.event("StartGame");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("StartGame");
         });
         startGame.setPrefSize(200, 35);
 
         retour = new Button("Retour");
         retour.setOnAction(e -> {
-            try {
-                ActionController.event("Go_main_menu");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("Go_main_menu");
         });
         retour.setPrefSize(100, 35);
 
@@ -77,11 +69,7 @@ public class NewGameMenu extends Scene
         tamaRobot.setGraphic(new ImageView("TamaRobot/Stay.gif"));
 
         this.setOnKeyPressed(e -> {
-            try {
-                ActionController.keyEventNewGameMenu(e);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.keyEventNewGameMenu(e);
         }); //Pour les raccourci claviver
 
         tamaName = new TextField("");

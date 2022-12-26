@@ -24,41 +24,25 @@ public class MainMenu extends Scene {
         nouvelle_partie = new Button("Nouvelle partie");
         nouvelle_partie.setPrefSize(300, 35);
         nouvelle_partie.setOnAction(e -> {
-            try {
-                ActionController.event("Go_new_game");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("Go_new_game");
         });
 
         charger_partie = new Button("Charger une partie");
         charger_partie.setPrefSize(300, 35);
         charger_partie.setOnAction(e -> {
-            try {
-                ActionController.event("Go_load_game");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("Go_load_game");
         });
 
         parametre = new Button("Parametre");
         parametre.setPrefSize(300, 35);
         parametre.setOnAction(e -> {
-            try {
-                ActionController.event("Go_parametre");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("Go_parametre");
         });
 
         quitter = new Button("Quitter");
         quitter.setPrefSize(300, 35);
         quitter.setOnAction(e -> {
-            try {
-                ActionController.event("quitter");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+        ActionController.event("quitter");
         });
 
         //Ajout des boutons au root

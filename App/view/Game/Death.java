@@ -27,24 +27,12 @@ public class Death extends VBox{
         deathannouncer.setFont(new Font(30));
 
         mainMenu = new Button("Menu principal");
-        mainMenu.setOnAction(e -> {
-            try {
-                ActionController.event("Go_main_menu");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        mainMenu.setOnAction(e -> {ActionController.event("Go_main_menu");});
         mainMenu.setPrefHeight(this.getHeight()*0.20);
         mainMenu.setPrefWidth(this.getWidth()*0.50);
         
         loadingMenu = new Button("Charger une partie");
-        loadingMenu.setOnAction(e -> {
-            try {
-                ActionController.event("Go_load_game");
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        });
+        loadingMenu.setOnAction(e -> {ActionController.event("Go_load_game");});
         loadingMenu.setPrefHeight(this.getHeight()*0.20);
         loadingMenu.setPrefWidth(this.getWidth()*0.50);
 
