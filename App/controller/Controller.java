@@ -89,7 +89,7 @@ public class Controller
 				View.changeScene(5,engine.getCurrentRoom()); //GameView
 				Thread.sleep(1000);
 				game_v = View.getGameView();
-				//game_v.setName(engine.getInstanceName());
+				game_v.setName(engine.getInstanceName());
 				game_v.setType(engine.getTypeTama());
 				new_game_v = null;
 			}
@@ -104,7 +104,7 @@ public class Controller
 		View.changeScene(5,engine.getCurrentRoom()); //GameView
 		game_v = View.getGameView();
 		game_v.setRoom(engine.getCurrentRoom());
-		//game_v.setName(engine.getInstanceName());
+		game_v.setName(engine.getInstanceName());
 		game_v.setType(engine.getTypeTama());
 		load_game_v = null;
 		updateStatView();
