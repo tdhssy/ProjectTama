@@ -2,6 +2,7 @@ package view.Game;
 
 import controller.ActionController;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import view.View;
 
 public class GameView extends Scene
 {
@@ -54,39 +56,42 @@ public class GameView extends Scene
     public GameView(Parent arg0, double arg1, double arg2,String resBG) {
         super(arg0, arg1, arg2);
 
+        int l = View.largeur/6;
+        int h = View.hauteur/12;
+
         myBI= new BackgroundImage(new Image(resBG), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         new BackgroundSize(1.0, 1.0, true, true, false, false));
         
         b_manger = new Button("Manger");
-        b_manger.setPrefSize(300, 35);
+        b_manger.setPrefSize(l, h);
         b_manger.setOnAction(e -> {ActionController.event("Manger");});
 
         b_dormir = new Button("Dormir");
-        b_dormir.setPrefSize(300, 35);
+        b_dormir.setPrefSize(l, h);
         b_dormir.setOnAction(e -> {ActionController.event("Dormir");});
 
         b_laver = new Button("Laver");
-        b_laver.setPrefSize(300, 35);
+        b_laver.setPrefSize(l, h);
         b_laver.setOnAction(e -> {ActionController.event("Laver");});
 
         b_jouer = new Button("Jouer");
-        b_jouer.setPrefSize(300, 35);
+        b_jouer.setPrefSize(l, h);
         b_jouer.setOnAction(e -> {ActionController.event("Jouer");});
 
         b_besoin = new Button("Besoin");
-        b_besoin.setPrefSize(300, 35);
+        b_besoin.setPrefSize(l, h);
         b_besoin.setOnAction(e -> {ActionController.event("Besoin");});
 
         b_quit = new Button("Quitter");
-        b_quit.setPrefSize(300, 35);
+        b_quit.setPrefSize(l, h);
         b_quit.setOnAction(e -> {ActionController.event("QuitGame");});
 
         b_droite = new Button("Aller à droite\n-->");
-        b_droite.setPrefSize(300, 35);
+        b_droite.setPrefSize(l, h);
         b_droite.setOnAction(e -> {ActionController.event("RightRoom");});
 
         b_gauche = new Button("Aller à gauche\n<--");
-        b_gauche.setPrefSize(300, 35);
+        b_gauche.setPrefSize(l, h);
         b_gauche.setOnAction(e -> {ActionController.event("LeftRoom");});
 
         this.setOnKeyPressed(e -> {ActionController.keyEventInGame(e);}); //Pour les raccourci claviver
@@ -101,25 +106,33 @@ public class GameView extends Scene
         action1.getChildren().add(b_laver);
         action1.setAlignment(Pos.CENTER);
 
+        HBox.setMargin(b_manger, new Insets(h/6, l/6, h/6, l/6));
+        HBox.setMargin(b_jouer, new Insets(h/6, l/6, h/6, l/6));
+        HBox.setMargin(b_laver, new Insets(h/6, l/6, h/6, l/6));
+
         HBox action2 = new HBox();
+
+        action2.getChildren().add(b_gauche);
         action2.getChildren().add(b_dormir);
         action2.getChildren().add(b_besoin);
+        action2.getChildren().add(b_droite);
         action2.setAlignment(Pos.CENTER);
 
-        HBox action3 = new HBox();
-        action3.getChildren().add(b_gauche);
-        action3.getChildren().add(b_droite);
-        action3.setAlignment(Pos.CENTER);
+        HBox.setMargin(b_dormir, new Insets(h/6, l/6, h/6, l/6));
+        HBox.setMargin(b_besoin, new Insets(h/6, l/6, h/6, l/6));
+        HBox.setMargin(b_gauche, new Insets(h/6, l, h/6, l/6));
+        HBox.setMargin(b_droite, new Insets(h/6, l/6, h/6, l));
 
         action.getChildren().add(action1);
         action.getChildren().add(action2);
-        action.getChildren().add(action3);
 
         action.setAlignment(Pos.CENTER);
+        action.setStyle("-fx-background-color: white;");
+
 
         tamagotchi = new ImageView();
-        tamagotchi.setFitHeight(100);
-        tamagotchi.setFitHeight(100);
+        tamagotchi.setFitHeight(l);
+        tamagotchi.setFitHeight(l);
         tamagotchi.setPreserveRatio(true);
         
         bottom.getChildren().add(tamagotchi);
@@ -128,32 +141,42 @@ public class GameView extends Scene
 
         room = new Text();
 
+        int n = l;
+        int s = h*200;
+
         pb_healthBar = new ProgressBar(1);
-        pb_healthBar.setPrefWidth(150);
+        pb_healthBar.setPrefWidth(n);
+        pb_healthBar.setPrefHeight(s);
         pb_healthBar.setStyle("-fx-accent: red;");
 
         pb_hungerBar = new ProgressBar(0.5);
-        pb_hungerBar.setPrefWidth(150);
+        pb_hungerBar.setPrefWidth(n);
+        pb_hungerBar.setPrefHeight(s);
         pb_hungerBar.setStyle("-fx-accent: green;");
 
         pb_mentalBar = new ProgressBar(0.5);
-        pb_mentalBar.setPrefWidth(150);
+        pb_mentalBar.setPrefWidth(n);
+        pb_mentalBar.setPrefHeight(s);
         pb_mentalBar.setStyle("-fx-accent: blue;");
 
         pb_needBar = new ProgressBar(0.5);
-        pb_needBar.setPrefWidth(150);
+        pb_needBar.setPrefWidth(n);
+        pb_needBar.setPrefHeight(s);
         pb_needBar.setStyle("-fx-accent: brown;");
 
         pb_sleepBar = new ProgressBar(0.5);
-        pb_sleepBar.setPrefWidth(150);
+        pb_sleepBar.setPrefWidth(n);
+        pb_sleepBar.setPrefHeight(s);
         pb_sleepBar.setStyle("-fx-accent: violet;");
 
         pb_hygieneBar = new ProgressBar(0.5);
-        pb_hygieneBar.setPrefWidth(150);
+        pb_hygieneBar.setPrefWidth(n);
+        pb_hygieneBar.setPrefHeight(s);
         pb_hygieneBar.setStyle("-fx-accent: pink;");
 
         pb_physicalBar = new ProgressBar(0.5);
-        pb_physicalBar.setPrefWidth(150);
+        pb_physicalBar.setPrefWidth(n);
+        pb_physicalBar.setPrefHeight(s);
         pb_physicalBar.setStyle("-fx-accent: orange;");
 
         bar = new VBox();
@@ -176,7 +199,7 @@ public class GameView extends Scene
         top = new VBox();
         
         name = new Text();
-        name.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        name.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/3));
 
         top.getChildren().add(b_quit);
         top.getChildren().add(name);
@@ -184,7 +207,7 @@ public class GameView extends Scene
         top.setAlignment(Pos.CENTER);
 
         root = new BorderPane();
-
+        
         root.setTop(top);
         root.setLeft(bar);
         root.setBottom(bottom);

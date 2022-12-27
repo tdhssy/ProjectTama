@@ -23,7 +23,7 @@ public class Death extends VBox{
         setHeight(height);
 
         deathannouncer = new Text("Ton animal "+NomTama+" est mort");
-        //Font size 1 = 1.3 pixels
+        //Font size 1 = 1.3 pixels 
         deathannouncer.setFont(new Font(30));
 
         mainMenu = new Button("Menu principal");

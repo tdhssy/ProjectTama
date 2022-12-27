@@ -1,6 +1,7 @@
 package view.Menu;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -66,17 +67,22 @@ public class LoadOption extends Scene {
         
         set.getMenus().add(menu);
 
+        int l = View.largeur/6;
+        int h = View.hauteur/9;
+
         retour = new Button("Retour");
         retour.setOnAction(e -> {
         ActionController.event("Go_main_menu");
         });
-        retour.setPrefSize(width*0.08, height*0.04);
+        retour.setPrefSize(l, h);
         
         root.getChildren().add(set);
         root.getChildren().add(retour);
+        
+        VBox.setMargin(set, new Insets(h/6, l/6, h/6, l/6));
+        VBox.setMargin(retour, new Insets(h/6, l/6, h/6, l/6));
 
-        VBox.setMargin(set, new Insets(150,425,0,420));
-        VBox.setMargin(retour, new Insets(100,0,0,430));
+        root.setAlignment(Pos.CENTER);
 
         //Change la couleur du fond d'écran
         root.setStyle("-fx-background-color: grey;");
