@@ -52,6 +52,7 @@ public class GameView extends Scene
     VBox bar;
     VBox bottom;
     BorderPane root;
+    String temps;
 
     public GameView(Parent arg0, double arg1, double arg2,String resBG) {
         super(arg0, arg1, arg2);
