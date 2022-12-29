@@ -33,7 +33,7 @@ public class RessourcesEngine {
     /* ---------------------------------------------------------------- */
     //Name of room file
     final private String BATHROOM = "bath";
-    final private String LIVING_ROOM = "livRo";
+    final private String LIVING_ROOM = "salon";
     final private String KITCHEN = "kitchen";
     final private String GARDEN = "garden";
 
