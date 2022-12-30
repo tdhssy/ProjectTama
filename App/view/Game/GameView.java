@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelFormat;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -18,6 +19,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -49,7 +51,9 @@ public class GameView extends Scene
     ProgressBar pb_physicalBar;
     BackgroundImage myBI;
     VBox top;
+    HBox top1;
     VBox bar;
+    HBox bbar;
     VBox bottom;
     BorderPane root;
     String temps;
@@ -62,30 +66,33 @@ public class GameView extends Scene
 
         myBI= new BackgroundImage(new Image(resBG), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         new BackgroundSize(1.0, 1.0, true, true, false, false));
+
+        
         
         b_manger = new Button("Manger");
-        b_manger.setPrefSize(l, h);
+        b_manger.setPrefSize(l, 30);
         b_manger.setOnAction(e -> {ActionController.event("Manger");});
 
         b_dormir = new Button("Dormir");
-        b_dormir.setPrefSize(l, h);
+        b_dormir.setPrefSize(l, 30);
         b_dormir.setOnAction(e -> {ActionController.event("Dormir");});
 
         b_laver = new Button("Laver");
-        b_laver.setPrefSize(l, h);
+        b_laver.setPrefSize(l, 30);
         b_laver.setOnAction(e -> {ActionController.event("Laver");});
 
         b_jouer = new Button("Jouer");
-        b_jouer.setPrefSize(l, h);
+        b_jouer.setPrefSize(l, 30);
         b_jouer.setOnAction(e -> {ActionController.event("Jouer");});
 
         b_besoin = new Button("Besoin");
-        b_besoin.setPrefSize(l, h);
+        b_besoin.setPrefSize(l, 30);
         b_besoin.setOnAction(e -> {ActionController.event("Besoin");});
 
         b_quit = new Button("Quitter");
-        b_quit.setPrefSize(l, h);
+        b_quit.setPrefSize(l/2, 30);
         b_quit.setOnAction(e -> {ActionController.event("QuitGame");});
+        
 
         b_droite = new Button("Aller à droite\n-->");
         b_droite.setPrefSize(l, h);
@@ -99,44 +106,47 @@ public class GameView extends Scene
 
         bottom = new VBox();
 
+        tamagotchi = new ImageView();
+        tamagotchi.setFitHeight(l);
+        tamagotchi.setFitHeight(l);
+        tamagotchi.setPreserveRatio(true);
+
         VBox action = new VBox();
         
         HBox action1 = new HBox();
-        action1.getChildren().add(b_manger);
-        action1.getChildren().add(b_jouer);
-        action1.getChildren().add(b_laver);
+        action1.getChildren().add(b_gauche);
+        action1.getChildren().add(tamagotchi);
+        action1.getChildren().add(b_droite);
+
         action1.setAlignment(Pos.CENTER);
 
-        HBox.setMargin(b_manger, new Insets(h/6, l/6, h/6, l/6));
-        HBox.setMargin(b_jouer, new Insets(h/6, l/6, h/6, l/6));
-        HBox.setMargin(b_laver, new Insets(h/6, l/6, h/6, l/6));
+        HBox.setMargin(b_gauche, new Insets(h/6, l, h/6, l/6));
+        HBox.setMargin(b_droite, new Insets(h/6, l/6, h/6, l));
+
 
         HBox action2 = new HBox();
 
-        action2.getChildren().add(b_gauche);
+        action2.getChildren().add(b_manger);
+        action2.getChildren().add(b_jouer);
+        action2.getChildren().add(b_laver);
         action2.getChildren().add(b_dormir);
         action2.getChildren().add(b_besoin);
-        action2.getChildren().add(b_droite);
+    
         action2.setAlignment(Pos.CENTER);
+        //action2.setStyle("-fx-background-color: black;");
 
-        HBox.setMargin(b_dormir, new Insets(h/6, l/6, h/6, l/6));
-        HBox.setMargin(b_besoin, new Insets(h/6, l/6, h/6, l/6));
-        HBox.setMargin(b_gauche, new Insets(h/6, l, h/6, l/6));
-        HBox.setMargin(b_droite, new Insets(h/6, l/6, h/6, l));
+        HBox.setMargin(b_manger, new Insets(h/6, 15, h/6, 20));
+        HBox.setMargin(b_jouer, new Insets(h/6, 15, h/6, 20));
+        HBox.setMargin(b_laver, new Insets(h/6, 15, h/6, 20));
+        HBox.setMargin(b_besoin, new Insets(h/6, 15, h/6, 20));
 
         action.getChildren().add(action1);
         action.getChildren().add(action2);
 
         action.setAlignment(Pos.CENTER);
-        action.setStyle("-fx-background-color: white;");
+        //action.setStyle("-fx-background-color: white;");
 
-
-        tamagotchi = new ImageView();
-        tamagotchi.setFitHeight(l);
-        tamagotchi.setFitHeight(l);
-        tamagotchi.setPreserveRatio(true);
         
-        bottom.getChildren().add(tamagotchi);
         bottom.getChildren().add(action);
         bottom.setAlignment(Pos.CENTER);
 
@@ -180,7 +190,12 @@ public class GameView extends Scene
         pb_physicalBar.setPrefHeight(s);
         pb_physicalBar.setStyle("-fx-accent: orange;");
 
+        bbar = new HBox();
         bar = new VBox();
+        bbar.getChildren().add(bar);
+        bbar.setMargin(bar, new Insets(0,0,0,40));
+        bar.setStyle("-fx-background-color:  #ebedef");
+        
         
         bar.getChildren().add(new Text("Barre de vie"));
         bar.getChildren().add(pb_healthBar);
@@ -202,15 +217,20 @@ public class GameView extends Scene
         name = new Text();
         name.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/3));
 
-        top.getChildren().add(b_quit);
-        top.getChildren().add(name);
 
+        top1 = new HBox();
+        top1.getChildren().add(b_quit);
+        top1.setAlignment(Pos.CENTER_RIGHT);
+        top1.setMargin(b_quit, new Insets(15,10,15,10));
+
+        top.getChildren().add(top1);
+        top.getChildren().add(name);
         top.setAlignment(Pos.CENTER);
 
         root = new BorderPane();
         
         root.setTop(top);
-        root.setLeft(bar);
+        root.setLeft(bbar);
         root.setBottom(bottom);
         root.setBackground(new Background(myBI));
 
