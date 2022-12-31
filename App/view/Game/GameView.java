@@ -102,6 +102,9 @@ public class GameView extends Scene
         b_gauche.setPrefSize(l, h);
         b_gauche.setOnAction(e -> {ActionController.event("LeftRoom");});
 
+
+        
+
         this.setOnKeyPressed(e -> {ActionController.keyEventInGame(e);}); //Pour les raccourci claviver
 
         bottom = new VBox();
@@ -235,9 +238,23 @@ public class GameView extends Scene
         root.setBackground(new Background(myBI));
 
         setRoot(root);
+        setRoom(resBG);
+
     }
 
     public void setRoom(String s) {
+        b_gauche.setVisible(!s.equals("/bath.png")); // disparition bouton gauche dans la salle de bain
+        b_droite.setVisible(!s.equals("/garden.png")); // disparition bouton droite dans le jardin
+        //System.out.println(s.equals("/salon.png"));
+
+        b_manger.setDisable(!s.equals("/kitchen.png"));
+        b_dormir.setDisable(!s.equals("/salon.png"));
+        b_laver.setDisable(!s.equals("/bath.png"));
+        b_jouer.setDisable(!s.equals("/garden.png") & !s.equals("salon"));
+        b_besoin.setDisable(!s.equals("/bath.png"));
+
+
+
         room.setText(s);
         myBI= new BackgroundImage(new Image(s), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         new BackgroundSize(1.0, 1.0, true, true, false, false));
