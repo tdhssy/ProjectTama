@@ -276,7 +276,7 @@ public class Engine {
 	public void dormir(){
 		tamagotchi.updateStat("Sleep", 20,tamagotchi.getMULTIPLIER());
 		tamagotchi.updateStat("MentalHealth", 10,tamagotchi.getMULTIPLIER());
-		tamagotchi.updateStat("PhysicalCondition", 10,tamagotchi.getMULTIPLIER());
+		tamagotchi.updateStat("PhysicalCondition", 20,tamagotchi.getMULTIPLIER());
 
 		tamagotchi.updateStat("Satiety", -15,1);		
 	}
@@ -308,7 +308,7 @@ public class Engine {
 		tamagotchi.updateStat("MentalHealth", 10,tamagotchi.getMULTIPLIER());
 
 		tamagotchi.updateStat("Satiety", -10,1);
-		tamagotchi.updateStat("PhysicalCondition", -10,1);
+		tamagotchi.updateStat("PhysicalCondition", -15,1);
 		tamagotchi.updateStat("Sleep", -10,1);
 	}
 
