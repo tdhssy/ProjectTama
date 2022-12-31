@@ -48,14 +48,16 @@ public class TamaTest {
             new_data.add(old_data.get(3)-50);  //MentalHealth
             new_data.add(old_data.get(4)-50);  //Needs
             new_data.add(old_data.get(5)-50);  //Sleep
-            new_data.add(0);                   //ID
+            new_data.add(old_data.get(6)-50);  //hygiène
+            new_data.add(0);  //ID
         ArrayList<Integer> oracle = new ArrayList<>();
             oracle.add(100);  //Health        
             oracle.add(25);   //Satiety        
             oracle.add(25);   //PhysicalCondition        
             oracle.add(25);   //MentalHealth        
             oracle.add(25);   //Needs        
-            oracle.add(25);   //Sleep        
+            oracle.add(25);   //Sleep  
+            oracle.add(25);   //hygiène       
             oracle.add(0);    //ID
         tama.setAllData(new_data); 
         assertEquals(oracle, tama.getAllData());
@@ -68,11 +70,12 @@ public class TamaTest {
         Tamagotchi tama = engine.getTamagotchi();
         ArrayList<Integer> oracle = new ArrayList<>();
             oracle.add(150);  //Health        
-            oracle.add(69);   //Satiety        
-            oracle.add(69);   //PhysicalCondition        
-            oracle.add(69);   //MentalHealth        
-            oracle.add(69);   //Needs        
-            oracle.add(69);   //Sleep        
+            oracle.add(73);   //Satiety        
+            oracle.add(73);   //PhysicalCondition        
+            oracle.add(73);   //MentalHealth        
+            oracle.add(73);   //Needs        
+            oracle.add(73);   //Sleep 
+            oracle.add(73);   //hygiene       
             oracle.add(0);    //ID
         try {
             Thread.sleep(3001);
