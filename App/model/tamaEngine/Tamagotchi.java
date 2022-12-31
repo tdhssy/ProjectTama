@@ -84,8 +84,8 @@ public abstract class Tamagotchi {
 		return datas;
 	}
 
-	//decrease one stat with factor
-	public void updateStat(String stat,int factor){
+	//decrease one stat with factor and multiplier
+	public void updateStat(String stat,int factor,int multiplier){
 
 
 		switch (stat) {
@@ -100,8 +100,8 @@ public abstract class Tamagotchi {
 				break;
 
 			case "Satiety":
-				if(this.getSatiety()+factor>MIN_VALUE && this.getSatiety()+factor<MAX_VALUE){ //0<satiete+fact<150
-					this.setSatiety(this.getSatiety()+factor);
+				if(this.getSatiety()+factor*multiplier>MIN_VALUE && this.getSatiety()+factor*multiplier<MAX_VALUE){ //0<satiete+fact*mult<150
+					this.setSatiety(this.getSatiety()+factor*multiplier);
 				}else if(this.getSatiety()+factor<=MIN_VALUE){	//satiete+fact<=0
 					this.setSatiety(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
@@ -137,7 +137,7 @@ public abstract class Tamagotchi {
 
 			case "Needs":
 				if(this.getNeeds()+factor>MIN_VALUE && this.getNeeds()+factor<MAX_VALUE){
-					this.setNeeds(this.getNeeds()+factor);
+					this.setNeeds(MAX_VALUE); //modif par clement
 				}else if(this.getNeeds()+factor<=MIN_VALUE){
 					this.setNeeds(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
@@ -149,7 +149,7 @@ public abstract class Tamagotchi {
 
 			case "Sleep":
 				if(this.getSleep()+factor>MIN_VALUE && this.getSleep()+factor<MAX_VALUE){
-					this.setSleep(this.getSleep()+factor);
+					this.setSleep(this.getSleep()+factor); //modif par clement
 				}else if(this.getSleep()+factor<=MIN_VALUE){
 					this.setSleep(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
@@ -161,7 +161,7 @@ public abstract class Tamagotchi {
 
 			case "Hygiene":
 				if(this.getHygiene()+factor>MIN_VALUE && this.getHygiene()+factor<MAX_VALUE){
-					this.setHygiene(this.getHygiene()+factor);
+					this.setHygiene(MAX_VALUE); //modif par clément
 				}else if(this.getHygiene()+factor<=MIN_VALUE){
 					this.setHygiene(MIN_VALUE);
 					this.setHealth(this.getHealth()-this.getFactor());
@@ -213,6 +213,7 @@ public abstract class Tamagotchi {
 	 */
 	public abstract int getFactor();
 	public abstract int getID();
+	public abstract int getMULTIPLIER();
 
 
     public int getSatiety() {

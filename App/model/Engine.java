@@ -264,7 +264,7 @@ public class Engine {
 	 * Augmente la jauge de satieté
      */
 	public void manger(){
-		tamagotchi.updateStat("Satiety", 10); //facteur à modifier
+		tamagotchi.updateStat("Satiety", 10,tamagotchi.getMULTIPLIER()); //facteur à modifier
 	}
 
 	/**
@@ -274,11 +274,11 @@ public class Engine {
 	 * Diminue la jauge de satiete
      */
 	public void dormir(){
-		tamagotchi.updateStat("Sleep", 10);
-		tamagotchi.updateStat("MentalHealth", 10);
-		tamagotchi.updateStat("PhysicalCondition", 10);
+		tamagotchi.updateStat("Sleep", 20,tamagotchi.getMULTIPLIER());
+		tamagotchi.updateStat("MentalHealth", 10,tamagotchi.getMULTIPLIER());
+		tamagotchi.updateStat("PhysicalCondition", 10,tamagotchi.getMULTIPLIER());
 
-		tamagotchi.updateStat("Satiety", -20);		
+		tamagotchi.updateStat("Satiety", -15,1);		
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class Engine {
 	 * Augmente la jauge de d'hygiene
      */
 	public void seLaver(){
-		tamagotchi.updateStat("Hygiene", 10);
+		tamagotchi.updateStat("Hygiene", 10,1);
 	}
 
 	/**
@@ -294,7 +294,7 @@ public class Engine {
 	 * Diminue la jauge de besoin
      */
 	public void besoin(){
-		tamagotchi.updateStat("Needs", 10);
+		tamagotchi.updateStat("Needs", 10,1);
 	}
 
 	/**
@@ -305,11 +305,11 @@ public class Engine {
 	 * Diminue la jauge de de sommeil
      */
 	public void jouer(){
-		tamagotchi.updateStat("MentalHealth", 10);
+		tamagotchi.updateStat("MentalHealth", 10,tamagotchi.getMULTIPLIER());
 
-		tamagotchi.updateStat("Satiety", -10);
-		tamagotchi.updateStat("PhysicalCondition", -10);
-		tamagotchi.updateStat("Sleep", -10);
+		tamagotchi.updateStat("Satiety", -10,1);
+		tamagotchi.updateStat("PhysicalCondition", -10,1);
+		tamagotchi.updateStat("Sleep", -10,1);
 	}
 
 

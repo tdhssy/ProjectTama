@@ -3,6 +3,7 @@ package model.tamaEngine;
 public class TamaChien extends Tamagotchi{
 
     final private int FACTOR=3;
+    final private int MULTIPLIER=1;
     final private int ID=1;
 
     public TamaChien(){
@@ -19,4 +20,8 @@ public class TamaChien extends Tamagotchi{
         return ID;
     }
     
+    @Override
+    public int getMULTIPLIER(){
+        return MULTIPLIER;
+    }
 }

@@ -4,6 +4,7 @@ public class TamaRobot extends Tamagotchi{
 
 
     final private int FACTOR=1;
+    final private int MULTIPLIER=1;
     final private int ID = 3;
 
 
@@ -21,4 +22,8 @@ public class TamaRobot extends Tamagotchi{
         return ID;
     }
     
+    @Override
+    public int getMULTIPLIER(){
+        return MULTIPLIER;
+    }
 }
