@@ -30,7 +30,7 @@ public class TamaTest {
     {
         engine = Engine.createEngineInstance(null, "TamaChien", "testdog");
         //engine.move("garden");
-        assertEquals("garden", engine.getCurrentRoom());
+        assertEquals("/salon.png", engine.getCurrentRoom());
     }
 
     @Test
