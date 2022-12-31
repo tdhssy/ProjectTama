@@ -5,10 +5,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.View;
+
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.Image;
 
 public class MainMenu extends Scene {
 
@@ -17,6 +25,7 @@ public class MainMenu extends Scene {
     Button parametre;
     Button quitter;
     BorderPane main;
+    BackgroundImage backgroundimg;
     VBox root;
 
     public MainMenu(Parent arg0, double arg1, double arg2) {
@@ -69,11 +78,14 @@ public class MainMenu extends Scene {
         VBox.setMargin(parametre, new Insets(h/6, l/6, h/6, l/6));
         VBox.setMargin(quitter, new Insets(h/6, l/6, h/6, l/6));
         
-        //Change la couleur du fond d'écran
-        main.setStyle("-fx-background-color: grey;");
+        //Charge l'image du fond d'écran
+        backgroundimg= new BackgroundImage(new Image("menuimg.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        
 
         //Place le root sur la scene
         setRoot(main);
+        root.setBackground(new Background(backgroundimg));
     }
     
 }

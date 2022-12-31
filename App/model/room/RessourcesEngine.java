@@ -39,7 +39,7 @@ public class RessourcesEngine {
 
     private ArrayList<String> rooms = new ArrayList<>();
     private int numberOfRooms;
-    private int currentRoom=0; //default is LivingRoom
+    private int currentRoom=1; //default is LivingRoom
 
 
     
