@@ -78,7 +78,7 @@ public class TamaTest {
             oracle.add(73);   //hygiene       
             oracle.add(0);    //ID
         try {
-            Thread.sleep(3001);
+            Thread.sleep(1001);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
