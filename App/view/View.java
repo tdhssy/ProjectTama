@@ -7,7 +7,7 @@ import javafx.application.Application;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class View extends Application {
+public class View {
 
     private static NewGameMenu new_game_v = null;
     private static LoadSaveMenu load_save_v = null;
@@ -22,8 +22,8 @@ public class View extends Application {
     public static int hauteur;
 
 
-    @Override
-    public void start(Stage s) throws Exception {   
+    
+    public static void start() {   
 
         root = new BorderPane();
 

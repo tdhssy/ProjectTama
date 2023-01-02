@@ -53,7 +53,7 @@ public class Controller
 	{
 		//menu_view = MenuView.getMenuView();
 		//menu_view.setup("TamaToxic");
-		Application.launch(View.class);
+		View.start();
 	}
 
 	/*

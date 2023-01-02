@@ -1,19 +1,22 @@
 import controller.Controller;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 
 /*
  * Classe principale, contient le main.
  */
-public class Launch
+public class Launch extends Application
 {
 	public static void main(String[] args) {
-		if (args.length == 0)
-		{
-			Controller controller = Controller.getController();
-			controller.startEvent();
+		launch(args);
+	}
 
-		}else
-		{
-			System.err.println("Usage : java -jar Tama.jar");
-		}
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
+		Controller controller = Controller.getController();
+		controller.startEvent();
 	}
 }
