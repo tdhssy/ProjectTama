@@ -64,9 +64,11 @@ public class GameView extends Scene {
     String temps;
 
     Image img;
-    ImageView i;
+    ImageView i; //salon, sdb, cuisine...
+    Image weath;
+    ImageView weather;
 
-    public GameView(Parent arg0, double arg1, double arg2, String resBG, String time) {
+    public GameView(Parent arg0, double arg1, double arg2, String resBG, String time, String w) {
         super(arg0, arg1, arg2);
 
         int l = View.largeur / 6;
@@ -80,6 +82,9 @@ public class GameView extends Scene {
         img = new Image(resBG);
         i = new ImageView();
         i.setImage(img);
+        weath = new Image(w);
+        weather = new ImageView();
+        weather.setImage(weath);
 
 
 
@@ -131,9 +136,9 @@ public class GameView extends Scene {
             ActionController.event("LeftRoom");
         });
 
-        this.setOnKeyPressed(e -> {
+        /*this.setOnKeyPressed(e -> {
             ActionController.keyEventInGame(e);
-        }); // Pour les raccourci claviver
+        }); // Pour les raccourci clavier*/
 
 
 
@@ -290,6 +295,7 @@ public class GameView extends Scene {
         
         //page.setPrefSize(root.getWidth(), root.getHeight());
 
+        root.getChildren().add(weather);
         root.getChildren().add(i);
         root.getChildren().add(page);
         //root.getChildren().add(top);
@@ -298,6 +304,7 @@ public class GameView extends Scene {
   
         setRoot(root);
         setRoom(resBG);
+        setWeather(w);
 
         i.setFitWidth(root.getWidth());
         i.setFitHeight(root.getHeight());
@@ -312,6 +319,14 @@ public class GameView extends Scene {
         root.setBackground(new Background(myBI));
     }
 
+    public void setWeather(String w) {
+        weather = new ImageView();
+        weather.setImage(new Image(w));
+        weather.setFitWidth(root.getWidth());
+        weather.setFitHeight(root.getHeight());
+        root.getChildren().set(0, weather);
+    }
+
     public void setRoom(String s) {
         b_gauche.setVisible(!s.equals("/bath.png")); // disparition bouton gauche dans la salle de bain
         b_droite.setVisible(!s.equals("/garden.png")); // disparition bouton droite dans le jardin
@@ -324,15 +339,11 @@ public class GameView extends Scene {
         b_besoin.setDisable(!s.equals("/bath.png"));
 
         room.setText(s);
-        // myBI= new BackgroundImage(new Image(s), BackgroundRepeat.REPEAT,
-        // BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-        // new BackgroundSize(1.0, 1.0, true, true, false, false));
-        // root.setBackground(new Background(myBI));
         i = new ImageView();
         i.setImage(new Image(s));
         i.setFitWidth(root.getWidth());
         i.setFitHeight(root.getHeight());
-        root.getChildren().set(0, i);
+        root.getChildren().set(1, i);
         System.out.println(root.getChildren().size());
 
     }

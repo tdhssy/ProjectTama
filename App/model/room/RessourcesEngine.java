@@ -51,7 +51,7 @@ public class RessourcesEngine {
         this.journeyCycle.add(RESSOURCES_PATH+NIGHT+EXTENSION_PNG);
 
         //Weathers
-        this.weathers.add(RESSOURCES_PATH+DEFAULT_WEATHER+EXTENSION_GIF);
+        this.weathers.add(RESSOURCES_PATH+DEFAULT_WEATHER+EXTENSION_PNG);
         this.weathers.add(RESSOURCES_PATH+RAIN+EXTENSION_GIF);
 
         this.numberOfWeather = weathers.size()-1;
