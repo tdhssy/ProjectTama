@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,7 +42,7 @@ public class GameView extends Scene {
     Text room;
     ImageView tamagotchi;
     String t_name;
-    Text name;
+    Label name;
     String t_type;
     ProgressBar pb_healthBar;
     ProgressBar pb_hungerBar;
@@ -154,8 +155,9 @@ public class GameView extends Scene {
 
         topCenter = new HBox();
 
-        name = new Text();
-        name.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h / 3));
+        name = new Label();
+        name.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h / 2));
+        //name.setStyle("-fx-background-color: #cacaca");
         topCenter.getChildren().add(name);
         topCenter.setAlignment(Pos.CENTER);
 
@@ -216,19 +218,48 @@ public class GameView extends Scene {
         bar.setAlignment(Pos.CENTER);
 
 
-        bar.getChildren().add(new Text("Barre de vie"));
+        Label life = new Label("Barre de vie");
+        life.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        life.setStyle("-fx-background-color: #cacaca");
+
+        Label hungry = new Label("Barre de faim");
+        hungry.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        hungry.setStyle("-fx-background-color: #cacaca");
+
+        Label mental = new Label("Barre de mental");
+        mental.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        mental.setStyle("-fx-background-color: #cacaca");
+
+        Label sleep = new Label("Barre de sommeil");
+        sleep.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        sleep.setStyle("-fx-background-color: #cacaca");
+
+        Label need = new Label("Barre de besoin");
+        need.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        need.setStyle("-fx-background-color: #cacaca");
+
+        Label physique = new Label("Barre d'état physique");
+        physique.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        physique.setStyle("-fx-background-color: #cacaca");
+
+        Label propre = new Label("Barre d'hygiène");
+        propre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
+        propre.setStyle("-fx-background-color: #cacaca");
+
+
+        bar.getChildren().add(life);
         bar.getChildren().add(pb_healthBar);
-        bar.getChildren().add(new Text("Barre de faim"));
+        bar.getChildren().add(hungry);
         bar.getChildren().add(pb_hungerBar);
-        bar.getChildren().add(new Text("Barre de mental"));
+        bar.getChildren().add(mental);
         bar.getChildren().add(pb_mentalBar);
-        bar.getChildren().add(new Text("Barre de sommeil"));
+        bar.getChildren().add(sleep);
         bar.getChildren().add(pb_sleepBar);
-        bar.getChildren().add(new Text("Barre de besoin"));
+        bar.getChildren().add(need);
         bar.getChildren().add(pb_needBar);
-        bar.getChildren().add(new Text("Barre d'état physique"));
+        bar.getChildren().add(physique);
         bar.getChildren().add(pb_physicalBar);
-        bar.getChildren().add(new Text("Barre d'hygiène"));
+        bar.getChildren().add(propre);
         bar.getChildren().add(pb_hygieneBar);
 
         HBox middle = new HBox();
