@@ -68,7 +68,7 @@ public class Controller
 	public void loadEvent(String save_name)
 	{
 		engine = Engine.loadSave(this, save_name);
-		View.changeScene(5,null); //GameView
+		View.changeScene(5,null, null); //GameView
 		game_v = View.getGameView();
 		load_game_v = null;
 	}
@@ -86,7 +86,8 @@ public class Controller
 			} //Evite un nom composé simplement d'espace
 			else{
 				engine = Engine.createEngineInstance(this, new_game_v.getTamaType(),  new_game_v.getTamaName());
-				View.changeScene(5,engine.getCurrentRoom()); //GameView
+				//System.out.println(engine.getJourneyCycle());
+				View.changeScene(5,engine.getCurrentRoom(), engine.getJourneyCycle()); //GameView
 				Thread.sleep(1000);
 				game_v = View.getGameView();
 				game_v.setName(engine.getInstanceName());
@@ -101,7 +102,7 @@ public class Controller
 
 	public void loadGame(String save){
 		engine = Engine.loadSave(this, save);
-		View.changeScene(5,engine.getCurrentRoom()); //GameView
+		View.changeScene(5,engine.getCurrentRoom(), engine.getJourneyCycle()); //GameView
 		game_v = View.getGameView();
 		game_v.setRoom(engine.getCurrentRoom());
 		game_v.setName(engine.getInstanceName());
@@ -137,7 +138,9 @@ public class Controller
 	}
 
 	public void update_Journey_Cycle(){
-		System.out.println(engine.getJourneyCycle());
+		//System.out.println(engine.getJourneyCycle());
+		game_v.setTime(engine.getJourneyCycle());
+		
 	}
 
 	public void update_room(){
@@ -208,18 +211,18 @@ public class Controller
 		//TODO
 		switch (action) {
 			case 1:
-				View.changeScene(2,null);
+				View.changeScene(2,null, null);
 				new_game_v = View.getNewGameMenu();
 				break;
 			case 2:
-				View.changeScene(3,null);
+				View.changeScene(3,null, null);
 				load_game_v = View.getLoadSaveView();
 				for(String save : Engine.getAllSaveName()){
 					load_game_v.addListSave(save);
 				};
 				break;
 			case 3:
-				View.changeScene(4,null);
+				View.changeScene(4,null, null);
 				load_option_v = View.getLoadOption();
 				break;
 			case 4:
@@ -232,7 +235,7 @@ public class Controller
 				launchGame();
 				break;
 			case 7:
-				View.changeScene(1,null);
+				View.changeScene(1,null, null);
 				if (engine != null) engine.destroy(); //à supp plus tard
 				new_game_v = null;
 				break;
@@ -258,7 +261,7 @@ public class Controller
 
 	private void QuitGame() {
 		engine.quit();
-		View.changeScene(1,null);
+		View.changeScene(1,null, null);
 		game_v=null;
 
 	}

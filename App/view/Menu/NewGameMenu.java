@@ -17,6 +17,13 @@ import javafx.scene.text.Text;
 import view.View;
 import view.Game.GameView;
 
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.Image;
+
 public class NewGameMenu extends Scene
 {
     /*
@@ -32,6 +39,7 @@ public class NewGameMenu extends Scene
     Text name;
     BorderPane main;
     VBox root;
+    BackgroundImage backgroundimg;
 
     String tamaType = "TamaChien";
      
@@ -130,8 +138,10 @@ public class NewGameMenu extends Scene
 
         main.setCenter(root);
 
-        //Change la couleur du fond d'écran
-        main.setStyle("-fx-background-color: grey;");
+        //Charge l'image du fond d'écran
+        backgroundimg = new BackgroundImage(new Image("menuimg.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        root.setBackground(new Background(backgroundimg));
 
         //Place le root sur la scene
         setRoot(main);
