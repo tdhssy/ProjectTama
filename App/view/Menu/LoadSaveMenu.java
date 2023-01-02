@@ -12,12 +12,20 @@ import javafx.scene.layout.VBox;
 import view.View;
 import controller.ActionController;
 
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.Image;
+
 public class LoadSaveMenu extends Scene{
 
     VBox root;
     Button b_charger;
     Button b_retour;
     Button b_suppr;
+    BackgroundImage backgroundimg;
     ListView<String> listSaves;
     GridPane rootGrid;
 
@@ -57,12 +65,18 @@ public class LoadSaveMenu extends Scene{
         root.getChildren().add(action);
         root.setAlignment(Pos.CENTER);
 
-        root.setStyle("-fx-background-color: Grey;");
+        //root.setStyle("-fx-background-color: Grey;");
 
         //Place le root sur la scene
         setRoot(root);
+
+        //Charge l'image du fond d'écran
+        backgroundimg = new BackgroundImage(new Image("menuimg.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        root.setBackground(new Background(backgroundimg));
     }
 
+    
 
     public void addListSave(String save){
         listSaves.getItems().add(save);

@@ -7,6 +7,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.Image;
+
 /*
  * Ecran de Game Over
  */
@@ -16,6 +23,7 @@ public class Death extends VBox{
 
     Button mainMenu;
     Button loadingMenu;
+    BackgroundImage backgroundimg;
 
     public Death(double width, double height, String NomTama){
         
@@ -41,6 +49,11 @@ public class Death extends VBox{
         VBox.setMargin(loadingMenu,    new Insets(0, this.getWidth()*0.25, 0, this.getWidth()*0.25));
 
         this.getChildren().addAll(deathannouncer, mainMenu, loadingMenu);
+
+        //Charge l'image du fond d'écran
+        backgroundimg= new BackgroundImage(new Image("dead.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        this.setBackground(new Background(backgroundimg));
     }
 
 }

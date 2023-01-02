@@ -14,6 +14,14 @@ import javafx.stage.Screen;
 import view.View;
 import controller.ActionController;
 
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.Image;
+
+
 public class LoadOption extends Scene {
     
     MenuBar set;
@@ -21,6 +29,7 @@ public class LoadOption extends Scene {
     Button retour;
     Rectangle2D screenInfo;
     VBox root;
+    BackgroundImage backgroundimg;
 
     public LoadOption(Parent arg0, double arg1, double arg2) {
         
@@ -84,8 +93,10 @@ public class LoadOption extends Scene {
 
         root.setAlignment(Pos.CENTER);
 
-        //Change la couleur du fond d'écran
-        root.setStyle("-fx-background-color: grey;");
+        //Charge l'image du fond d'écran
+        backgroundimg = new BackgroundImage(new Image("menuimg.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        new BackgroundSize(1.0, 1.0, true, true, false, false));
+        root.setBackground(new Background(backgroundimg));
 
         //Place le root sur la scene
         setRoot(root);
