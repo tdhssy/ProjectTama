@@ -382,7 +382,7 @@ public class GameView extends Scene {
         i.setFitWidth(root.getWidth());
         i.setFitHeight(root.getHeight());
         root.getChildren().set(1, i);
-        System.out.println(root.getChildren().size());
+        //System.out.println(root.getChildren().size());
 
     }
 

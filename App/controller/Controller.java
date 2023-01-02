@@ -196,7 +196,7 @@ public class Controller
 				System.out.println("Action game par defaut");
 				break;
 		}
-		updateStatView();
+		Platform.runLater(()->{ updateStatView(); });
 	}
 
 	/*
