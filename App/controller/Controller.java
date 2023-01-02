@@ -3,8 +3,8 @@ package controller;
 import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
-import org.junit.platform.suite.api.SelectClasses;
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import model.Engine;
 import model.saveEngine.Save;
@@ -38,7 +38,6 @@ public class Controller
 	 * unique lors du premier appel de
 	 * la méthode.
 	 */
-	//bffhurfsbnhjxsbnufdy
 	static public Controller getController(){
 		if(controller == null)
 			controller = new Controller();
@@ -54,7 +53,7 @@ public class Controller
 	{
 		//menu_view = MenuView.getMenuView();
 		//menu_view.setup("TamaToxic");
-		View.launch();
+		Application.launch(View.class);
 	}
 
 	/*
