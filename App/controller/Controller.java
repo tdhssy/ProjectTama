@@ -92,6 +92,9 @@ public class Controller
 				game_v = View.getGameView();
 				game_v.setName(engine.getInstanceName());
 				game_v.setType(engine.getTypeTama());
+				if(engine.getTypeTama() == "TamaRobot"){
+					game_v.RobotDisplay();
+				}
 				new_game_v = null;
 			}
 		} catch (Exception e) {

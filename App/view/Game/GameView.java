@@ -63,11 +63,18 @@ public class GameView extends Scene {
     HBox bottom;
     StackPane root;
     String temps;
-
     Image img;
     ImageView i; //salon, sdb, cuisine...
     Image weath;
     ImageView weather;
+    Label life;
+
+    Label hungry;
+    Label mental;
+    Label sleep;
+    Label need;
+    Label physique;
+    Label propre;
 
     public GameView(Parent arg0, double arg1, double arg2, String resBG, String time, String w) {
         super(arg0, arg1, arg2);
@@ -218,31 +225,31 @@ public class GameView extends Scene {
         bar.setAlignment(Pos.CENTER);
 
 
-        Label life = new Label("Barre de vie");
+        life = new Label("Barre de vie");
         life.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         life.setStyle("-fx-background-color: #cacaca");
 
-        Label hungry = new Label("Barre de faim");
+        hungry = new Label("Barre de faim");
         hungry.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         hungry.setStyle("-fx-background-color: #cacaca");
 
-        Label mental = new Label("Barre de mental");
+        mental = new Label("Barre de mental");
         mental.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         mental.setStyle("-fx-background-color: #cacaca");
 
-        Label sleep = new Label("Barre de sommeil");
+        sleep = new Label("Barre de sommeil");
         sleep.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         sleep.setStyle("-fx-background-color: #cacaca");
 
-        Label need = new Label("Barre de besoin");
+        need = new Label("Barre de besoin");
         need.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         need.setStyle("-fx-background-color: #cacaca");
 
-        Label physique = new Label("Barre d'état physique");
+        physique = new Label("Barre d'état physique");
         physique.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         physique.setStyle("-fx-background-color: #cacaca");
 
-        Label propre = new Label("Barre d'hygiène");
+        propre = new Label("Barre d'hygiene");
         propre.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, h/4));
         propre.setStyle("-fx-background-color: #cacaca");
 
@@ -425,5 +432,17 @@ public class GameView extends Scene {
         Platform.runLater(() -> {
             setRoot(new Death(this.getWidth(), this.getHeight() * 0.60, t_name));
         });
+    }
+
+    public void RobotDisplay(){
+        b_manger.setText("Charger");
+        b_laver.setText("Maintenance");
+        b_dormir.setText("Refroidissement");
+        b_besoin.setText("vidange");
+        
+        hungry.setText("Barre de charge");
+        propre.setText("Barre de maintenance");
+        sleep.setText("Barre de surchauffe");
+        need.setText("Barre de vidange");
     }
 }
