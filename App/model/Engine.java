@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import controller.Controller;
 import javafx.application.Platform;
-import model.room.RessourcesEngine;
+import model.ressourcesEngine.RessourcesEngine;
 import model.saveEngine.Save;
 import model.tamaEngine.Tamagotchi;
 import model.tamagotchiFactory.TamagotchiFactory;
@@ -265,6 +265,7 @@ public class Engine {
      */
 	public void manger(){
 		tamagotchi.updateStat("Satiety", 10,tamagotchi.getMULTIPLIER()); //facteur à modifier
+		tamagotchi.updateStat("MentalHealth", 5,tamagotchi.getMULTIPLIER());
 	}
 
 	/**

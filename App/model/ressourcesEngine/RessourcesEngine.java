@@ -1,4 +1,4 @@
-package model.room;
+package model.ressourcesEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
