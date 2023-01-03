@@ -43,7 +43,7 @@ public class Death extends VBox{
 
         deathannouncer = tex;
         //Font size 1 = 1.3 pixels 
-        deathannouncer.setFont(new Font(30));
+        deathannouncer.setFont(new Font(25));
 
         mainMenu = new Button("Menu principal");
         mainMenu.setOnAction(e -> {ActionController.event("Go_main_menu");});
