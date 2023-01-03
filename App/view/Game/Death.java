@@ -2,11 +2,14 @@ package view.Game;
 
 import controller.ActionController;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
+import javafx.scene.text.TextAlignment;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -14,23 +17,31 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.image.Image;
 
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+
 /*
  * Ecran de Game Over
  */
 public class Death extends VBox{
     
-    Text deathannouncer;
+    Label deathannouncer;
 
     Button mainMenu;
     Button loadingMenu;
     BackgroundImage backgroundimg;
+    Label tex;
 
     public Death(double width, double height, String NomTama){
         
         setWidth(width);
         setHeight(height);
 
-        deathannouncer = new Text("Ton animal "+NomTama+" est mort");
+        Label tex = new Label("Ton animal "+ NomTama +" est mort");
+        tex.setTextFill(Color.WHITE);
+
+        deathannouncer = tex;
         //Font size 1 = 1.3 pixels 
         deathannouncer.setFont(new Font(30));
 
@@ -47,6 +58,7 @@ public class Death extends VBox{
         VBox.setMargin(deathannouncer, new Insets(this.getHeight()*0.2, this.getWidth()*0.5-240, 0, this.getWidth()*0.5-240));
         VBox.setMargin(mainMenu,       new Insets(0, this.getWidth()*0.25, 0, this.getWidth()*0.25));
         VBox.setMargin(loadingMenu,    new Insets(0, this.getWidth()*0.25, 0, this.getWidth()*0.25));
+
 
         this.getChildren().addAll(deathannouncer, mainMenu, loadingMenu);
 
